@@ -49,7 +49,7 @@ summaryLength = 140
 ## 配置 utteranc评论,教程参考 https://utteranc.es/
 [params.utteranc]
   enable = true
-  repo = "https://github.com/Dlgde/blog-issues.git" ##换成自己得
+  repo = "Dlgde/blog-issues" ##换成自己得
   issueTerm = "pathname"
   theme = "github-light"
 

@@ -6,10 +6,21 @@
     <description>Recent content in Posts on Dlgde的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 02 May 2020 10:48:57 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 08 Jan 2021 01:08:22 +0800</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Mytest</title>
+      <link>/2021/01/08/</link>
+      <pubDate>Fri, 08 Jan 2021 01:08:22 +0800</pubDate>
+      
+      <guid>/2021/01/08/</guid>
+      <description>this my test
+zhege ge zhende sh
+package main func main(){ fmt.Println(&amp;quot;hello world&amp;quot;) }  package main func main(){ fmt.Println(&amp;quot;hello world&amp;quot;) }  </description>
+    </item>
     
     <item>
       <title>再来学习一下tcp</title>
