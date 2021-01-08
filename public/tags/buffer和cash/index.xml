@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>buffer和cash on Dlgde的博客</title>
+    <link>/tags/buffer%E5%92%8Ccash/</link>
+    <description>Recent content in buffer和cash on Dlgde的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 16 Nov 2019 11:12:14 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/buffer%E5%92%8Ccash/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>理解Linux中的buffer和cache</title>
+      <link>/archives/208/</link>
+      <pubDate>Sat, 16 Nov 2019 11:12:14 +0000</pubDate>
+      
+      <guid>/archives/208/</guid>
+      <description>磁盘和文件的区别： 关于磁盘和文件的区别，本来以为大家都懂了，所以没有细讲。磁盘是一个块设备，可以划分为不同的分区；在分区之上再创建文件系统，挂载到某个目录，之后才可以在这个目录中读写文件。 其实 Linux 中“一切皆文件”，而文章中提到的“文件”是普通文件，磁盘是块设备文件，这些大家可以执行</description>
+    </item>
+    
+  </channel>
+</rss>

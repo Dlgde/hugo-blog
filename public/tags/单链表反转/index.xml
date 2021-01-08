@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>单链表反转 on Dlgde的博客</title>
+    <link>/tags/%E5%8D%95%E9%93%BE%E8%A1%A8%E5%8F%8D%E8%BD%AC/</link>
+    <description>Recent content in 单链表反转 on Dlgde的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 24 Apr 2019 14:54:59 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/%E5%8D%95%E9%93%BE%E8%A1%A8%E5%8F%8D%E8%BD%AC/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>go实现单链表反转</title>
+      <link>/archives/157/</link>
+      <pubDate>Wed, 24 Apr 2019 14:54:59 +0000</pubDate>
+      
+      <guid>/archives/157/</guid>
+      <description>单链表核心代码如下： func reverseList(node *ListNode) *ListNode { cur := node var pre *ListNode for cur != nil { cur.Next, pre, cur = pre, cur, cur.Next } return pre } 理解：cur指向当前节点，pre是前节点初始为nil，反转过程： cur.next=pre pre=cur cur=cur.next 完整代码如下： package main import &#34;fmt&#34; type ListNode struct { data interface{} Next *ListNode } //反转单链表 func reverseList(head *ListNode) *ListNode { cur := head var pre *ListNode for cur != nil { cur.Next, pre, cur = pre, cur, cur.Next } return pre } func CreateNode(node *ListNode, max int) { cur := node for i := 1; i</description>
+    </item>
+    
+  </channel>
+</rss>

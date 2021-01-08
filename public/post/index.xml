@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Dlgde的博客</title>
+    <link>/post/</link>
+    <description>Recent content in Posts on Dlgde的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 02 May 2020 10:48:57 +0000</lastBuildDate>
+    
+	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>再来学习一下tcp</title>
+      <link>/archives/221/</link>
+      <pubDate>Sat, 02 May 2020 10:48:57 +0000</pubDate>
+      
+      <guid>/archives/221/</guid>
+      <description>为什么要再次学习tcp 其实很多时候，说不知道好像也知道，说知道也说不出所以然，貌似都是死记硬背这些东西，然后有个印象，理解不够透彻，今天再来温习一下大学里面学过的tcp，顺便记录一下，其实了解了整个过程，可能问题也就比较清楚了 下面这些问题，是不是经常遇到？ tcp三次握手，四次挥手</description>
+    </item>
+    
+    <item>
+      <title>HTTP状态码</title>
+      <link>/archives/213/</link>
+      <pubDate>Sat, 21 Dec 2019 03:10:58 +0000</pubDate>
+      
+      <guid>/archives/213/</guid>
+      <description>面试经常会被问道了解http状态码吗？你知道301和302什么区别，401和403什么区别，502和503什么区别？ HTTP 响应状态代码指示特定 HTTP 请求是否已成功完成。响应分为五类：信息响应(100–199)，成功响应(200–299)，重定向(300–399)，客户端错误(400–49</description>
+    </item>
+    
+    <item>
+      <title>linux系统进程状态有哪些？</title>
+      <link>/archives/210/</link>
+      <pubDate>Mon, 18 Nov 2019 15:47:07 +0000</pubDate>
+      
+      <guid>/archives/210/</guid>
+      <description>进程状态有哪些？ 在学校的操作系统原理中，我们系统中的进程有多种状态，那对应到常用的linux系统，有哪些进程状态呢？通过top可看到有以下的状态： R 是 Running 或 Runnable 的缩写，表示进程在 CPU 的就绪队列中，正在运行或者正在等待运行。 D 是 Disk Sleep 的缩写，也就是不可中断状态睡眠（Uninterrupti</description>
+    </item>
+    
+    <item>
+      <title>理解平均负载和CPU使用率</title>
+      <link>/archives/209/</link>
+      <pubDate>Sun, 17 Nov 2019 03:00:00 +0000</pubDate>
+      
+      <guid>/archives/209/</guid>
+      <description>平均负载 平均负载是指单位时间内，系统处于可运行状态和不可中断状态的平均进程数，也就是平均活跃进程数，它和 CPU 使用率并没有直接关系。 使用uptime命令，依次是过去 1 分钟、5 分钟、15 分钟的平均负载（Load Average; 理解平均负载， 比如当平均负载为 2 时，意味着什么呢？ 在只有 2 个 CPU 的系统上，意</description>
+    </item>
+    
+    <item>
+      <title>理解Linux中的buffer和cache</title>
+      <link>/archives/208/</link>
+      <pubDate>Sat, 16 Nov 2019 11:12:14 +0000</pubDate>
+      
+      <guid>/archives/208/</guid>
+      <description>磁盘和文件的区别： 关于磁盘和文件的区别，本来以为大家都懂了，所以没有细讲。磁盘是一个块设备，可以划分为不同的分区；在分区之上再创建文件系统，挂载到某个目录，之后才可以在这个目录中读写文件。 其实 Linux 中“一切皆文件”，而文章中提到的“文件”是普通文件，磁盘是块设备文件，这些大家可以执行</description>
+    </item>
+    
+    <item>
+      <title>golang中的map</title>
+      <link>/archives/207/</link>
+      <pubDate>Sat, 16 Nov 2019 06:09:14 +0000</pubDate>
+      
+      <guid>/archives/207/</guid>
+      <description>golang中map学习 哈希表 哈希表是一个无序的key/value对的集合，其中所有的key都是不同的，然后通过给定的key可以在常数时间复杂度内检索、更新或删除对应的value； golang中的map 在Go语言中，一个map就是一个哈希表的引用，map类型可以写为map[K]V</description>
+    </item>
+    
+    <item>
+      <title>多张Excel表，怎么获取表头？</title>
+      <link>/archives/204/</link>
+      <pubDate>Sun, 10 Nov 2019 15:06:41 +0000</pubDate>
+      
+      <guid>/archives/204/</guid>
+      <description>如果有很多张Excel表(如500+)，怎么获取表结构整理到一个新的表格中呢？ 下载慧办公软件，链接：http://www.hbg666.com/index.php?id=11，点击安装，完成后，如下图，会出现慧办公的字样： 打开你需要处理的excel表，点击【分类小计】→【汇总合计</description>
+    </item>
+    
+    <item>
+      <title>WordPress搬家</title>
+      <link>/archives/177/</link>
+      <pubDate>Thu, 07 Nov 2019 03:13:45 +0000</pubDate>
+      
+      <guid>/archives/177/</guid>
+      <description>WordPress搬家 主要采坑过程如下： 复制之前的php目录到目标新机器 在新机器上面安装openresty(nginx), apt install php7.2-fpm php7.2-mysql php7.2-curl php7.2-json php7.2-mbstring php7.2-xml php7.2-intl,安装php服务 apt-get install mysql-server 安装数据库 查看php服务，service php7.2-fpm status 目录下/etc/php/7.2/fpm/pool.d，</description>
+    </item>
+    
+    <item>
+      <title>go解决leetcode-242</title>
+      <link>/archives/168/</link>
+      <pubDate>Sun, 04 Aug 2019 02:32:44 +0000</pubDate>
+      
+      <guid>/archives/168/</guid>
+      <description>解决思路：使用map来解决问题； package main import ( &#34;fmt&#34; &#34;reflect&#34; ) func isAnagram(s string, t string) bool { // var m1 map[string]int // var m2 map[string]int //map申明后默认是nil，得用make进行实例化 m1 := make(map[string]int) m2 := make(map[string]int) for _, i := range s { m1[string(i)]++ } for _, j := range t { m2[string(j)]++ } return reflect.DeepEqual(m1, m2) //map不能直接用“==”进行比较 } func main() { s := &#34;hello&#34; t := &#34;lelho&#34; // isAnagram(s, t) fmt.Println(isAnagram(s, t)) } 自己实现map比较函数equa</description>
+    </item>
+    
+    <item>
+      <title>git常用操作</title>
+      <link>/archives/162/</link>
+      <pubDate>Wed, 08 May 2019 15:43:50 +0000</pubDate>
+      
+      <guid>/archives/162/</guid>
+      <description>1、git使用的常规操作 git pull——编辑——git add——git commit——git push 用git add把文件添加进去，实际上就是把文件修改添加到暂存区； 用git commit提交更改，实际上就是把暂存区的所有内容提交到当前分支； 用git push 提交到远程的仓库。 其实就是工作区——gi</description>
+    </item>
+    
+    <item>
+      <title>第一次参与github开源教程</title>
+      <link>/archives/161/</link>
+      <pubDate>Wed, 08 May 2019 15:40:02 +0000</pubDate>
+      
+      <guid>/archives/161/</guid>
+      <description>&amp;nbsp; 参照https://github.com/Dlgde/first-contributions/blob/master/translations/README.chs.md</description>
+    </item>
+    
+    <item>
+      <title>go实现单链表反转</title>
+      <link>/archives/157/</link>
+      <pubDate>Wed, 24 Apr 2019 14:54:59 +0000</pubDate>
+      
+      <guid>/archives/157/</guid>
+      <description>单链表核心代码如下： func reverseList(node *ListNode) *ListNode { cur := node var pre *ListNode for cur != nil { cur.Next, pre, cur = pre, cur, cur.Next } return pre } 理解：cur指向当前节点，pre是前节点初始为nil，反转过程： cur.next=pre pre=cur cur=cur.next 完整代码如下： package main import &#34;fmt&#34; type ListNode struct { data interface{} Next *ListNode } //反转单链表 func reverseList(head *ListNode) *ListNode { cur := head var pre *ListNode for cur != nil { cur.Next, pre, cur = pre, cur, cur.Next } return pre } func CreateNode(node *ListNode, max int) { cur := node for i := 1; i</description>
+    </item>
+    
+    <item>
+      <title>go实现选择排序</title>
+      <link>/archives/155/</link>
+      <pubDate>Mon, 22 Apr 2019 15:33:23 +0000</pubDate>
+      
+      <guid>/archives/155/</guid>
+      <description>&lt;h5 id=&#34;选择排序-对于给定的一组记录-经过第一轮比较之后得到最小记录-然后将该记录与第一个记录的位置进行交换-接着对对不包括第一个记录以外的其他记录进行第二轮比较-得到的最小记录与第二个记录进行位置交换-重复该过程-直到进行比较的记录只有一个为止&#34;&gt;&lt;strong&gt;选择排序：对于给定的一组记录，经过第一轮比较之后得到最小记录，然后将该记录与第一个记录的位置进行交换；接着对对不包括第一个记录以外的其他记录进行第二轮比较，得到的最小记录与第二个记录进行位置交换；重复该过程，直到进行比较的记录只有一个为止。&lt;/strong&gt;&lt;/h5&gt;
+
+&lt;p&gt;具体实现如下：&lt;/p&gt;
+
+&lt;pre class=&#34;lang:default decode:true&#34;&gt;package main
+
+import &#34;fmt&#34;
+
+func SelectSort(data []int) {
+    length := len(data)
+    for i := 0; i &amp;lt; length; i++ {
+        tmp := data[i]
+        flag := i
+        for j := i + 1; j &amp;lt; length; j++ {
+            if data[j] &amp;lt; tmp {
+                tmp = data[j]
+                flag = j
+            }
+        }
+
+        if flag != i {
+            data[flag] = data[i]
+            data[i] = tmp
+        }
+        fmt.Println(data) //为了看具体排序的过程
+
+    }
+}
+
+func main() {
+    data := []int{44, 38, 65, 97, 76, 14, 27, 48}
+    SelectSort(data)
+    fmt.Println(data)
+}&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>go实现简单的客户端-服务器应用</title>
+      <link>/archives/154/</link>
+      <pubDate>Sat, 20 Apr 2019 07:14:09 +0000</pubDate>
+      
+      <guid>/archives/154/</guid>
+      <description>&lt;h4 id=&#34;一个-web-服务器应用需要响应众多客户端的并发请求-go会为每一个客户端产生一个协程用来处理请求&#34;&gt;一个（web）服务器应用需要响应众多客户端的并发请求：go会为每一个客户端产生一个协程用来处理请求&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;知识点：goroute，net包，socket&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>go语言中使用defer、panic、recover处理异常</title>
+      <link>/archives/152/</link>
+      <pubDate>Fri, 19 Apr 2019 14:59:56 +0000</pubDate>
+      
+      <guid>/archives/152/</guid>
+      <description>go语言中的异常处理，没有try&amp;hellip;catch等，而是使用defer、panic、recover来处理异常。 知识点：defer、panic、recover，异常处理 1、首先，panic 是用来表示非常严重的不可恢复的错误的。在Go语言中这是一个内置函数，如果在程序中遇到</description>
+    </item>
+    
+    <item>
+      <title>goroute应用-模拟远程调用RPC</title>
+      <link>/archives/150/</link>
+      <pubDate>Fri, 19 Apr 2019 14:08:51 +0000</pubDate>
+      
+      <guid>/archives/150/</guid>
+      <description>&lt;h3 id=&#34;在本例中-使用通道代替socket实现rpc过程-客户端和服务器运行在同一个进程-服务器和客户端在两个goroute中&#34;&gt;在本例中，使用通道代替socket实现RPC过程，客户端和服务器运行在同一个进程，服务器和客户端在两个goroute中。&lt;/h3&gt;
+
+&lt;h5 id=&#34;应用知识-goroute-select-rpc过程&#34;&gt;应用知识：&lt;em&gt;&lt;strong&gt;goroute，select，RPC过程&lt;/strong&gt;&lt;/em&gt;&lt;/h5&gt;
+
+&lt;h4 id=&#34;1-客户端请求和接收封装&#34;&gt;1、客户端请求和接收封装&lt;/h4&gt;
+
+&lt;p&gt;下面的代码封装了向服务器请求数据，等待服务器返回数据，如果请求方超时，利用select，该函数还会处理超时逻辑。如下：&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>goroute之间通信-共享全局变量(理解go的多并发)</title>
+      <link>/archives/139/</link>
+      <pubDate>Fri, 05 Apr 2019 02:20:30 +0000</pubDate>
+      
+      <guid>/archives/139/</guid>
+      <description>&lt;h3 id=&#34;1-go语言中goroute之间通信有两种方式&#34;&gt;1、go语言中goroute之间通信有两种方式：&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;通过全局变量，这种方式得加锁&lt;/li&gt;
+&lt;li&gt;通过channel进行通信&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;下面是一个通过全局变量进行通信的例子：&lt;/p&gt;
+
+&lt;pre class=&#34;lang:default decode:true&#34;&gt;package main
+
+import (
+    &#34;fmt&#34;
+    &#34;sync&#34;
+    &#34;time&#34;
+)
+
+var (
+    m    = make(map[int]uint64)
+    lock sync.Mutex
+)
+
+type task struct {
+    n int
+}
+
+func calc(t *task) {
+    var sum uint64
+    sum = 1
+    for i := 1; i &amp;lt; t.n; i++ {
+        sum *= uint64(i)
+    }
+    lock.Lock()
+    m[t.n] = sum
+    lock.Unlock()
+}
+
+func main() {
+    for i := 0; i &amp;lt; 20; i++ {
+        t := &amp;task{n: i}
+        go calc(t)
+    }
+    time.Sleep(10 * time.Second)
+
+    lock.Lock()
+    for k, v := range m {
+        fmt.Printf(&#34;%d!=%v\n&#34;, k, v)
+    }
+    lock.Unlock()
+
+}
+
+&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>go语言变量逃逸(Escape Analysis)</title>
+      <link>/archives/85/</link>
+      <pubDate>Tue, 26 Mar 2019 08:06:56 +0000</pubDate>
+      
+      <guid>/archives/85/</guid>
+      <description>&lt;h4 id=&#34;自动决定变量分配在栈还是堆-escape-analysis&#34;&gt;自动决定变量分配在栈还是堆——Escape Analysis&lt;/h4&gt;</description>
+    </item>
+    
+    <item>
+      <title>接口应用-可扩展输出方式的日志系统</title>
+      <link>/archives/83/</link>
+      <pubDate>Mon, 25 Mar 2019 15:40:56 +0000</pubDate>
+      
+      <guid>/archives/83/</guid>
+      <description>&lt;h5 id=&#34;利用接口实现一个可扩展的日志系统&#34;&gt;利用接口实现一个可扩展的日志系统：&lt;/h5&gt;</description>
+    </item>
+    
+    <item>
+      <title>go语言实现通用链表</title>
+      <link>/archives/81/</link>
+      <pubDate>Sun, 24 Mar 2019 18:43:15 +0000</pubDate>
+      
+      <guid>/archives/81/</guid>
+      <description>&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;p&gt;实现通用链表&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>go语言接口实现应用-Sort接口</title>
+      <link>/archives/58/</link>
+      <pubDate>Sat, 23 Mar 2019 15:25:09 +0000</pubDate>
+      
+      <guid>/archives/58/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hello,go</title>
+      <link>/archives/38/</link>
+      <pubDate>Thu, 21 Mar 2019 14:22:00 +0000</pubDate>
+      
+      <guid>/archives/38/</guid>
+      <description>hello,go
+&amp;nbsp;</description>
+    </item>
+    
+    <item>
+      <title>生活，如此多娇</title>
+      <link>/archives/33/</link>
+      <pubDate>Thu, 21 Mar 2019 14:00:02 +0000</pubDate>
+      
+      <guid>/archives/33/</guid>
+      <description>学会不低头，过去已经属于过去，把握当前，未来可期！</description>
+    </item>
+    
+  </channel>
+</rss>

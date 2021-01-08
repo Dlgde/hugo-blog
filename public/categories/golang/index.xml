@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>golang on Dlgde的博客</title>
+    <link>/categories/golang/</link>
+    <description>Recent content in golang on Dlgde的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 16 Nov 2019 06:09:14 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/golang/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>golang中的map</title>
+      <link>/archives/207/</link>
+      <pubDate>Sat, 16 Nov 2019 06:09:14 +0000</pubDate>
+      
+      <guid>/archives/207/</guid>
+      <description>golang中map学习 哈希表 哈希表是一个无序的key/value对的集合，其中所有的key都是不同的，然后通过给定的key可以在常数时间复杂度内检索、更新或删除对应的value； golang中的map 在Go语言中，一个map就是一个哈希表的引用，map类型可以写为map[K]V</description>
+    </item>
+    
+    <item>
+      <title>go解决leetcode-242</title>
+      <link>/archives/168/</link>
+      <pubDate>Sun, 04 Aug 2019 02:32:44 +0000</pubDate>
+      
+      <guid>/archives/168/</guid>
+      <description>解决思路：使用map来解决问题； package main import ( &#34;fmt&#34; &#34;reflect&#34; ) func isAnagram(s string, t string) bool { // var m1 map[string]int // var m2 map[string]int //map申明后默认是nil，得用make进行实例化 m1 := make(map[string]int) m2 := make(map[string]int) for _, i := range s { m1[string(i)]++ } for _, j := range t { m2[string(j)]++ } return reflect.DeepEqual(m1, m2) //map不能直接用“==”进行比较 } func main() { s := &#34;hello&#34; t := &#34;lelho&#34; // isAnagram(s, t) fmt.Println(isAnagram(s, t)) } 自己实现map比较函数equa</description>
+    </item>
+    
+    <item>
+      <title>go实现单链表反转</title>
+      <link>/archives/157/</link>
+      <pubDate>Wed, 24 Apr 2019 14:54:59 +0000</pubDate>
+      
+      <guid>/archives/157/</guid>
+      <description>单链表核心代码如下： func reverseList(node *ListNode) *ListNode { cur := node var pre *ListNode for cur != nil { cur.Next, pre, cur = pre, cur, cur.Next } return pre } 理解：cur指向当前节点，pre是前节点初始为nil，反转过程： cur.next=pre pre=cur cur=cur.next 完整代码如下： package main import &#34;fmt&#34; type ListNode struct { data interface{} Next *ListNode } //反转单链表 func reverseList(head *ListNode) *ListNode { cur := head var pre *ListNode for cur != nil { cur.Next, pre, cur = pre, cur, cur.Next } return pre } func CreateNode(node *ListNode, max int) { cur := node for i := 1; i</description>
+    </item>
+    
+    <item>
+      <title>go实现选择排序</title>
+      <link>/archives/155/</link>
+      <pubDate>Mon, 22 Apr 2019 15:33:23 +0000</pubDate>
+      
+      <guid>/archives/155/</guid>
+      <description>&lt;h5 id=&#34;选择排序-对于给定的一组记录-经过第一轮比较之后得到最小记录-然后将该记录与第一个记录的位置进行交换-接着对对不包括第一个记录以外的其他记录进行第二轮比较-得到的最小记录与第二个记录进行位置交换-重复该过程-直到进行比较的记录只有一个为止&#34;&gt;&lt;strong&gt;选择排序：对于给定的一组记录，经过第一轮比较之后得到最小记录，然后将该记录与第一个记录的位置进行交换；接着对对不包括第一个记录以外的其他记录进行第二轮比较，得到的最小记录与第二个记录进行位置交换；重复该过程，直到进行比较的记录只有一个为止。&lt;/strong&gt;&lt;/h5&gt;
+
+&lt;p&gt;具体实现如下：&lt;/p&gt;
+
+&lt;pre class=&#34;lang:default decode:true&#34;&gt;package main
+
+import &#34;fmt&#34;
+
+func SelectSort(data []int) {
+    length := len(data)
+    for i := 0; i &amp;lt; length; i++ {
+        tmp := data[i]
+        flag := i
+        for j := i + 1; j &amp;lt; length; j++ {
+            if data[j] &amp;lt; tmp {
+                tmp = data[j]
+                flag = j
+            }
+        }
+
+        if flag != i {
+            data[flag] = data[i]
+            data[i] = tmp
+        }
+        fmt.Println(data) //为了看具体排序的过程
+
+    }
+}
+
+func main() {
+    data := []int{44, 38, 65, 97, 76, 14, 27, 48}
+    SelectSort(data)
+    fmt.Println(data)
+}&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>go实现简单的客户端-服务器应用</title>
+      <link>/archives/154/</link>
+      <pubDate>Sat, 20 Apr 2019 07:14:09 +0000</pubDate>
+      
+      <guid>/archives/154/</guid>
+      <description>&lt;h4 id=&#34;一个-web-服务器应用需要响应众多客户端的并发请求-go会为每一个客户端产生一个协程用来处理请求&#34;&gt;一个（web）服务器应用需要响应众多客户端的并发请求：go会为每一个客户端产生一个协程用来处理请求&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;知识点：goroute，net包，socket&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>go语言中使用defer、panic、recover处理异常</title>
+      <link>/archives/152/</link>
+      <pubDate>Fri, 19 Apr 2019 14:59:56 +0000</pubDate>
+      
+      <guid>/archives/152/</guid>
+      <description>go语言中的异常处理，没有try&amp;hellip;catch等，而是使用defer、panic、recover来处理异常。 知识点：defer、panic、recover，异常处理 1、首先，panic 是用来表示非常严重的不可恢复的错误的。在Go语言中这是一个内置函数，如果在程序中遇到</description>
+    </item>
+    
+    <item>
+      <title>goroute应用-模拟远程调用RPC</title>
+      <link>/archives/150/</link>
+      <pubDate>Fri, 19 Apr 2019 14:08:51 +0000</pubDate>
+      
+      <guid>/archives/150/</guid>
+      <description>&lt;h3 id=&#34;在本例中-使用通道代替socket实现rpc过程-客户端和服务器运行在同一个进程-服务器和客户端在两个goroute中&#34;&gt;在本例中，使用通道代替socket实现RPC过程，客户端和服务器运行在同一个进程，服务器和客户端在两个goroute中。&lt;/h3&gt;
+
+&lt;h5 id=&#34;应用知识-goroute-select-rpc过程&#34;&gt;应用知识：&lt;em&gt;&lt;strong&gt;goroute，select，RPC过程&lt;/strong&gt;&lt;/em&gt;&lt;/h5&gt;
+
+&lt;h4 id=&#34;1-客户端请求和接收封装&#34;&gt;1、客户端请求和接收封装&lt;/h4&gt;
+
+&lt;p&gt;下面的代码封装了向服务器请求数据，等待服务器返回数据，如果请求方超时，利用select，该函数还会处理超时逻辑。如下：&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>goroute之间通信-共享全局变量(理解go的多并发)</title>
+      <link>/archives/139/</link>
+      <pubDate>Fri, 05 Apr 2019 02:20:30 +0000</pubDate>
+      
+      <guid>/archives/139/</guid>
+      <description>&lt;h3 id=&#34;1-go语言中goroute之间通信有两种方式&#34;&gt;1、go语言中goroute之间通信有两种方式：&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;通过全局变量，这种方式得加锁&lt;/li&gt;
+&lt;li&gt;通过channel进行通信&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;下面是一个通过全局变量进行通信的例子：&lt;/p&gt;
+
+&lt;pre class=&#34;lang:default decode:true&#34;&gt;package main
+
+import (
+    &#34;fmt&#34;
+    &#34;sync&#34;
+    &#34;time&#34;
+)
+
+var (
+    m    = make(map[int]uint64)
+    lock sync.Mutex
+)
+
+type task struct {
+    n int
+}
+
+func calc(t *task) {
+    var sum uint64
+    sum = 1
+    for i := 1; i &amp;lt; t.n; i++ {
+        sum *= uint64(i)
+    }
+    lock.Lock()
+    m[t.n] = sum
+    lock.Unlock()
+}
+
+func main() {
+    for i := 0; i &amp;lt; 20; i++ {
+        t := &amp;task{n: i}
+        go calc(t)
+    }
+    time.Sleep(10 * time.Second)
+
+    lock.Lock()
+    for k, v := range m {
+        fmt.Printf(&#34;%d!=%v\n&#34;, k, v)
+    }
+    lock.Unlock()
+
+}
+
+&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>go语言变量逃逸(Escape Analysis)</title>
+      <link>/archives/85/</link>
+      <pubDate>Tue, 26 Mar 2019 08:06:56 +0000</pubDate>
+      
+      <guid>/archives/85/</guid>
+      <description>&lt;h4 id=&#34;自动决定变量分配在栈还是堆-escape-analysis&#34;&gt;自动决定变量分配在栈还是堆——Escape Analysis&lt;/h4&gt;</description>
+    </item>
+    
+    <item>
+      <title>接口应用-可扩展输出方式的日志系统</title>
+      <link>/archives/83/</link>
+      <pubDate>Mon, 25 Mar 2019 15:40:56 +0000</pubDate>
+      
+      <guid>/archives/83/</guid>
+      <description>&lt;h5 id=&#34;利用接口实现一个可扩展的日志系统&#34;&gt;利用接口实现一个可扩展的日志系统：&lt;/h5&gt;</description>
+    </item>
+    
+    <item>
+      <title>go语言实现通用链表</title>
+      <link>/archives/81/</link>
+      <pubDate>Sun, 24 Mar 2019 18:43:15 +0000</pubDate>
+      
+      <guid>/archives/81/</guid>
+      <description>&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;p&gt;实现通用链表&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>go语言接口实现应用-Sort接口</title>
+      <link>/archives/58/</link>
+      <pubDate>Sat, 23 Mar 2019 15:25:09 +0000</pubDate>
+      
+      <guid>/archives/58/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hello,go</title>
+      <link>/archives/38/</link>
+      <pubDate>Thu, 21 Mar 2019 14:22:00 +0000</pubDate>
+      
+      <guid>/archives/38/</guid>
+      <description>hello,go
+&amp;nbsp;</description>
+    </item>
+    
+  </channel>
+</rss>

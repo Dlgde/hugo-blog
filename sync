@@ -1,0 +1,1 @@
+rsync -rLtDvpv --delete --exclude ".git" --exclude ".DS_Store" /Users/qstudy/blog/public/ study:/data/blog/

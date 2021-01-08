@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>理解Linux中的buffer和cache | Dlgde的博客</title>
+    <meta property="og:title" content="理解Linux中的buffer和cache - Dlgde的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2019-11-16T11:12:14&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2019-11-16T11:12:14&#43;08:00'>
+        
+    <meta name="Keywords" content="golang,go语言,go语言笔记,飞雪无情,java,android,博客,项目管理,python,软件架构,公众号,小程序">
+    <meta name="description" content="理解Linux中的buffer和cache">
+        <meta name="author" content="qstudy">
+        
+    <meta property="og:url" content="/archives/208/">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+        <link rel="stylesheet" href='/css/douban.css'>
+    
+        <link rel="stylesheet" href='/css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="/">
+                        Dlgde的博客
+                    </a>
+                
+                <p class="description">记录个人学习空间</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="/">首页</a>
+                    
+                    <a  href="/archives/" title="归档">归档</a>
+                    
+                    <a  href="/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">理解Linux中的buffer和cache</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年11月16日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/linux'>linux</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="post-content">
+            
+
+<h2 id="磁盘和文件的区别">磁盘和文件的区别：</h2>
+
+<p>关于磁盘和文件的区别，本来以为大家都懂了，所以没有细讲。<strong>磁盘是一个块设备，可以划分为不同的分区；在分区之上再创建文件系统，挂载到某个目录，之后才可以在这个目录中读写文件</strong>。</p>
+
+<p>其实 Linux 中“一切皆文件”，而文章中提到的“文件”是普通文件，磁盘是块设备文件，这些大家可以执行 &ldquo;ls -l &lt;路径&gt;&rdquo; 查看它们的区别（输出的含义如果不懂请 man ls 查询）。</p>
+
+<p><strong>在读写普通文件时，会经过文件系统，由文件系统负责与磁盘交互；而读写磁盘或者分区时，就会跳过文件系统，也就是所谓的“裸I/O“。</strong>这两种读写方式所使用的缓存是不同的，也就是文中所讲的 Cache 和 Buffer 区别。</p>
+
+<h2 id="buffer和cache的区别">buffer和cache的区别：</h2>
+
+<p><strong>Buffer 是对磁盘数据的缓存，而 Cache 是文件数据的缓存，它们既会用在读请求中，也会用在写请求中</strong>;</p>
+
+<p>插曲：理论上，一个文件读首先到Block Buffer, 然后到Page Cache。有了文件系统才有了Page Cache.<br />
+在老的Linux上这两个Cache是分开的。那这样对于文件数据，会被Cache两次。这种方案虽然简单，<br />
+但低效。后期Linux把这两个Cache统一了。对于文件，Page Cache指向Block Buffer，对于非文件<br />
+则是Block Buffer。这样就如文件实验的结果，文件操作，只影响Page Cache，Raw操作，则只影响Buffer. 比如一此VM虚拟机，则会越过File System，只接操作 Disk, 常说的Direct IO.</p>
+
+<ol>
+<li>free的数据来源，可以通过man free查看，来自/proc/meminfo;<strong>/proc 是 Linux 内核提供的一种特殊文件系统，是用户 跟内核交互的接口。</strong>比方说，用户可以从 /proc 中查询内核的运行状态和配置选项，查询进程的运行状态、统计数据等，当然，你也可以通过 /proc 来修改内核的配置。</p></li>
+
+<li><p>vmstat命令学习，vmstat 1表示每一分钟输出一组数据；bi 和 bo 则分别表示块设备读取和写入的大小，单位为块 / 秒。因为 Linux 中块的大小 是 1KB，所以这个单位也就等价于 KB/s。</p></li>
+
+<li><p>问题：“因为 Linux 中块的大小是 1KB，所以这个单位也就等价于 KB/s。”关于这一点，想请问下老师，linux block的大小不是4KB呢？</p></li>
+</ol>
+
+<p>​ 回答：这句话来自vmstat的文档：<a href="https://linux.die.net/man/8/vmstat，通常说的的">https://linux.die.net/man/8/vmstat，通常说的的</a> Block Size 是磁盘分区的块大小， 的确都是 4KB 了</p>
+
+<ol start="4">
+  <li>
+    第一次听读写磁盘 和 读写文件，之前只听过读写文件。至今不清楚啥算读写磁盘？
+  </li>
+</ol>
+
+<p>回答: 比如直接读写 /dev/sda ,而不是读写它挂载之后某个目录中的文件</p>
+
+<ol start="5">
+  <li>
+    老师好，buffer和cache会消耗实际的物理内存吗？如果消耗，是不是需要定时清理一下buffer和cache
+  </li>
+</ol>
+
+<p>作者回复: 会的，系统会帮你回收，所以大部分情况下不需要人工介入。但偶尔也会出现不合理的缓存使用情况，比如数据库所在系统被批处理的脚本占满了缓存，这些批处理任务运行时就会影响数据库性能，这时候才需要人工清理</p>
+
+<p>6.使用dd工具，可绕过文件系统，dd需要了解一下；有些数据库可能是裸io性能会更好</p>
+
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/archives/207/">golang中的map</a></li>
+        
+        <li><a href="/archives/204/">多张Excel表，怎么获取表头？</a></li>
+        
+        <li><a href="/archives/177/">WordPress搬家</a></li>
+        
+        <li><a href="/archives/168/">go解决leetcode-242</a></li>
+        
+        <li><a href="/archives/162/">git常用操作</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='/tags/buffer%E5%92%8Ccash'>buffer和cash</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "https://github.com/Dlgde/blog-issues.git"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2021 <a href="/">Dlgde的博客 By Dlgde</a>
+        
+        | <a rel="nofollow" target="_blank" href="https://beian.miit.gov.cn/">京ICP备18060775号-1</a>
+        
+    </div>
+    <br />
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='/js/douban.js'></script>
+
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="/archives/221/" title="再来学习一下tcp">再来学习一下tcp</a>
+    </li>
+    
+    <li>
+        <a href="/archives/213/" title="HTTP状态码">HTTP状态码</a>
+    </li>
+    
+    <li>
+        <a href="/archives/210/" title="linux系统进程状态有哪些？">linux系统进程状态有哪些？</a>
+    </li>
+    
+    <li>
+        <a href="/archives/209/" title="理解平均负载和CPU使用率">理解平均负载和CPU使用率</a>
+    </li>
+    
+    <li>
+        <a href="/archives/208/" title="理解Linux中的buffer和cache">理解Linux中的buffer和cache</a>
+    </li>
+    
+    <li>
+        <a href="/archives/207/" title="golang中的map">golang中的map</a>
+    </li>
+    
+    <li>
+        <a href="/archives/204/" title="多张Excel表，怎么获取表头？">多张Excel表，怎么获取表头？</a>
+    </li>
+    
+    <li>
+        <a href="/archives/177/" title="WordPress搬家">WordPress搬家</a>
+    </li>
+    
+    <li>
+        <a href="/archives/168/" title="go解决leetcode-242">go解决leetcode-242</a>
+    </li>
+    
+    <li>
+        <a href="/archives/162/" title="git常用操作">git常用操作</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+    <li><a href="/categories/Git/">Git (2)</a></li>
+    
+    <li><a href="/categories/Tcp/">Tcp (1)</a></li>
+    
+    <li><a href="/categories/excel/">excel (1)</a></li>
+    
+    <li><a href="/categories/golang/">golang (13)</a></li>
+    
+    <li><a href="/categories/http/">http (1)</a></li>
+    
+    <li><a href="/categories/linux/">linux (3)</a></li>
+    
+    <li><a href="/categories/web/">web (1)</a></li>
+    
+    <li><a href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类 (1)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="/tags/buffer%E5%92%8Ccash/">buffer和cash</a>
+    
+    <a href="/tags/goroute/">goroute</a>
+    
+    <a href="/tags/go%E5%AE%9E%E7%8E%B0socket%E7%BC%96%E7%A8%8B/">go实现socket编程</a>
+    
+    <a href="/tags/go%E5%BC%82%E5%B8%B8/">go异常</a>
+    
+    <a href="/tags/rpc/">rpc</a>
+    
+    <a href="/tags/tcp/">tcp</a>
+    
+    <a href="/tags/%E5%8D%95%E9%93%BE%E8%A1%A8%E5%8F%8D%E8%BD%AC/">单链表反转</a>
+    
+    <a href="/tags/%E5%A4%9A%E5%BC%A0exce%E8%A1%A8%E8%8E%B7%E5%8F%96%E8%A1%A8%E5%A4%B4/">多张exce表获取表头</a>
+    
+    <a href="/tags/%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F/">生活感悟</a>
+    
+    <a href="/tags/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/">选择排序</a>
+    
+</div>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="https://www.flysnow.org/" title="飞雪无情的博客">飞雪无情的博客</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

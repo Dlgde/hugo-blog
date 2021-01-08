@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>go实现socket编程 on Dlgde的博客</title>
+    <link>/tags/go%E5%AE%9E%E7%8E%B0socket%E7%BC%96%E7%A8%8B/</link>
+    <description>Recent content in go实现socket编程 on Dlgde的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 20 Apr 2019 07:14:09 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/go%E5%AE%9E%E7%8E%B0socket%E7%BC%96%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>go实现简单的客户端-服务器应用</title>
+      <link>/archives/154/</link>
+      <pubDate>Sat, 20 Apr 2019 07:14:09 +0000</pubDate>
+      
+      <guid>/archives/154/</guid>
+      <description>&lt;h4 id=&#34;一个-web-服务器应用需要响应众多客户端的并发请求-go会为每一个客户端产生一个协程用来处理请求&#34;&gt;一个（web）服务器应用需要响应众多客户端的并发请求：go会为每一个客户端产生一个协程用来处理请求&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;知识点：goroute，net包，socket&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>再来学习一下tcp | Dlgde的博客</title>
+    <meta property="og:title" content="再来学习一下tcp - Dlgde的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2020-05-02T10:48:57&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2020-05-02T10:48:57&#43;08:00'>
+        
+    <meta name="Keywords" content="golang,go语言,go语言笔记,飞雪无情,java,android,博客,项目管理,python,软件架构,公众号,小程序">
+    <meta name="description" content="再来学习一下tcp">
+        <meta name="author" content="qstudy">
+        
+    <meta property="og:url" content="/archives/221/">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+        <link rel="stylesheet" href='/css/douban.css'>
+    
+        <link rel="stylesheet" href='/css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="/">
+                        Dlgde的博客
+                    </a>
+                
+                <p class="description">记录个人学习空间</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="/">首页</a>
+                    
+                    <a  href="/archives/" title="归档">归档</a>
+                    
+                    <a  href="/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">再来学习一下tcp</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年5月2日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/Tcp'>Tcp</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="post-content">
+            
+
+<h4 id="为什么要再次学习tcp">为什么要再次学习tcp</h4>
+
+<p>其实很多时候，说不知道好像也知道，说知道也说不出所以然，貌似都是死记硬背这些东西，然后有个印象，理解不够透彻，今天再来温习一下大学里面学过的tcp，顺便记录一下，其实了解了整个过程，可能问题也就比较清楚了</p>
+
+<h4 id="下面这些问题-是不是经常遇到">下面这些问题，是不是经常遇到？</h4>
+
+<ol>
+<li>tcp三次握手，四次挥手</p></li>
+
+<li><p>time_wait,close_wait出现在哪个过程</p></li>
+
+<li><p>tcp是怎么实现可靠传输的</p></li>
+
+<li><p>滑动窗口等等</p></li>
+</ol>
+
+<hr />
+
+<h4 id="tcp头部">TCP头部</h4>
+
+<p>TCP头部的信息非常重要，了解了头部各字段，也就基本了解了整个过程，头部如下：<br />
+<img layer-src="https://www.dlgde.cn/wp-content/uploads/2020/05/tcp-header.png" src="https://www.dlgde.cn/wp-content/uploads/2020/05/tcp-header.png" alt="《再来学习一下tcp》" /><br />
+了解不是太深，所以关注几个比较重要的字段，如源端口、目的端口、序号、确认序号(ACK号)、控制位、窗口，都是什么含义呢？</p>
+
+<p><strong>源、目的端口号</strong>: 发送网络包的程序的端口号和接收方程序的端口号</p>
+
+<p><strong>序号</strong>：发送方告知接收方该网络包发送的数据相当于所有发送数据的第几个字节，发送的数据太大的话，就需要进行拆分，哪些发送了，下一个从哪开始发送，这时候就得用到“序号”这个字段了</p>
+
+<p><strong>确认号</strong>：也就是ack号，这个跟控制位里面的ACK不太一样哈，它其实跟上面的序号是有点像，只是它是标记接受方收到的字节的标记</p>
+
+<p><strong>控制位</strong>: ACK表示接收数据序号字段有效，一般表示收到数据；PSH表示通过flush操作发送的数据；RST表示强制断开连接，用于异常中断的情况；SYN表示发送方和接收方相互确认序号；FIN表示断开连接；</p>
+
+<p><strong>滑动窗口</strong>：这个就是滑动窗口的大小，滑动窗口中有使用到，接收方告知发送方窗口大小</p>
+
+<hr />
+
+<h4 id="建立连接-三次握手">建立连接（三次握手）</h4>
+
+<p>建立连接是从应用程序调用Socket库的connect（&lt;描述符&gt;，&lt;服务器ip和端口&gt;,&hellip;）开始的,会将IP地址和端口号传给tcp模块，客户端创建一个包含表示开始数据收发操作的控制信息的TCP头部，三次握手如下：</p>
+
+<p><img layer-src="https://www.dlgde.cn/wp-content/uploads/2020/05/third-hand.png" src="https://www.dlgde.cn/wp-content/uploads/2020/05/third-hand.png" alt="《再来学习一下tcp》" /></p>
+
+<p>1.客户端将头部中的控制位的SYN设置为1，并设置适当的序号和窗口大小（一些细节暂不讨论）；TCP模块将信息传递给ip模块，ip模块执行网络包发送操作，进入到SYN_SENT状态；</p>
+
+<p>2.信息到达服务器，服务端上的tcp模块根据tcp头部中的信息找到端口号对应的套接字，也就是从处于等待连接状态的套接字中找到与tcp头部端口号相同的套接字，然后设置SYN为1（假设正常建立连接），ACK控制位设为1，并设置序号和ACK号，服务端同样地将信息传递给ip模块执行网络发包操作，进入到SYN_RCVD状态；</p>
+
+<p>3.网络包回到客户端，通过ip模块到达tcp模块，通过tcp头部的信息确认连接服务器的操作是否成功。SYN为1，表示连接成功，进入到ESTABLISHED状态；服务器返回响应将ACK设置为1，同样地客户端将ACK设为1，并发送给服务端，服务端收到这个返回包，建立连接完成；</p>
+
+<p><strong>问题</strong>：为什么是3次握手，而不是2次或者4次？</p>
+
+<p>其实了解了上面的过程，就比较好理解，2次握手的话，服务端确认收到了客户端的请求，也返回了ACK，但是不能确定返回的包能不能到达客户端，客户端有没有收到是不确定的。4次握手的话，其实也是可以的，但3次握手其实和4次或者更多次的效果是一样的，所以肯定还是3次。一般三次握手理解为“请求&ndash;应答&ndash;应答之应答”</p>
+
+<hr />
+
+<h4 id="收发数据">收发数据</h4>
+
+<p>这个过程比较复杂也比较抽象，可能只能描述个大概，具体细节可能覆盖不到，主要内容有包的拆分，序号、ACK号、窗口大小的确认等，当然这个过程是全双工的，也就是双向的，为了理解简单，可能就描述为发送方和接收方，其实发送方同时也是接受方。</p>
+
+<p>首先，数据收发操作是从应用程序调用Socket中的write开始的，将要发送的数据交给协议栈，在协议栈看来要发送的数据 就是一定长度的二进制字节序列（tcp是面向字节流的传输）,协议栈收到数据后将数目存放在内部的缓存中，并不是直接发送出去，因为应用程序传给协议栈的数据长度有长有短，如果协议栈收到数据立马发送出去，可能会发送大量的小包，导致网络效率下降。具体积累到多少才能发送，不同操作系统可能不同，并且也不是一定要达到那个量才能发送。还有时间，如果等待时间长，那肯定还是要发送的。不过像浏览器这样的，应该就就是直接发送了，等待填满缓冲可能影响太大。</p>
+
+<p>一般像http请求不会太长，一个网络包就能装的下，如果长度太长超过缓冲区的MSS（其实就是除去头部，一个网络包能容纳的tcp数据的最大长度，自己了解下MTU和MSS）就要对数据就行拆分，拆分出来的每块数据会被放进单独的网络包中。数据拆分时会先计算每一块数据相当于从头开始的第几个字节，tcp头部中的“序号”，在这就派上用场了；接收方收到之后也会计算截止目前接收到的数据长度，并将这个数值写入到头部的ACK号中，并发送给发送方，这时候tcp头部的ack号也派上用场了，在得到对方确认之前，发送过的包都会保存在发送缓冲区，如果对方么有返回某些包的ACK号，那么就会重新发送这些包。TCP通过“<strong>序号</strong>”和“<strong>ACK号</strong>”确认接收方是否收到了网络包。</p>
+
+<p>如果发送一个包就等待一个ACK号，比较容易理解；但在等待ACK号的这段时候如果什么都不做，那就太浪费了，所以引入了<strong>滑动窗口</strong>来管理数据发送 和ACK号的操作。所谓滑动窗口可以理解为，发送一个包之后不用等待ACK号返回，直接发送后续的包，那等待ACK号的这段时间就有效利用起来了。接收方需要告诉发送方自己最多能接收多少数据，然后发送方根据这个值对数据发送操作进行控制，这就是<strong>滑动窗口</strong>的基本思路，能接收的最大数据量也就是窗口大小，窗口大小的更新应该是接收方从缓冲中取出数据传给应用程序的时候。大概思路就是这样。（窗口更新和ACK返回时机在实际过程中可能考虑因素较多，并不是收到一个包，就向发送方发送ACK号和窗口更新）。</p>
+
+<p>啰啰嗦嗦感觉也说不太清，大概思路和原理就是这样。然后我们再想想平时给tcp那些标签如“靠谱传输”。“流量控制”，“拥塞控制”等，是不是就比较好理解了。</p>
+
+<hr />
+
+<h4 id="断开连接-四次挥手">断开连接（四次挥手）</h4>
+
+<p>完成数据传输之后，完成发送的一方发起断开过程，假设以客户端断开为例，对着下图理解一下：</p>
+
+<p><img layer-src="https://www.dlgde.cn/wp-content/uploads/2020/05/close-hand.png" src="https://www.dlgde.cn/wp-content/uploads/2020/05/close-hand.png" alt="《再来学习一下tcp》" /></p>
+
+<p>可以简单概括为：<br />
+1. 客户端发送FIN<br />
+2. 服务端返回ACK号<br />
+3. 服务端发送FIN<br />
+4. 客户端返回ACK</p>
+
+<p>客户端的应用程序会调用Socket库的close程序，然后客户端的协议栈会生成包含断开信息的tcp头部，具体来说就是将控制位中FIN设为1，然后委托ip模块向服务端发送数据，进入到FIN-WAIT_1；当服务端收到客户端发来的FIN为1的tcp头部时，会将自己的套接字标记为进入断开操作状态也就是CLOSE-WAIT状态，服务端给客户端返回一个ACK号，客户端收到后进入到FIN_WAIT_2,过一会服务端调用close结束收发操作，和客户端一样，生成一个FIN为1的tcp包，然后委托ip模块发送出去，进入LAST_ACK，过一段时间客户端也返回ACK号，TCP 协议要求客户端最后等待一段时间 TIME_WAIT，这个时间要足够长，长到如果服务端没收到 ACK的话，服务端FIN会重发，客户端会重新发一个ACK并且足够时间到达服务端。（关于time_out和close_wait自行查一下资料，不展开叙述了）</p>
+
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/archives/213/">HTTP状态码</a></li>
+        
+        <li><a href="/archives/210/">linux系统进程状态有哪些？</a></li>
+        
+        <li><a href="/archives/209/">理解平均负载和CPU使用率</a></li>
+        
+        <li><a href="/archives/208/">理解Linux中的buffer和cache</a></li>
+        
+        <li><a href="/archives/207/">golang中的map</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='/tags/tcp'>tcp</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "https://github.com/Dlgde/blog-issues.git"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2021 <a href="/">Dlgde的博客 By Dlgde</a>
+        
+        | <a rel="nofollow" target="_blank" href="https://beian.miit.gov.cn/">京ICP备18060775号-1</a>
+        
+    </div>
+    <br />
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='/js/douban.js'></script>
+
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="/archives/221/" title="再来学习一下tcp">再来学习一下tcp</a>
+    </li>
+    
+    <li>
+        <a href="/archives/213/" title="HTTP状态码">HTTP状态码</a>
+    </li>
+    
+    <li>
+        <a href="/archives/210/" title="linux系统进程状态有哪些？">linux系统进程状态有哪些？</a>
+    </li>
+    
+    <li>
+        <a href="/archives/209/" title="理解平均负载和CPU使用率">理解平均负载和CPU使用率</a>
+    </li>
+    
+    <li>
+        <a href="/archives/208/" title="理解Linux中的buffer和cache">理解Linux中的buffer和cache</a>
+    </li>
+    
+    <li>
+        <a href="/archives/207/" title="golang中的map">golang中的map</a>
+    </li>
+    
+    <li>
+        <a href="/archives/204/" title="多张Excel表，怎么获取表头？">多张Excel表，怎么获取表头？</a>
+    </li>
+    
+    <li>
+        <a href="/archives/177/" title="WordPress搬家">WordPress搬家</a>
+    </li>
+    
+    <li>
+        <a href="/archives/168/" title="go解决leetcode-242">go解决leetcode-242</a>
+    </li>
+    
+    <li>
+        <a href="/archives/162/" title="git常用操作">git常用操作</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+    <li><a href="/categories/Git/">Git (2)</a></li>
+    
+    <li><a href="/categories/Tcp/">Tcp (1)</a></li>
+    
+    <li><a href="/categories/excel/">excel (1)</a></li>
+    
+    <li><a href="/categories/golang/">golang (13)</a></li>
+    
+    <li><a href="/categories/http/">http (1)</a></li>
+    
+    <li><a href="/categories/linux/">linux (3)</a></li>
+    
+    <li><a href="/categories/web/">web (1)</a></li>
+    
+    <li><a href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类 (1)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="/tags/buffer%E5%92%8Ccash/">buffer和cash</a>
+    
+    <a href="/tags/goroute/">goroute</a>
+    
+    <a href="/tags/go%E5%AE%9E%E7%8E%B0socket%E7%BC%96%E7%A8%8B/">go实现socket编程</a>
+    
+    <a href="/tags/go%E5%BC%82%E5%B8%B8/">go异常</a>
+    
+    <a href="/tags/rpc/">rpc</a>
+    
+    <a href="/tags/tcp/">tcp</a>
+    
+    <a href="/tags/%E5%8D%95%E9%93%BE%E8%A1%A8%E5%8F%8D%E8%BD%AC/">单链表反转</a>
+    
+    <a href="/tags/%E5%A4%9A%E5%BC%A0exce%E8%A1%A8%E8%8E%B7%E5%8F%96%E8%A1%A8%E5%A4%B4/">多张exce表获取表头</a>
+    
+    <a href="/tags/%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F/">生活感悟</a>
+    
+    <a href="/tags/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/">选择排序</a>
+    
+</div>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="https://www.flysnow.org/" title="飞雪无情的博客">飞雪无情的博客</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

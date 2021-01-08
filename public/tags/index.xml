@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Dlgde的博客</title>
+    <link>/tags/</link>
+    <description>Recent content in Tags on Dlgde的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 02 May 2020 10:48:57 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>tcp</title>
+      <link>/tags/tcp/</link>
+      <pubDate>Sat, 02 May 2020 10:48:57 +0000</pubDate>
+      
+      <guid>/tags/tcp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>buffer和cash</title>
+      <link>/tags/buffer%E5%92%8Ccash/</link>
+      <pubDate>Sat, 16 Nov 2019 11:12:14 +0000</pubDate>
+      
+      <guid>/tags/buffer%E5%92%8Ccash/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>多张exce表获取表头</title>
+      <link>/tags/%E5%A4%9A%E5%BC%A0exce%E8%A1%A8%E8%8E%B7%E5%8F%96%E8%A1%A8%E5%A4%B4/</link>
+      <pubDate>Sun, 10 Nov 2019 15:06:41 +0000</pubDate>
+      
+      <guid>/tags/%E5%A4%9A%E5%BC%A0exce%E8%A1%A8%E8%8E%B7%E5%8F%96%E8%A1%A8%E5%A4%B4/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>单链表反转</title>
+      <link>/tags/%E5%8D%95%E9%93%BE%E8%A1%A8%E5%8F%8D%E8%BD%AC/</link>
+      <pubDate>Wed, 24 Apr 2019 14:54:59 +0000</pubDate>
+      
+      <guid>/tags/%E5%8D%95%E9%93%BE%E8%A1%A8%E5%8F%8D%E8%BD%AC/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>选择排序</title>
+      <link>/tags/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/</link>
+      <pubDate>Mon, 22 Apr 2019 15:33:23 +0000</pubDate>
+      
+      <guid>/tags/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>go实现socket编程</title>
+      <link>/tags/go%E5%AE%9E%E7%8E%B0socket%E7%BC%96%E7%A8%8B/</link>
+      <pubDate>Sat, 20 Apr 2019 07:14:09 +0000</pubDate>
+      
+      <guid>/tags/go%E5%AE%9E%E7%8E%B0socket%E7%BC%96%E7%A8%8B/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>go异常</title>
+      <link>/tags/go%E5%BC%82%E5%B8%B8/</link>
+      <pubDate>Fri, 19 Apr 2019 14:59:56 +0000</pubDate>
+      
+      <guid>/tags/go%E5%BC%82%E5%B8%B8/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rpc</title>
+      <link>/tags/rpc/</link>
+      <pubDate>Fri, 19 Apr 2019 14:08:51 +0000</pubDate>
+      
+      <guid>/tags/rpc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>goroute</title>
+      <link>/tags/goroute/</link>
+      <pubDate>Fri, 05 Apr 2019 02:20:30 +0000</pubDate>
+      
+      <guid>/tags/goroute/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>生活感悟</title>
+      <link>/tags/%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F/</link>
+      <pubDate>Thu, 21 Mar 2019 14:00:02 +0000</pubDate>
+      
+      <guid>/tags/%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

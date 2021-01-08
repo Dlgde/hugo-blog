@@ -1,0 +1,618 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>Posts | Dlgde的博客</title>
+    <meta property="og:title" content="Posts - Dlgde的博客">
+    <meta property="og:type" content="article">
+        
+        
+    <meta name="Keywords" content="golang,go语言,go语言笔记,飞雪无情,java,android,博客,项目管理,python,软件架构,公众号,小程序">
+    <meta name="description" content="Posts">
+        
+    <meta name="author" content="Dlgde">
+    <meta property="og:url" content="/post/">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <link rel="alternate" type="application/rss+xml+xml" href="/post/index.xml" title="Dlgde的博客" />
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+        <link rel="stylesheet" href='/css/douban.css'>
+    
+        <link rel="stylesheet" href='/css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="/">
+                        Dlgde的博客
+                    </a>
+                
+                <p class="description">记录个人学习空间</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="/">首页</a>
+                    
+                    <a  href="/archives/" title="归档">归档</a>
+                    
+                    <a  href="/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="/archives/161/" title="第一次参与github开源教程">第一次参与github开源教程</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年5月8日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/Git'>Git</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            &nbsp; 参照https://github.com/Dlgde/first-contributions/blob/master/translations/README.chs.md……
+        </div>
+        <p class="readmore"><a href="/archives/161/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="/archives/157/" title="go实现单链表反转">go实现单链表反转</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年4月24日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/golang'>golang</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            单链表核心代码如下： func reverseList(node *ListNode) *ListNode { cur := node var pre *ListNode for cur != nil { cur.Next, pre, cur = pre, cur, cur.Next } return pre } 理解：cur指向当前节点，pre是前节点初始为nil，反转过程： cur.next=pre pre=cur cur=cur.next 完整代码如下： package main import "fmt" type ListNode struct { data interface{} Next *ListNode } //反转单链表 func reverseList(head *ListNode) *ListNode { cur := head var pre *ListNode for cur != nil { cur.Next, pre, cur = pre, cur, cur.Next } return pre } func CreateNode(node *ListNode, max int) { cur := node for i := 1; i……
+        </div>
+        <p class="readmore"><a href="/archives/157/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="/archives/155/" title="go实现选择排序">go实现选择排序</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年4月22日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/golang'>golang</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            <h5 id="选择排序-对于给定的一组记录-经过第一轮比较之后得到最小记录-然后将该记录与第一个记录的位置进行交换-接着对对不包括第一个记录以外的其他记录进行第二轮比较-得到的最小记录与第二个记录进行位置交换-重复该过程-直到进行比较的记录只有一个为止"><strong>选择排序：对于给定的一组记录，经过第一轮比较之后得到最小记录，然后将该记录与第一个记录的位置进行交换；接着对对不包括第一个记录以外的其他记录进行第二轮比较，得到的最小记录与第二个记录进行位置交换；重复该过程，直到进行比较的记录只有一个为止。</strong></h5>
+
+<p>具体实现如下：</p>
+
+<pre class="lang:default decode:true">package main
+
+import "fmt"
+
+func SelectSort(data []int) {
+    length := len(data)
+    for i := 0; i &lt; length; i++ {
+        tmp := data[i]
+        flag := i
+        for j := i + 1; j &lt; length; j++ {
+            if data[j] &lt; tmp {
+                tmp = data[j]
+                flag = j
+            }
+        }
+
+        if flag != i {
+            data[flag] = data[i]
+            data[i] = tmp
+        }
+        fmt.Println(data) //为了看具体排序的过程
+
+    }
+}
+
+func main() {
+    data := []int{44, 38, 65, 97, 76, 14, 27, 48}
+    SelectSort(data)
+    fmt.Println(data)
+}</pre>……
+        </div>
+        <p class="readmore"><a href="/archives/155/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="/archives/154/" title="go实现简单的客户端-服务器应用">go实现简单的客户端-服务器应用</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年4月20日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/golang'>golang</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            <h4 id="一个-web-服务器应用需要响应众多客户端的并发请求-go会为每一个客户端产生一个协程用来处理请求">一个（web）服务器应用需要响应众多客户端的并发请求：go会为每一个客户端产生一个协程用来处理请求</h4>
+
+<p><em>知识点：goroute，net包，socket</em></p>……
+        </div>
+        <p class="readmore"><a href="/archives/154/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="/archives/152/" title="go语言中使用defer、panic、recover处理异常">go语言中使用defer、panic、recover处理异常</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年4月19日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/golang'>golang</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            go语言中的异常处理，没有try&hellip;catch等，而是使用defer、panic、recover来处理异常。 知识点：defer、panic、recover，异常处理 1、首先，panic 是用来表示非常严重的不可恢复的错误的。在Go语言中这是一个内置函数，如果在程序中遇到……
+        </div>
+        <p class="readmore"><a href="/archives/152/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="/archives/150/" title="goroute应用-模拟远程调用RPC">goroute应用-模拟远程调用RPC</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年4月19日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/golang'>golang</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            <h3 id="在本例中-使用通道代替socket实现rpc过程-客户端和服务器运行在同一个进程-服务器和客户端在两个goroute中">在本例中，使用通道代替socket实现RPC过程，客户端和服务器运行在同一个进程，服务器和客户端在两个goroute中。</h3>
+
+<h5 id="应用知识-goroute-select-rpc过程">应用知识：<em><strong>goroute，select，RPC过程</strong></em></h5>
+
+<h4 id="1-客户端请求和接收封装">1、客户端请求和接收封装</h4>
+
+<p>下面的代码封装了向服务器请求数据，等待服务器返回数据，如果请求方超时，利用select，该函数还会处理超时逻辑。如下：</p>……
+        </div>
+        <p class="readmore"><a href="/archives/150/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="/archives/139/" title="goroute之间通信-共享全局变量(理解go的多并发)">goroute之间通信-共享全局变量(理解go的多并发)</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年4月5日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/golang'>golang</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            <h3 id="1-go语言中goroute之间通信有两种方式">1、go语言中goroute之间通信有两种方式：</h3>
+
+<ul>
+<li>通过全局变量，这种方式得加锁</li>
+<li>通过channel进行通信</li>
+</ul>
+
+<p>下面是一个通过全局变量进行通信的例子：</p>
+
+<pre class="lang:default decode:true">package main
+
+import (
+    "fmt"
+    "sync"
+    "time"
+)
+
+var (
+    m    = make(map[int]uint64)
+    lock sync.Mutex
+)
+
+type task struct {
+    n int
+}
+
+func calc(t *task) {
+    var sum uint64
+    sum = 1
+    for i := 1; i &lt; t.n; i++ {
+        sum *= uint64(i)
+    }
+    lock.Lock()
+    m[t.n] = sum
+    lock.Unlock()
+}
+
+func main() {
+    for i := 0; i &lt; 20; i++ {
+        t := &task{n: i}
+        go calc(t)
+    }
+    time.Sleep(10 * time.Second)
+
+    lock.Lock()
+    for k, v := range m {
+        fmt.Printf("%d!=%v\n", k, v)
+    }
+    lock.Unlock()
+
+}
+
+</pre>……
+        </div>
+        <p class="readmore"><a href="/archives/139/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="/archives/85/" title="go语言变量逃逸(Escape Analysis)">go语言变量逃逸(Escape Analysis)</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年3月26日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/golang'>golang</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            <h4 id="自动决定变量分配在栈还是堆-escape-analysis">自动决定变量分配在栈还是堆——Escape Analysis</h4>……
+        </div>
+        <p class="readmore"><a href="/archives/85/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="/archives/83/" title="接口应用-可扩展输出方式的日志系统">接口应用-可扩展输出方式的日志系统</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年3月25日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/golang'>golang</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            <h5 id="利用接口实现一个可扩展的日志系统">利用接口实现一个可扩展的日志系统：</h5>……
+        </div>
+        <p class="readmore"><a href="/archives/83/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="/archives/81/" title="go语言实现通用链表">go语言实现通用链表</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年3月24日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/golang'>golang</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            <p>&nbsp;</p>
+
+<p>实现通用链表</p>……
+        </div>
+        <p class="readmore"><a href="/archives/81/">阅读全文</a></p>
+    </article>
+    
+    
+    
+
+
+
+<ol class="page-navigator">
+    
+    <li class="prev">
+        <a href="/post/">上一页</a>
+    </li>
+    
+
+    
+    <li >
+        <a href="/post/">1</a>
+    </li>
+    
+    <li  class="current">
+        <a href="/post/page/2/">2</a>
+    </li>
+    
+    <li >
+        <a href="/post/page/3/">3</a>
+    </li>
+    
+
+    
+    <li class="next">
+        <a href="/post/page/3/">下一页</a>
+    </li>
+    
+</ol>
+
+
+
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2021 <a href="/">Dlgde的博客 By Dlgde</a>
+        
+        | <a rel="nofollow" target="_blank" href="https://beian.miit.gov.cn/">京ICP备18060775号-1</a>
+        
+    </div>
+    <br />
+</footer>
+
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='/js/douban.js'></script>
+
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="/archives/221/" title="再来学习一下tcp">再来学习一下tcp</a>
+    </li>
+    
+    <li>
+        <a href="/archives/213/" title="HTTP状态码">HTTP状态码</a>
+    </li>
+    
+    <li>
+        <a href="/archives/210/" title="linux系统进程状态有哪些？">linux系统进程状态有哪些？</a>
+    </li>
+    
+    <li>
+        <a href="/archives/209/" title="理解平均负载和CPU使用率">理解平均负载和CPU使用率</a>
+    </li>
+    
+    <li>
+        <a href="/archives/208/" title="理解Linux中的buffer和cache">理解Linux中的buffer和cache</a>
+    </li>
+    
+    <li>
+        <a href="/archives/207/" title="golang中的map">golang中的map</a>
+    </li>
+    
+    <li>
+        <a href="/archives/204/" title="多张Excel表，怎么获取表头？">多张Excel表，怎么获取表头？</a>
+    </li>
+    
+    <li>
+        <a href="/archives/177/" title="WordPress搬家">WordPress搬家</a>
+    </li>
+    
+    <li>
+        <a href="/archives/168/" title="go解决leetcode-242">go解决leetcode-242</a>
+    </li>
+    
+    <li>
+        <a href="/archives/162/" title="git常用操作">git常用操作</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+    <li><a href="/categories/Git/">Git (2)</a></li>
+    
+    <li><a href="/categories/Tcp/">Tcp (1)</a></li>
+    
+    <li><a href="/categories/excel/">excel (1)</a></li>
+    
+    <li><a href="/categories/golang/">golang (13)</a></li>
+    
+    <li><a href="/categories/http/">http (1)</a></li>
+    
+    <li><a href="/categories/linux/">linux (3)</a></li>
+    
+    <li><a href="/categories/web/">web (1)</a></li>
+    
+    <li><a href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类 (1)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="/tags/buffer%E5%92%8Ccash/">buffer和cash</a>
+    
+    <a href="/tags/goroute/">goroute</a>
+    
+    <a href="/tags/go%E5%AE%9E%E7%8E%B0socket%E7%BC%96%E7%A8%8B/">go实现socket编程</a>
+    
+    <a href="/tags/go%E5%BC%82%E5%B8%B8/">go异常</a>
+    
+    <a href="/tags/rpc/">rpc</a>
+    
+    <a href="/tags/tcp/">tcp</a>
+    
+    <a href="/tags/%E5%8D%95%E9%93%BE%E8%A1%A8%E5%8F%8D%E8%BD%AC/">单链表反转</a>
+    
+    <a href="/tags/%E5%A4%9A%E5%BC%A0exce%E8%A1%A8%E8%8E%B7%E5%8F%96%E8%A1%A8%E5%A4%B4/">多张exce表获取表头</a>
+    
+    <a href="/tags/%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F/">生活感悟</a>
+    
+    <a href="/tags/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/">选择排序</a>
+    
+</div>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="https://www.flysnow.org/" title="飞雪无情的博客">飞雪无情的博客</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
