@@ -257,4 +257,12 @@
     <loc>/archives/</loc>
   </url>
   
+  <url>
+    <loc>/search/</loc>
+  </url>
+  
+  <url>
+    <loc>/read/</loc>
+  </url>
+  
 </urlset>

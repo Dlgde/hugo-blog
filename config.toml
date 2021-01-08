@@ -26,7 +26,7 @@ summaryLength = 140
   googleAd = ""  #ca-pub-xxxxxxxxxxxxxx
   localSearch = true # 启用本地搜索
   beian = "京ICP备18060775号-1"
-  relativeurls = true
+# srelativeurls = true
 
   # 这里我存放在了主题的static文件夹里，根目录的似乎也可以
   customCSS = ['douban.css', 'other.css']
@@ -36,6 +36,8 @@ summaryLength = 140
 
   # 全局开关，你也可以在每一篇内容的 front matter 中针对单篇内容关闭或开启某些功能
   toc = false  # 是否开启目录
+
+
 
 ## 友情链接，可以多个
 
@@ -62,11 +64,16 @@ summaryLength = 140
   [markup.highlight]
     lineNos = true
     style = "github"
+    
 
 ## 配置网站菜单
 
 [menu]
-
+    [[menu.main]]
+    identifier = "read"
+    name = "读书"
+    url = "/read/"
+    weight = 2
   [[menu.main]]
     identifier = "archives"
     name = "归档"
@@ -78,3 +85,4 @@ summaryLength = 140
     name = "关于"
     url = "/about/"
     weight = 4
+
