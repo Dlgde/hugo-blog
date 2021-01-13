@@ -20,7 +20,8 @@ categories:
 
 #### 1、是否发生逃逸
 
-<pre class="theme:vs2012-black toolbar:2 lang:go decode:true">package main
+```go
+package main
 
 import "fmt"
 
@@ -35,21 +36,24 @@ func calc(a, b int) int {
 func main() {
 	m := calc(3, 2)
 	fmt.Println(m)
-}</pre>
+}
+```
 
 执行go run -gcflags "-m -l" main.go后，输出结果如下：
 
-<pre class="theme:vs2012-black toolbar:2 lang:zsh decode:true ">➜  testEscape go run -gcflags "-m -l" main.go
+```shell
+➜  testEscape go run -gcflags "-m -l" main.go
 # command-line-arguments
 ./main.go:15:13: m escapes to heap
 ./main.go:15:13: main ... argument does not escape
-50</pre>
+```
 
 可以看到“m escapes to heap”，m变量到了堆内存,发生了逃逸,因为m是calc的返回值，但后面 被fmt.Println使用。
 
 #### 2、是否被取址
 
-<pre class="theme:vs2012-black toolbar:2 lang:go decode:true ">package main
+```go
+package main
 
 import "fmt"
 
@@ -64,20 +68,21 @@ func calc(a, b int) *int {
 func main() {
 	m := calc(3, 2)
 	fmt.Println(*m)
-}</pre>
+}
+```
 
 输出如下：
 
-<pre class="theme:vs2012-black toolbar:2 lang:zsh decode:true"># command-line-arguments
+```shell
 ./main.go:10:9: &x escapes to heap
 ./main.go:7:6: moved to heap: x
 ./main.go:15:14: *m escapes to heap
 ./main.go:15:13: main ... argument does not escape
-50</pre>
+```
 
 我们看到，第三行输出：moved to heap: x，x也move到heap。
 
-<!--more-->
+
 
 内存分配在栈还是堆上看下面的两个条件：  
 1、**是否被取址** ：如果被取址，则分配在堆内存  

@@ -101,34 +101,44 @@
         
         
         <div class="post-content">
-            
-
-<h2 id="如果有很多张excel表-如500-怎么获取表结构整理到一个新的表格中呢">如果有很多张Excel表(如500+)，怎么获取表结构整理到一个新的表格中呢？</h2>
-
+            <h2 id="如果有很多张excel表如500怎么获取表结构整理到一个新的表格中呢">如果有很多张Excel表(如500+)，怎么获取表结构整理到一个新的表格中呢？</h2>
 <ol>
-<li>下载慧办公软件，链接：<a href="http://www.hbg666.com/index.php?id=11，点击安装，完成后，如下图，会出现慧办公的字样：">http://www.hbg666.com/index.php?id=11，点击安装，完成后，如下图，会出现慧办公的字样：</a><br />
-<a href="https://i.loli.net/2019/11/10/O7CXZAl8h3nEsRw.png" target="_blank"  rel="nofollow" ><img layer-src="https://i.loli.net/2019/11/10/O7CXZAl8h3nEsRw.png" src="https://i.loli.net/2019/11/10/O7CXZAl8h3nEsRw.png" alt="《多张Excel表，怎么获取表头？》" /></a></p></li>
+<li>
+<p>下载慧办公软件，链接：http://www.hbg666.com/index.php?id=11，点击安装，完成后，如下图，会出现慧办公的字样：<br>
 
-<li><p>打开你需要处理的excel表，点击【分类小计】→【汇总合计数】，弹出框，选确定，如下图：<br />
-<a href="https://i.loli.net/2019/11/10/v2YmkyeiXclKhRJ.png" target="_blank"  rel="nofollow" ><img layer-src="https://i.loli.net/2019/11/10/v2YmkyeiXclKhRJ.png" src="https://i.loli.net/2019/11/10/v2YmkyeiXclKhRJ.png" alt="《多张Excel表，怎么获取表头？》" /></a></p></li>
+        <img class="mx-auto" alt="excel01" src="/images/2020/11/excel01.png" />   
+    </p>
+</li>
+<li>
+<p>打开你需要处理的excel表，点击【分类小计】→【汇总合计数】，弹出框，选确定，如下图：<br>
 
-<li><p>第2步，操作完成，会生成一张新的表，如下图，只需要关注A列，是所有的sheet表的名字；其他的数据，选中，按Delete键删除。<br />
-<a href="https://i.loli.net/2019/11/10/NWfkAeaYSCEnosI.png" target="_blank"  rel="nofollow" ><img layer-src="https://i.loli.net/2019/11/10/NWfkAeaYSCEnosI.png" src="https://i.loli.net/2019/11/10/NWfkAeaYSCEnosI.png" alt="《多张Excel表，怎么获取表头？》" /></a></p></li>
+        <img class="mx-auto" alt="excel02" src="/images/2020/11/excel02.png" />   
+    </p>
+</li>
+<li>
+<p>第2步，操作完成，会生成一张新的表，如下图，只需要关注A列，是所有的sheet表的名字；其他的数据，选中，按Delete键删除。<br>
 
-<li><p>将鼠标点到B1处，在B1处，输入下面公式：=OFFSET(INDIRECT($A1&amp;&ldquo;!A1&rdquo;),,COLUMN(A1)-1)&amp;&ldquo;&ldquo;，如下图：<br />
-<a href="https://i.loli.net/2019/11/10/iaG4XWwyz9lFQKk.png" target="_blank"  rel="nofollow" ><img layer-src="https://i.loli.net/2019/11/10/iaG4XWwyz9lFQKk.png" src="https://i.loli.net/2019/11/10/iaG4XWwyz9lFQKk.png" alt="《多张Excel表，怎么获取表头？》" /></a></p></li>
+        <img class="mx-auto" alt="excel03" src="/images/2020/11/excel03.png" />   
+    </p>
+</li>
+<li>
+<p>将鼠标点到B1处，在B1处，输入下面公式：=OFFSET(INDIRECT($A1&amp;&quot;!A1&quot;),,COLUMN(A1)-1)&amp;&quot;&quot;，如下图：<br>
 
-<li><p>第4步后面，按下Enter，会发现B1已经出现数据，然后上下左右，进行填充(鼠标点到下图标注的地方，向下向右进行填充)<br />
-<a href="https://i.loli.net/2019/11/10/zsPBui7xLaQMqZH.png" target="_blank"  rel="nofollow" ><img layer-src="https://i.loli.net/2019/11/10/zsPBui7xLaQMqZH.png" src="https://i.loli.net/2019/11/10/zsPBui7xLaQMqZH.png" alt="《多张Excel表，怎么获取表头？》" /></a></p>
+        <img class="mx-auto" alt="excel04" src="/images/2020/11/excel04.png" />   
+    </p>
+</li>
+<li>
+<p>第4步后面，按下Enter，会发现B1已经出现数据，然后上下左右，进行填充(鼠标点到下图标注的地方，向下向右进行填充)<br>
 
-<p><strong>注意</strong>：</p>
-
-<ul>
-<li>填充的过程中，向下只需要到右sheet表的最后一行，文中最后一行就是第3行，也就是sheet2所在行；</li>
-<li>向右拉的最好拉的多一些，有些表的表头可能比较长，避免没有统计上；</li>
-</ul></li>
+        <img class="mx-auto" alt="excel05" src="/images/2020/11/excel05.png" />   
+    </p>
+</li>
 </ol>
+<pre><code>**注意**：
 
+  * 填充的过程中，向下只需要到右sheet表的最后一行，文中最后一行就是第3行，也就是sheet2所在行；
+  * 向右拉的最好拉的多一些，有些表的表头可能比较长，避免没有统计上；
+</code></pre>
 <p><em>朋友们有好的方法，欢迎交流</em></p>
 
         </div>

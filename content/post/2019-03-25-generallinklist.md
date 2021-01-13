@@ -10,15 +10,16 @@ categories:
   - golang
 
 ---
-&nbsp;
+
 
 实现通用链表
 
-<!--more-->
+
 
   1. link.go
 
-<pre class="theme:vs2012-black toolbar:2 lang:go decode:true ">package main
+```go
+package main
 
 import "fmt"
 
@@ -81,11 +82,12 @@ func (p *Link) Getlen() {
 	}
 	fmt.Println(m)
 }
-</pre>
+```
 
-  * main.go
+  2. main.go
 
-<pre class="theme:vs2012-black toolbar:2 lang:go decode:true ">package main
+```go
+package main
 
 func main() {
 	var l Link
@@ -99,6 +101,4 @@ func main() {
 	l.Trans()
 	l.Getlen()
 }
-</pre>
-
-&nbsp;
+```

@@ -102,132 +102,238 @@
         
         <div class="post-content">
             <h5 id="利用接口实现一个可扩展的日志系统">利用接口实现一个可扩展的日志系统：</h5>
-
 <p>1、日志对外接口：</p>
-
 <p>本例中定义一个日志写入的接口(LogerWriter),要求写入设备必须遵守这个接口协议(实现这个接口)才能被日志器(Logger)注册。日志器有ResgisterWriter()和Log()两个方法，ResgisterWriter()方法将日志写入器(LogWriter)注册到日志器中，log()方法进行日志的输出，这个函数会将日志写入到所有已经注册的日志写入器(LogWriter)中。本例中简单实现文件和输出到终端这两种方式。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#000;font-weight:bold">package</span> main
 
-<!--more-->
-
-<pre class="theme:vs2012-black toolbar:2 lang:go decode:true ">package main
-
-type LogWriter interface {
-    Write(data interface{}) error
+<span style="color:#000;font-weight:bold">type</span> LogWriter <span style="color:#000;font-weight:bold">interface</span> {
+	<span style="color:#900;font-weight:bold">Write</span>(data <span style="color:#000;font-weight:bold">interface</span>{}) <span style="color:#458;font-weight:bold">error</span>
 }
 
-type Logger struct {
-    writeList []LogWriter
+<span style="color:#000;font-weight:bold">type</span> Logger <span style="color:#000;font-weight:bold">struct</span> {
+	writeList []LogWriter
 }
 
-func (l *Logger) RegisterWriter(writer LogWriter) {
-    l.writeList = append(l.writeList, writer)
+<span style="color:#000;font-weight:bold">func</span> (l <span style="color:#000;font-weight:bold">*</span>Logger) <span style="color:#900;font-weight:bold">RegisterWriter</span>(writer LogWriter) {
+	l.writeList = <span style="color:#0086b3">append</span>(l.writeList, writer)
 }
 
-func (l *Logger) Log(data interface{}) {
-    for _, writer := range l.writeList {
-        writer.Write(data)
-    }
+<span style="color:#000;font-weight:bold">func</span> (l <span style="color:#000;font-weight:bold">*</span>Logger) <span style="color:#900;font-weight:bold">Log</span>(data <span style="color:#000;font-weight:bold">interface</span>{}) {
+	<span style="color:#000;font-weight:bold">for</span> _, writer <span style="color:#000;font-weight:bold">:=</span> <span style="color:#000;font-weight:bold">range</span> l.writeList {
+		writer.<span style="color:#900;font-weight:bold">Write</span>(data)
+	}
 }
 
-func NewLogger() *Logger {
-    return &Logger{}
-}</pre>
+<span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">NewLogger</span>() <span style="color:#000;font-weight:bold">*</span>Logger {
+	<span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">&amp;</span>Logger{}
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>2、文件写入器：</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#000;font-weight:bold">package</span> main
 
-<p>2、文件写入器：</p>
-
-<pre class="theme:vs2012-black toolbar:2 lang:go decode:true ">package main
-
-import (
-    "errors"
-    "fmt"
-    "os"
+<span style="color:#000;font-weight:bold">import</span> (
+	<span style="color:#d14">&#34;errors&#34;</span>
+	<span style="color:#d14">&#34;fmt&#34;</span>
+	<span style="color:#d14">&#34;os&#34;</span>
 )
 
-type fileWriter struct {
-    file *os.File
+<span style="color:#000;font-weight:bold">type</span> fileWriter <span style="color:#000;font-weight:bold">struct</span> {
+	file <span style="color:#000;font-weight:bold">*</span>os.File
 }
 
-func (f *fileWriter) SetFile(filename string) (err error) {
-    if f.file != nil {
-        f.file.Close()
-    }
-    f.file, err = os.Create(filename)
-    return err
+<span style="color:#000;font-weight:bold">func</span> (f <span style="color:#000;font-weight:bold">*</span>fileWriter) <span style="color:#900;font-weight:bold">SetFile</span>(filename <span style="color:#458;font-weight:bold">string</span>) (err <span style="color:#458;font-weight:bold">error</span>) {
+	<span style="color:#000;font-weight:bold">if</span> f.file <span style="color:#000;font-weight:bold">!=</span> <span style="color:#000;font-weight:bold">nil</span> {
+		f.file.<span style="color:#900;font-weight:bold">Close</span>()
+	}
+	f.file, err = os.<span style="color:#900;font-weight:bold">Create</span>(filename)
+	<span style="color:#000;font-weight:bold">return</span> err
 }
-func (f *fileWriter) Write(data interface{}) error {
-    if f.file == nil {
-        return errors.New("file not created")
-    }
-    str := fmt.Sprintf("%v\n", data)
+<span style="color:#000;font-weight:bold">func</span> (f <span style="color:#000;font-weight:bold">*</span>fileWriter) <span style="color:#900;font-weight:bold">Write</span>(data <span style="color:#000;font-weight:bold">interface</span>{}) <span style="color:#458;font-weight:bold">error</span> {
+	<span style="color:#000;font-weight:bold">if</span> f.file <span style="color:#000;font-weight:bold">==</span> <span style="color:#000;font-weight:bold">nil</span> {
+		<span style="color:#000;font-weight:bold">return</span> errors.<span style="color:#900;font-weight:bold">New</span>(<span style="color:#d14">&#34;file not created&#34;</span>)
+	}
+	str <span style="color:#000;font-weight:bold">:=</span> fmt.<span style="color:#900;font-weight:bold">Sprintf</span>(<span style="color:#d14">&#34;%v\n&#34;</span>, data)
 
-    _, err := f.file.Write([]byte(str))
+	_, err <span style="color:#000;font-weight:bold">:=</span> f.file.<span style="color:#900;font-weight:bold">Write</span>([]<span style="color:#0086b3">byte</span>(str))
 
-    return err
+	<span style="color:#000;font-weight:bold">return</span> err
 }
 
-func newFileWriter() *fileWriter {
-    return &fileWriter{}
+<span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">newFileWriter</span>() <span style="color:#000;font-weight:bold">*</span>fileWriter {
+	<span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">&amp;</span>fileWriter{}
 }
-</pre>
+</code></pre></td></tr></table>
+</div>
+</div><p>3、命令行写入器：</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#000;font-weight:bold">package</span> main
 
-<p>3、命令行写入器：</p>
-
-<pre class="theme:vs2012-black toolbar:2 lang:go decode:true ">package main
-
-import (
-    "fmt"
-    "os"
+<span style="color:#000;font-weight:bold">import</span> (
+	<span style="color:#d14">&#34;fmt&#34;</span>
+	<span style="color:#d14">&#34;os&#34;</span>
 )
 
-type consoleWriter struct {
+<span style="color:#000;font-weight:bold">type</span> consoleWriter <span style="color:#000;font-weight:bold">struct</span> {
 }
 
-func (f *consoleWriter) Write(data interface{}) error {
-    str := fmt.Sprintf("%v\n", data)
-    _, err := os.Stdout.Write([]byte(str))
-    return err
+<span style="color:#000;font-weight:bold">func</span> (f <span style="color:#000;font-weight:bold">*</span>consoleWriter) <span style="color:#900;font-weight:bold">Write</span>(data <span style="color:#000;font-weight:bold">interface</span>{}) <span style="color:#458;font-weight:bold">error</span> {
+	str <span style="color:#000;font-weight:bold">:=</span> fmt.<span style="color:#900;font-weight:bold">Sprintf</span>(<span style="color:#d14">&#34;%v\n&#34;</span>, data)
+	_, err <span style="color:#000;font-weight:bold">:=</span> os.Stdout.<span style="color:#900;font-weight:bold">Write</span>([]<span style="color:#0086b3">byte</span>(str))
+	<span style="color:#000;font-weight:bold">return</span> err
 
 }
 
-func newConsolerWriter() *consoleWriter {
-    return &consoleWriter{}
+<span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">newConsolerWriter</span>() <span style="color:#000;font-weight:bold">*</span>consoleWriter {
+	<span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">&amp;</span>consoleWriter{}
 }
-</pre>
+</code></pre></td></tr></table>
+</div>
+</div><p>4、main.go</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#000;font-weight:bold">package</span> main
 
-<p>4、main.go</p>
+<span style="color:#000;font-weight:bold">import</span> <span style="color:#d14">&#34;fmt&#34;</span>
 
-<pre class="theme:vs2012-black toolbar:2 lang:default decode:true ">package main
+<span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">createLogger</span>() <span style="color:#000;font-weight:bold">*</span>Logger {
+	l <span style="color:#000;font-weight:bold">:=</span> <span style="color:#900;font-weight:bold">NewLogger</span>()
+	cw <span style="color:#000;font-weight:bold">:=</span> <span style="color:#900;font-weight:bold">newConsolerWriter</span>()
 
-import "fmt"
+	l.<span style="color:#900;font-weight:bold">RegisterWriter</span>(cw)
 
-func createLogger() *Logger {
-    l := NewLogger()
-    cw := newConsolerWriter()
+	fw <span style="color:#000;font-weight:bold">:=</span> <span style="color:#900;font-weight:bold">newFileWriter</span>()
+	<span style="color:#000;font-weight:bold">if</span> err <span style="color:#000;font-weight:bold">:=</span> fw.<span style="color:#900;font-weight:bold">SetFile</span>(<span style="color:#d14">&#34;log.log&#34;</span>); err <span style="color:#000;font-weight:bold">!=</span> <span style="color:#000;font-weight:bold">nil</span> {
+		fmt.<span style="color:#900;font-weight:bold">Println</span>(err)
+	}
 
-    l.RegisterWriter(cw)
+	l.<span style="color:#900;font-weight:bold">RegisterWriter</span>(fw)
 
-    fw := newFileWriter()
-    if err := fw.SetFile("log.log"); err != nil {
-        fmt.Println(err)
-    }
-
-    l.RegisterWriter(fw)
-
-    return l
+	<span style="color:#000;font-weight:bold">return</span> l
 }
 
-func main() {
-    l := createLogger()
+<span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">main</span>() {
+	l <span style="color:#000;font-weight:bold">:=</span> <span style="color:#900;font-weight:bold">createLogger</span>()
 
-    l.Log("hello")
+	l.<span style="color:#900;font-weight:bold">Log</span>(<span style="color:#d14">&#34;hello&#34;</span>)
 }
-</pre>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
+</code></pre></td></tr></table>
+</div>
+</div>
         </div>
 
         

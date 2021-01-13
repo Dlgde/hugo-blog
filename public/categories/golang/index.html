@@ -124,7 +124,7 @@
         </div>
         
         <div class="post-content">
-            解决思路：使用map来解决问题； package main import ( "fmt" "reflect" ) func isAnagram(s string, t string) bool { // var m1 map[string]int // var m2 map[string]int //map申明后默认是nil，得用make进行实例化 m1 := make(map[string]int) m2 := make(map[string]int) for _, i := range s { m1[string(i)]++ } for _, j := range t { m2[string(j)]++ } return reflect.DeepEqual(m1, m2) //map不能直接用“==”进行比较 } func main() { s := "hello" t := "lelho" // isAnagram(s, t) fmt.Println(isAnagram(s, t)) } 自己实现map比较函数equa……
+            解决思路：使用map来解决问题； 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 package main import ( &#34;fmt&#34; &#34;reflect&#34; ) func isAnagram(s string, t string) bool { // var m1 map[string]int // var m2 map[string]int //map申明后默认是nil，得用make进行实例化 m1 := make(map[string]int) m2 := make(map[string]int) for _, i := range s { m1[string(i)]++ } for _, j := range t { m2[string(j)]++ } return reflect.DeepEqual(m1, m2) //map不能直接用“==”进行比……
             <p class="readmore"><a href="/archives/168/">阅读全文</a></p>
         </div>
     </article>
@@ -147,7 +147,7 @@
         </div>
         
         <div class="post-content">
-            单链表核心代码如下： func reverseList(node *ListNode) *ListNode { cur := node var pre *ListNode for cur != nil { cur.Next, pre, cur = pre, cur, cur.Next } return pre } 理解：cur指向当前节点，pre是前节点初始为nil，反转过程： cur.next=pre pre=cur cur=cur.next 完整代码如下： package main import "fmt" type ListNode struct { data interface{} Next *ListNode } //反转单链表 func reverseList(head *ListNode) *ListNode { cur := head var pre *ListNode for cur != nil { cur.Next, pre, cur = pre, cur, cur.Next } return pre } func CreateNode(node *ListNode, max int) { cur := node for i := 1; i……
+            单链表核心代码如下： 1 2 3 4 5 6 7 8 func reverseList(node *ListNode) *ListNode { cur := node var pre *ListNode for cur != nil { cur.Next, pre, cur = pre, cur, cur.Next } return pre } 理解：cur指向当前节点，pre是前节点初始为nil，反转过程： 1 2 3 cur.next=pre pre=cur cur=cur.next 完整代码如下： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 package main import &#34;fmt&#34; type……
             <p class="readmore"><a href="/archives/157/">阅读全文</a></p>
         </div>
     </article>
@@ -170,40 +170,7 @@
         </div>
         
         <div class="post-content">
-            <h5 id="选择排序-对于给定的一组记录-经过第一轮比较之后得到最小记录-然后将该记录与第一个记录的位置进行交换-接着对对不包括第一个记录以外的其他记录进行第二轮比较-得到的最小记录与第二个记录进行位置交换-重复该过程-直到进行比较的记录只有一个为止"><strong>选择排序：对于给定的一组记录，经过第一轮比较之后得到最小记录，然后将该记录与第一个记录的位置进行交换；接着对对不包括第一个记录以外的其他记录进行第二轮比较，得到的最小记录与第二个记录进行位置交换；重复该过程，直到进行比较的记录只有一个为止。</strong></h5>
-
-<p>具体实现如下：</p>
-
-<pre class="lang:default decode:true">package main
-
-import "fmt"
-
-func SelectSort(data []int) {
-    length := len(data)
-    for i := 0; i &lt; length; i++ {
-        tmp := data[i]
-        flag := i
-        for j := i + 1; j &lt; length; j++ {
-            if data[j] &lt; tmp {
-                tmp = data[j]
-                flag = j
-            }
-        }
-
-        if flag != i {
-            data[flag] = data[i]
-            data[i] = tmp
-        }
-        fmt.Println(data) //为了看具体排序的过程
-
-    }
-}
-
-func main() {
-    data := []int{44, 38, 65, 97, 76, 14, 27, 48}
-    SelectSort(data)
-    fmt.Println(data)
-}</pre>……
+            选择排序：对于给定的一组记录，经过第一轮比较之后得到最小记录，然后将该记录与第一个记录的位置进行交换；接着对对不包括第一个记录以外的其他记录进行第二轮比较，得到的最小记录与第二个记录进行位置交换；重复该过程，直到进行比较的记录只有一个为止。 具体实现如下： 1 2 3 4 5 6 7 8 9 10 11 12 13……
             <p class="readmore"><a href="/archives/155/">阅读全文</a></p>
         </div>
     </article>
@@ -226,8 +193,7 @@ func main() {
         </div>
         
         <div class="post-content">
-            <h4 id="一个-web-服务器应用需要响应众多客户端的并发请求-go会为每一个客户端产生一个协程用来处理请求">一个（web）服务器应用需要响应众多客户端的并发请求：go会为每一个客户端产生一个协程用来处理请求</h4>
-
+            <h4 id="一个web服务器应用需要响应众多客户端的并发请求go会为每一个客户端产生一个协程用来处理请求">一个（web）服务器应用需要响应众多客户端的并发请求：go会为每一个客户端产生一个协程用来处理请求</h4>
 <p><em>知识点：goroute，net包，socket</em></p>……
             <p class="readmore"><a href="/archives/154/">阅读全文</a></p>
         </div>
@@ -274,13 +240,7 @@ func main() {
         </div>
         
         <div class="post-content">
-            <h3 id="在本例中-使用通道代替socket实现rpc过程-客户端和服务器运行在同一个进程-服务器和客户端在两个goroute中">在本例中，使用通道代替socket实现RPC过程，客户端和服务器运行在同一个进程，服务器和客户端在两个goroute中。</h3>
-
-<h5 id="应用知识-goroute-select-rpc过程">应用知识：<em><strong>goroute，select，RPC过程</strong></em></h5>
-
-<h4 id="1-客户端请求和接收封装">1、客户端请求和接收封装</h4>
-
-<p>下面的代码封装了向服务器请求数据，等待服务器返回数据，如果请求方超时，利用select，该函数还会处理超时逻辑。如下：</p>……
+            在本例中，使用通道代替socket实现RPC过程，客户端和服务器运行在同一个进程，服务器和客户端在两个goroute中。 应用知识：goroute，select，RPC过程 1、客户端请求和接收封装 下面的代码封装了向服务器请求数据，等待服务器返回数据，如果请求方超时，利用select……
             <p class="readmore"><a href="/archives/150/">阅读全文</a></p>
         </div>
     </article>
@@ -303,59 +263,7 @@ func main() {
         </div>
         
         <div class="post-content">
-            <h3 id="1-go语言中goroute之间通信有两种方式">1、go语言中goroute之间通信有两种方式：</h3>
-
-<ul>
-<li>通过全局变量，这种方式得加锁</li>
-<li>通过channel进行通信</li>
-</ul>
-
-<p>下面是一个通过全局变量进行通信的例子：</p>
-
-<pre class="lang:default decode:true">package main
-
-import (
-    "fmt"
-    "sync"
-    "time"
-)
-
-var (
-    m    = make(map[int]uint64)
-    lock sync.Mutex
-)
-
-type task struct {
-    n int
-}
-
-func calc(t *task) {
-    var sum uint64
-    sum = 1
-    for i := 1; i &lt; t.n; i++ {
-        sum *= uint64(i)
-    }
-    lock.Lock()
-    m[t.n] = sum
-    lock.Unlock()
-}
-
-func main() {
-    for i := 0; i &lt; 20; i++ {
-        t := &task{n: i}
-        go calc(t)
-    }
-    time.Sleep(10 * time.Second)
-
-    lock.Lock()
-    for k, v := range m {
-        fmt.Printf("%d!=%v\n", k, v)
-    }
-    lock.Unlock()
-
-}
-
-</pre>……
+            1、go语言中goroute之间通信有两种方式： 通过全局变量，这种方式得加锁 通过channel进行通信 下面是一个通过全局变量进行通信的例子： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 package main import ( &#34;fmt&#34; &#34;sync&#34; &#34;time&#34; ) var ( m = make(map[int]uint64) lock sync.Mutex ) type task struct { n int } func calc(t *task) {……
             <p class="readmore"><a href="/archives/139/">阅读全文</a></p>
         </div>
     </article>
@@ -378,7 +286,7 @@ func main() {
         </div>
         
         <div class="post-content">
-            <h4 id="自动决定变量分配在栈还是堆-escape-analysis">自动决定变量分配在栈还是堆——Escape Analysis</h4>……
+            <h4 id="自动决定变量分配在栈还是堆escape-analysis">自动决定变量分配在栈还是堆——Escape Analysis</h4>……
             <p class="readmore"><a href="/archives/85/">阅读全文</a></p>
         </div>
     </article>
@@ -401,7 +309,7 @@ func main() {
         </div>
         
         <div class="post-content">
-            <h5 id="利用接口实现一个可扩展的日志系统">利用接口实现一个可扩展的日志系统：</h5>……
+            利用接口实现一个可扩展的日志系统： 1、日志对外接口： 本例中定义一个日志写入的接口(LogerWriter),要求写入设备必须遵守这个接口协议(实现这个接口)才能被日志器(Logger)注册。日志器有ResgisterWriter()和Log()两个方法，ResgisterWrit……
             <p class="readmore"><a href="/archives/83/">阅读全文</a></p>
         </div>
     </article>

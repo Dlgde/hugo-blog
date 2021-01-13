@@ -101,40 +101,57 @@
         
         
         <div class="post-content">
-            
-
-<h1 id="wordpress搬家">WordPress搬家</h1>
-
+            <h1 id="wordpress搬家">WordPress搬家</h1>
 <h3 id="主要采坑过程如下">主要采坑过程如下：</h3>
-
 <ol>
-<li>复制之前的php目录到目标新机器</li>
-<li>在新机器上面安装openresty(nginx),</li>
-<li>apt install php7.2-fpm php7.2-mysql php7.2-curl php7.2-json php7.2-mbstring php7.2-xml php7.2-intl,安装php服务</li>
-<li>apt-get install mysql-server 安装数据库</li>
-<li>查看php服务，service php7.2-fpm status</li>
-<li>目录下/etc/php/7.2/fpm/pool.d，www.conf中将listen改为9000</li>
-<li>mysql轻量数据库迁移：
-
+<li>
+<p>复制之前的php目录到目标新机器</p>
+</li>
+<li>
+<p>在新机器上面安装openresty(nginx),</p>
+</li>
+<li>
+<p>apt install php7.2-fpm php7.2-mysql php7.2-curl php7.2-json php7.2-mbstring php7.2-xml php7.2-intl,安装php服务</p>
+</li>
+<li>
+<p>apt-get install mysql-server 安装数据库</p>
+</li>
+<li>
+<p>查看php服务，service php7.2-fpm status</p>
+</li>
+<li>
+<p>目录下/etc/php/7.2/fpm/pool.d，www.conf中将listen改为9000</p>
+</li>
+<li>
+<p>mysql轻量数据库迁移：</p>
 <ul>
 <li><strong>导出数据</strong>：<code>mysqldump -u root -p wordpress &gt;dumpout.sql</code>,并将导出的copy到目标机器</li>
 <li><strong>导入数据</strong>：先创建数据库(<code>create database worpress</code>),执行<code>mysql -u root -p wordpress &lt; dumpout.sql</code></li>
-</ul></li>
-<li>修改WordPress配置文件，<code>/data/www/wordpress/wp-config.php</code>中的数据库配置</p></li>
-
-<li><p>重新启动php服务</p></li>
-
-<li><p>修改域名解析，至此整个过程完成</p></li>
-
-<li><p>mysql赋予权限：<code>grant 权限 on 数据库.* to 用户名@登录主机 identified by &quot;密码&quot;</code></p></li>
-
-<li><p>修改密码：</p>
-
+</ul>
+</li>
+<li>
+<p>修改WordPress配置文件，<code>/data/www/wordpress/wp-config.php</code>中的数据库配置<!-- raw HTML omitted --></p>
+</li>
+<li>
+<p>重新启动php服务</p>
+</li>
+<li>
+<p>修改域名解析，至此整个过程完成</p>
+</li>
+<li>
+<p>mysql赋予权限：<code>grant 权限 on 数据库.* to 用户名@登录主机 identified by &quot;密码&quot;</code></p>
+</li>
+<li>
+<p>修改密码：</p>
 <ul>
-<li><p><code>alter user user() identified by '*****';</code>alter user root@localhost identified by &lsquo;****&rsquo;</p></li>
-
-<li><p><code>update mysql.user set authentication_string=password('*****') where user='root' and host='localhost';</code></p></li>
-</ul></li>
+<li>
+<p><code>alter user user() identified by '*****';</code>alter user root@localhost identified by &lsquo;****&rsquo;</p>
+</li>
+<li>
+<p><code>update mysql.user set authentication_string=password('*****') where user='root' and host='localhost';</code></p>
+</li>
+</ul>
+</li>
 </ol>
 
         </div>

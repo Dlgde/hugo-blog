@@ -101,13 +101,7 @@
         </div>
         
         <div class="post-content">
-            <h3 id="在本例中-使用通道代替socket实现rpc过程-客户端和服务器运行在同一个进程-服务器和客户端在两个goroute中">在本例中，使用通道代替socket实现RPC过程，客户端和服务器运行在同一个进程，服务器和客户端在两个goroute中。</h3>
-
-<h5 id="应用知识-goroute-select-rpc过程">应用知识：<em><strong>goroute，select，RPC过程</strong></em></h5>
-
-<h4 id="1-客户端请求和接收封装">1、客户端请求和接收封装</h4>
-
-<p>下面的代码封装了向服务器请求数据，等待服务器返回数据，如果请求方超时，利用select，该函数还会处理超时逻辑。如下：</p>……
+            在本例中，使用通道代替socket实现RPC过程，客户端和服务器运行在同一个进程，服务器和客户端在两个goroute中。 应用知识：goroute，select，RPC过程 1、客户端请求和接收封装 下面的代码封装了向服务器请求数据，等待服务器返回数据，如果请求方超时，利用select……
             <p class="readmore"><a href="/archives/150/">阅读全文</a></p>
         </div>
     </article>

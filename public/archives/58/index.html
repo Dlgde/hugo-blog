@@ -102,110 +102,165 @@
         
         <div class="post-content">
             <h4 id="go语言接口">go语言接口：</h4>
-
 <p>go语言的接口设计是非侵入式的，接口的编写者无需知道接口被那些类型实现。而接口实现者只需要知道实现的是什么样子的接口，但无须指明实现哪一个接口。不像其他语言需要用implement来指出实现了哪个接口。有几个需要注意的地方：</p>
-
 <ol>
 <li>interface本身也是一种类型，可以定义一组方法，但是接口中不能包含任何的变量</li>
 <li>必须实现了接口中的所有方法，才能调用接口</li>
-<li>实现接口的方法必须和接口中定义的方法格式一致，包括函数名和返回值等。<!--more--></li>
+<li>实现接口的方法必须和接口中定义的方法格式一致，包括函数名和返回值等。</li>
 </ol>
-
 <h4 id="多态"><strong>多态</strong>：</h4>
-
 <p>一种的事物的多种形态，都可以按照统一的接口进行操作。</p>
-
 <p>理解：比如go语言sort包中提供了一个排序的Sort接口，它可以对整数，浮点数，字符串等进行排序，只要实现接口中定义的下面三个方法，就可以调用Sort方法进行排序，不用每一种类型都去定义一种实现的方法。</p>
-
 <p>我们从go网站上面可以查到Sort方法是这样：func Sort（data Interface）</p>
-
-<pre class="theme:vs2012-black toolbar:2 toolbar-overlay:false toolbar-hide:false toolbar-delay:false show-title:false show-lang:2 lang:default decode:true ">type Interface interface {
-    // Len is the number of elements in the collection.
-    // Len 为集合内元素的总数
-    Len() int
-    // Less reports whether the element with
-    // index i should sort before the element with index j.
-    //
-    // Less 返回索引为 i 的元素是否应排在索引为 j 的元素之前。
-    Less(i, j int) bool
-    // Swap swaps the elements with indexes i and j.
-    // Swap 交换索引为 i 和 j 的元素
-    Swap(i, j int)
-}</pre>
-
-<p>&nbsp;</p>
-
-<!--more-->
-
-<h4 id="自己实现接口进行排序"><strong>自己实现接口进行排序：</strong></h4>
-
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#000;font-weight:bold">type</span> Interface <span style="color:#000;font-weight:bold">interface</span> {
+    <span style="color:#998;font-style:italic">// Len is the number of elements in the collection.
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#998;font-style:italic">// Len 为集合内元素的总数
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#900;font-weight:bold">Len</span>() <span style="color:#458;font-weight:bold">int</span>
+    <span style="color:#998;font-style:italic">// Less reports whether the element with
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#998;font-style:italic">// index i should sort before the element with index j.
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#998;font-style:italic">//
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#998;font-style:italic">// Less 返回索引为 i 的元素是否应排在索引为 j 的元素之前。
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#900;font-weight:bold">Less</span>(i, j <span style="color:#458;font-weight:bold">int</span>) <span style="color:#458;font-weight:bold">bool</span>
+    <span style="color:#998;font-style:italic">// Swap swaps the elements with indexes i and j.
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#998;font-style:italic">// Swap 交换索引为 i 和 j 的元素
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#900;font-weight:bold">Swap</span>(i, j <span style="color:#458;font-weight:bold">int</span>)
+}
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="自己实现接口进行排序"><strong>自己实现接口进行排序：</strong></h4>
 <p>我们自己定义一种类型MyStringList，实现Sort中的Len(),Less(i,j int),Swap(i,j int )这三个方法，也就是实现了Sort接口，就可以调用sort包中的Sort方法进行排序。如下：</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#000;font-weight:bold">package</span> main
 
-<pre class="theme:vs2012-black toolbar:2 lang:go decode:true" title="string-sort">main
-
-import (
-    "fmt"
-    "sort"
+<span style="color:#000;font-weight:bold">import</span> (
+	<span style="color:#d14">&#34;fmt&#34;</span>
+	<span style="color:#d14">&#34;sort&#34;</span>
 )
 
-type MyStringList []string
+<span style="color:#000;font-weight:bold">type</span> MyStringList []<span style="color:#458;font-weight:bold">string</span>
 
-func (m MyStringList) Len() int {
-    return len(m)
+<span style="color:#000;font-weight:bold">func</span> (m MyStringList) <span style="color:#900;font-weight:bold">Len</span>() <span style="color:#458;font-weight:bold">int</span> {
+	<span style="color:#000;font-weight:bold">return</span> <span style="color:#0086b3">len</span>(m)
 }
 
-func (m MyStringList) Less(i, j int) bool {
-    return m[i] &lt; m[j]
+<span style="color:#000;font-weight:bold">func</span> (m MyStringList) <span style="color:#900;font-weight:bold">Less</span>(i, j <span style="color:#458;font-weight:bold">int</span>) <span style="color:#458;font-weight:bold">bool</span> {
+	<span style="color:#000;font-weight:bold">return</span> m[i] <span style="color:#000;font-weight:bold">&amp;</span>lt; m[j]
 }
 
-func (m MyStringList) Swap(i, j int) {
-    m[i], m[j] = m[j], m[i]
+<span style="color:#000;font-weight:bold">func</span> (m MyStringList) <span style="color:#900;font-weight:bold">Swap</span>(i, j <span style="color:#458;font-weight:bold">int</span>) {
+	m[i], m[j] = m[j], m[i]
 }
 
-func main() {
-    names := MyStringList{
-        "3.Triple",
-        "2.Double",
-        "5.Penta",
-    }
-    sort.Sort(names)
+<span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">main</span>() {
+	names <span style="color:#000;font-weight:bold">:=</span> MyStringList{
+		<span style="color:#d14">&#34;3.Triple&#34;</span>,
+		<span style="color:#d14">&#34;2.Double&#34;</span>,
+		<span style="color:#d14">&#34;5.Penta&#34;</span>,
+	}
+	sort.<span style="color:#900;font-weight:bold">Sort</span>(names)
 
-    for _, v := range names {
-        fmt.Printf("%s\n", v)
-    }
+	<span style="color:#000;font-weight:bold">for</span> _, v <span style="color:#000;font-weight:bold">:=</span> <span style="color:#000;font-weight:bold">range</span> names {
+		fmt.<span style="color:#900;font-weight:bold">Printf</span>(<span style="color:#d14">&#34;%s\n&#34;</span>, v)
+	}
 }
-</pre>
-
-<h4 id="nbsp">&nbsp;</h4>
-
-<!--more-->
-
-<h4 id="nbsp-利用go语言提供的stringslice进行排序">&nbsp;利用go语言提供的StringSlice进行排序：</h4>
-
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="nbsp利用go语言提供的stringslice进行排序"> 利用go语言提供的StringSlice进行排序：</h4>
 <p>实际上，也是实现了Sort接口定义的那三种方法，然后直接提供给我们，我们就可以直接调用了，如下：</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#000;font-weight:bold">package</span> main
 
-<pre class="theme:vs2012-black toolbar:2 toolbar-overlay:false toolbar-hide:false toolbar-delay:false show-title:false lang:go decode:true">package main
-
-import (
-    "fmt"
-    "sort"
+<span style="color:#000;font-weight:bold">import</span> (
+	<span style="color:#d14">&#34;fmt&#34;</span>
+	<span style="color:#d14">&#34;sort&#34;</span>
 )
-
-func main() {
-    s := sort.StringSlice{
-        "3.Triple",
-        "2.Double",
-        "5.Penta",
-    }
-    sort.Sort(s)
-    for _, v := range s {
-        fmt.Println(v)
-    }
-}</pre>
-
-<p>类似的还有int类型的，比如IntSlice等也是实现了Sort接口，从而我们可以直接进行调用。</p>
-
-<p>&nbsp;</p>
+<span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">main</span>() {
+	s <span style="color:#000;font-weight:bold">:=</span> sort.StringSlice{
+		<span style="color:#d14">&#34;3.Triple&#34;</span>,
+		<span style="color:#d14">&#34;2.Double&#34;</span>,
+		<span style="color:#d14">&#34;5.Penta&#34;</span>,
+	}
+	sort.<span style="color:#900;font-weight:bold">Sort</span>(s)
+	<span style="color:#000;font-weight:bold">for</span> _, v <span style="color:#000;font-weight:bold">:=</span> <span style="color:#000;font-weight:bold">range</span> s {
+		fmt.<span style="color:#900;font-weight:bold">Println</span>(v)
+	}
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>类似的还有int类型的，比如IntSlice等也是实现了Sort接口，从而我们可以直接进行调用。</p>
         </div>
 
         

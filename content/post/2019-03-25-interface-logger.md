@@ -12,15 +12,16 @@ categories:
 ---
 ##### 利用接口实现一个可扩展的日志系统：
 
-<!--more-->
+
 
 1、日志对外接口：
 
 本例中定义一个日志写入的接口(LogerWriter),要求写入设备必须遵守这个接口协议(实现这个接口)才能被日志器(Logger)注册。日志器有ResgisterWriter()和Log()两个方法，ResgisterWriter()方法将日志写入器(LogWriter)注册到日志器中，log()方法进行日志的输出，这个函数会将日志写入到所有已经注册的日志写入器(LogWriter)中。本例中简单实现文件和输出到终端这两种方式。
 
-<!--more-->
 
-<pre class="theme:vs2012-black toolbar:2 lang:go decode:true ">package main
+
+```go 
+package main
 
 type LogWriter interface {
 	Write(data interface{}) error
@@ -42,11 +43,13 @@ func (l *Logger) Log(data interface{}) {
 
 func NewLogger() *Logger {
 	return &Logger{}
-}</pre>
+}
+```
 
 2、文件写入器：
 
-<pre class="theme:vs2012-black toolbar:2 lang:go decode:true ">package main
+```go
+package main
 
 import (
 	"errors"
@@ -79,11 +82,12 @@ func (f *fileWriter) Write(data interface{}) error {
 func newFileWriter() *fileWriter {
 	return &fileWriter{}
 }
-</pre>
+```
 
 3、命令行写入器：
 
-<pre class="theme:vs2012-black toolbar:2 lang:go decode:true ">package main
+```go
+package main
 
 import (
 	"fmt"
@@ -103,11 +107,12 @@ func (f *consoleWriter) Write(data interface{}) error {
 func newConsolerWriter() *consoleWriter {
 	return &consoleWriter{}
 }
-</pre>
+```
 
 4、main.go
 
-<pre class="theme:vs2012-black toolbar:2 lang:default decode:true ">package main
+```go 
+package main
 
 import "fmt"
 
@@ -132,10 +137,4 @@ func main() {
 
 	l.Log("hello")
 }
-</pre>
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
+```

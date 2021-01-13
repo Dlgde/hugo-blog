@@ -24,9 +24,10 @@ tags:
 
 下面的代码封装了向服务器请求数据，等待服务器返回数据，如果请求方超时，利用select，该函数还会处理超时逻辑。如下：
 
-<!--more-->
 
-<pre class="lang:default decode:true">func RPCClient(ch chan string, req string) (string, error) {
+
+```go
+func RPCClient(ch chan string, req string) (string, error) {
 	ch &lt;- req
 	select {
 	case ack := &lt;-ch:
@@ -34,19 +35,18 @@ tags:
 	case &lt;-time.After(time.Second):
 		return "", errors.New("Time out")
 	}
-}</pre>
+}
+```
 
-&nbsp;
-
-<!--more-->
 
 #### 2、服务器接收和反馈数据
 
 服务器接收到客户端的任意数据后，先打印再通过通道返回给客户端一个固定的字符串（hello），表示服务器已经收到请求。
 
-<!--more-->
 
-<pre class="lang:default decode:true ">func RPCServer(ch chan string) {
+
+```go
+func RPCServer(ch chan string) {
 	for {
 		data := &lt;-ch
 		fmt.Println("server received:", data)
@@ -54,21 +54,21 @@ tags:
 		ch &lt;- "roger"
 	}
 
-}</pre>
+}
+```
 
 注：为了模拟服务端相应超时，可以用time.Sleep()函数让goroute执行暂停2秒，这样会触发客户端“Time out”
 
-&nbsp;
 
-<!--more-->
 
 #### 3、主流程
 
 主流程中会创建一个无缓冲的字符串格式通道。将通道传给服务器的RPCServer()函数，这个函数会并发执行，使用RPCClient函数通过ch对服务器发出RPC请求同时接收服务器反馈数据或者等待超时。
 
-<!--more-->
 
-<pre class="lang:default decode:true">func main() {
+
+```go
+func main() {
 	ch := make(chan string)
 	go RPCServer(ch)
 
@@ -79,15 +79,14 @@ tags:
 	} else {
 		fmt.Println("client received", recv)
 	}
-}</pre>
+}
+```
 
-&nbsp;
 
-<!--more-->
 
 #### 4、输出结果如下：
 
-<pre class="lang:default decode:true ">server received: hi
-client received helllo</pre>
-
-&nbsp;
+```console
+server received: hi
+client received helllo
+```

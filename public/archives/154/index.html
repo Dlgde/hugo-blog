@@ -101,105 +101,21 @@
         
         
         <div class="post-content">
-            <h4 id="一个-web-服务器应用需要响应众多客户端的并发请求-go会为每一个客户端产生一个协程用来处理请求">一个（web）服务器应用需要响应众多客户端的并发请求：go会为每一个客户端产生一个协程用来处理请求</h4>
-
+            <h4 id="一个web服务器应用需要响应众多客户端的并发请求go会为每一个客户端产生一个协程用来处理请求">一个（web）服务器应用需要响应众多客户端的并发请求：go会为每一个客户端产生一个协程用来处理请求</h4>
 <p><em>知识点：goroute，net包，socket</em></p>
-
-<h4 id="1-服务器端">1、服务器端</h4>
-
+<h4 id="1服务器端">1、服务器端</h4>
 <p>我们在<code>main()</code>创建了一个<code>net.Listener</code>的变量，他是一个服务器的基本函数：用来监听和接收来自客户端的请求（来自localhost即IP地址为127.0.0.1端口为50000基于TCP协议）。这个<code>Listen()</code>函数可以返回一个<code>error</code>类型的错误变量。用一个无限for循环的<code>listener.Accept()</code>来等待客户端的请求。客户端的请求将产生一个<code>net.Conn</code>类型的连接变量。然后一个独立的协程使用这个连接执行<code>doServerStuff()</code>，开始使用一个512字节的缓冲<code>data</code>来读取客户端发送来的数据并且把它们打印到服务器的终端，<code>len</code>获取客户端发送的数据字节数；当客户端发送的所有数据都被读取完成时，协程就结束了。这段程序会为每一个客户端连接创建一个独立的协程。必须先运行服务器代码，再运行客户端代码。</p>
-
 <p>server.go代码如下：</p>
-
-<pre class="lang:default decode:true ">package main
-
-import (
-    "fmt"
-    "net"
-)
-
-func main() {
-    fmt.Println("Starting the server...")
-    listener, err := net.Listen("tcp", "127.0.0.1:5000")
-    if err != nil {
-        fmt.Println("Error listening", err.Error())
-        return
-    }
-
-    //监听并接受来自客户端的连接
-    for {
-        conn, err := listener.Accept()
-        if err != nil {
-            fmt.Println("Error accepting", err.Error())
-            return
-        }
-        go doServerStuff(conn)
-
-    }
-
-}
-
-func doServerStuff(conn net.Conn) {
-    for {
-        buf := make([]byte, 512)
-        len, err := conn.Read(buf)
-        if err != nil {
-            fmt.Println("Error reading", err.Error())
-            return
-        }
-
-        fmt.Printf("Received data :%v", string(buf[:len]))
-    }
-}
-</pre>
-
-<h4 id="2-客户端">2、客户端</h4>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h4 id="2客户端">2、客户端</h4>
 <p>客户端通过<code>net.Dial</code>创建了一个和服务器之间的连接</p>
-
 <p>它通过无限循环中的os.Stdin接收来自键盘的输入直到输入了“Q”。注意使用<code>\r</code>和<code>\n</code>换行符分割字符串（在windows平台下使用<code>\r\n</code>）。接下来分割后的输入通过<code>connection</code>的<code>Write</code>方法被发送到服务器。</p>
-
 <p>当然，服务器必须先启动好，如果服务器并未开始监听，客户端是无法成功连接的。</p>
-
 <p>client.go 代码如下：</p>
-
-<pre class="lang:default decode:true ">package main
-
-import (
-    "bufio"
-    "fmt"
-    "net"
-    "os"
-    "strings"
-)
-
-func main() {
-    conn, err := net.Dial("tcp", "localhost:5000")
-    if err != nil {
-        fmt.Println("Error dialing", err.Error())
-        return
-    }
-
-    inputReader := bufio.NewReader(os.Stdin)
-    fmt.Println("First,what is your name?")
-    clientName, _ := inputReader.ReadString('\n')
-    trimmedClient := strings.Trim(clientName, "\n")
-
-    for {
-        fmt.Println("What to send to the server? Type Q to quit.")
-        input, _ := inputReader.ReadString('\n')
-        trimmedInput := strings.Trim(input, "\n")
-
-        if trimmedInput == "Q" {
-            return
-        }
-        _, err = conn.Write([]byte(trimmedClient + " says:" + trimmedInput))
-    }
-}
-</pre>
-
-<p>&nbsp;</p>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p> </p>
 <p>在网络编程中<code>net.Dial</code>函数是非常重要的，<strong>一旦你连接到远程系统，就会返回一个Conn类型接口，我们可以用它发送和接收数据。</strong><code>Dial</code>函数巧妙的抽象了网络结构及传输。所以IPv4或者IPv6，TCP或者UDP都可以使用这个公用接口。</p>
         </div>
 

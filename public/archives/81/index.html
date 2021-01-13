@@ -101,100 +101,180 @@
         
         
         <div class="post-content">
-            <p>&nbsp;</p>
-
-<p>实现通用链表</p>
-
+            <p>实现通用链表</p>
 <ol>
 <li>link.go</li>
 </ol>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">56
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">57
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">58
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">59
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">60
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">61
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">62
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">63
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#000;font-weight:bold">package</span> main
 
-<pre class="theme:vs2012-black toolbar:2 lang:go decode:true ">package main
+<span style="color:#000;font-weight:bold">import</span> <span style="color:#d14">&#34;fmt&#34;</span>
 
-import "fmt"
-
-type LinkNode struct {
-    data interface{}
-    next *LinkNode
+<span style="color:#000;font-weight:bold">type</span> LinkNode <span style="color:#000;font-weight:bold">struct</span> {
+	data <span style="color:#000;font-weight:bold">interface</span>{}
+	next <span style="color:#000;font-weight:bold">*</span>LinkNode
 }
 
-type Link struct {
-    head *LinkNode
-    tail *LinkNode
+<span style="color:#000;font-weight:bold">type</span> Link <span style="color:#000;font-weight:bold">struct</span> {
+	head <span style="color:#000;font-weight:bold">*</span>LinkNode
+	tail <span style="color:#000;font-weight:bold">*</span>LinkNode
 }
 
-func (p *Link) InsertHead(data interface{}) {
-    node := &LinkNode{
-        data: data,
-        next: nil,
-    }
-    if p.tail == nil && p.head == nil {
-        p.head = node
-        p.tail = node
-        return
-    }
-    node.next = p.head
-    p.head = node
-
-}
-
-func (p *Link) InsertTail(data interface{}) {
-    node := &LinkNode{
-        data: data,
-        next: nil,
-    }
-
-    if p.tail == nil && p.head == nil {
-        p.head = node
-        p.tail = node
-        return
-    }
-    p.tail.next = node
-    p.tail = node
+<span style="color:#000;font-weight:bold">func</span> (p <span style="color:#000;font-weight:bold">*</span>Link) <span style="color:#900;font-weight:bold">InsertHead</span>(data <span style="color:#000;font-weight:bold">interface</span>{}) {
+	node <span style="color:#000;font-weight:bold">:=</span> <span style="color:#000;font-weight:bold">&amp;</span>LinkNode{
+		data: data,
+		next: <span style="color:#000;font-weight:bold">nil</span>,
+	}
+	<span style="color:#000;font-weight:bold">if</span> p.tail <span style="color:#000;font-weight:bold">==</span> <span style="color:#000;font-weight:bold">nil</span> <span style="color:#000;font-weight:bold">&amp;&amp;</span> p.head <span style="color:#000;font-weight:bold">==</span> <span style="color:#000;font-weight:bold">nil</span> {
+		p.head = node
+		p.tail = node
+		<span style="color:#000;font-weight:bold">return</span>
+	}
+	node.next = p.head
+	p.head = node
 
 }
 
-func (p *Link) Trans() {
-    q := p.head
-    for q != nil {
-        fmt.Println(q.data)
-        q = q.next
-    }
+<span style="color:#000;font-weight:bold">func</span> (p <span style="color:#000;font-weight:bold">*</span>Link) <span style="color:#900;font-weight:bold">InsertTail</span>(data <span style="color:#000;font-weight:bold">interface</span>{}) {
+	node <span style="color:#000;font-weight:bold">:=</span> <span style="color:#000;font-weight:bold">&amp;</span>LinkNode{
+		data: data,
+		next: <span style="color:#000;font-weight:bold">nil</span>,
+	}
+
+	<span style="color:#000;font-weight:bold">if</span> p.tail <span style="color:#000;font-weight:bold">==</span> <span style="color:#000;font-weight:bold">nil</span> <span style="color:#000;font-weight:bold">&amp;&amp;</span> p.head <span style="color:#000;font-weight:bold">==</span> <span style="color:#000;font-weight:bold">nil</span> {
+		p.head = node
+		p.tail = node
+		<span style="color:#000;font-weight:bold">return</span>
+	}
+	p.tail.next = node
+	p.tail = node
 
 }
 
-func (p *Link) Getlen() {
-    q := p.head
-    m := 0
-    for q != nil {
-        m++
-        q = q.next
-    }
-    fmt.Println(m)
-}
-</pre>
+<span style="color:#000;font-weight:bold">func</span> (p <span style="color:#000;font-weight:bold">*</span>Link) <span style="color:#900;font-weight:bold">Trans</span>() {
+	q <span style="color:#000;font-weight:bold">:=</span> p.head
+	<span style="color:#000;font-weight:bold">for</span> q <span style="color:#000;font-weight:bold">!=</span> <span style="color:#000;font-weight:bold">nil</span> {
+		fmt.<span style="color:#900;font-weight:bold">Println</span>(q.data)
+		q = q.next
+	}
 
-<ul>
+}
+
+<span style="color:#000;font-weight:bold">func</span> (p <span style="color:#000;font-weight:bold">*</span>Link) <span style="color:#900;font-weight:bold">Getlen</span>() {
+	q <span style="color:#000;font-weight:bold">:=</span> p.head
+	m <span style="color:#000;font-weight:bold">:=</span> <span style="color:#099">0</span>
+	<span style="color:#000;font-weight:bold">for</span> q <span style="color:#000;font-weight:bold">!=</span> <span style="color:#000;font-weight:bold">nil</span> {
+		m<span style="color:#000;font-weight:bold">++</span>
+		q = q.next
+	}
+	fmt.<span style="color:#900;font-weight:bold">Println</span>(m)
+}
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
 <li>main.go</li>
-</ul>
+</ol>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#000;font-weight:bold">package</span> main
 
-<pre class="theme:vs2012-black toolbar:2 lang:go decode:true ">package main
+<span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">main</span>() {
+	<span style="color:#000;font-weight:bold">var</span> l Link
+	<span style="color:#000;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">:=</span> <span style="color:#099">1</span>; i <span style="color:#000;font-weight:bold">&amp;</span>lt; <span style="color:#099">10</span>; i<span style="color:#000;font-weight:bold">++</span> {
+		l.<span style="color:#900;font-weight:bold">InsertTail</span>(i)
+		<span style="color:#998;font-style:italic">//l.InsertHead(i)
+</span><span style="color:#998;font-style:italic"></span>		<span style="color:#998;font-style:italic">//l.InsertTail(fmt.Sprintf(&#34;str %d&#34;, i))
+</span><span style="color:#998;font-style:italic"></span>
+	}
 
-func main() {
-    var l Link
-    for i := 1; i &lt; 10; i++ {
-        l.InsertTail(i)
-        //l.InsertHead(i)
-        //l.InsertTail(fmt.Sprintf("str %d", i))
-
-    }
-
-    l.Trans()
-    l.Getlen()
+	l.<span style="color:#900;font-weight:bold">Trans</span>()
+	l.<span style="color:#900;font-weight:bold">Getlen</span>()
 }
-</pre>
-
-<p>&nbsp;</p>
+</code></pre></td></tr></table>
+</div>
+</div>
         </div>
 
         

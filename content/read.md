@@ -10,9 +10,9 @@ type: "read"
 
   1.《网络是怎么连接的》  
   2.《Go语言从入门到实践》   
-  3.《数据结构与算法》    
-  4. <a href="https://github.com/Dlgde/the-way-to-go_ZH_CN/blob/master/eBook/directory.md" target="_blank"  rel="nofollow" >《The way to go》</a>  
-  5. <a href="https://books.studygolang.com/gopl-zh/index.html" target="_blank"  rel="nofollow" >《Go语言圣经》</a>
+  3.《数据结构与算法》   
+  4.[《The way to go》](https://github.com/Dlgde/the-way-to-go_ZH_CN/blob/master/eBook/directory.md)  
+  5.[《go语言圣经》](https://books.studygolang.com/gopl-zh/index.html)  
 
 
 #### 非技术类

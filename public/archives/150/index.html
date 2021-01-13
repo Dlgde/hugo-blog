@@ -101,79 +101,99 @@
         
         
         <div class="post-content">
-            <h3 id="在本例中-使用通道代替socket实现rpc过程-客户端和服务器运行在同一个进程-服务器和客户端在两个goroute中">在本例中，使用通道代替socket实现RPC过程，客户端和服务器运行在同一个进程，服务器和客户端在两个goroute中。</h3>
-
-<h5 id="应用知识-goroute-select-rpc过程">应用知识：<em><strong>goroute，select，RPC过程</strong></em></h5>
-
-<h4 id="1-客户端请求和接收封装">1、客户端请求和接收封装</h4>
-
+            <h3 id="heading"></h3>
+<h3 id="在本例中使用通道代替socket实现rpc过程客户端和服务器运行在同一个进程服务器和客户端在两个goroute中">在本例中，使用通道代替socket实现RPC过程，客户端和服务器运行在同一个进程，服务器和客户端在两个goroute中。</h3>
+<h5 id="应用知识_gorouteselectrpc过程_">应用知识：<em><strong>goroute，select，RPC过程</strong></em></h5>
+<h4 id="heading-1"></h4>
+<h4 id="1客户端请求和接收封装">1、客户端请求和接收封装</h4>
 <p>下面的代码封装了向服务器请求数据，等待服务器返回数据，如果请求方超时，利用select，该函数还会处理超时逻辑。如下：</p>
-
-<pre class="lang:default decode:true">func RPCClient(ch chan string, req string) (string, error) {
-    ch &lt;- req
-    select {
-    case ack := &lt;-ch:
-        return ack, nil
-    case &lt;-time.After(time.Second):
-        return "", errors.New("Time out")
-    }
-}</pre>
-
-<p>&nbsp;</p>
-
-<!--more-->
-
-<h4 id="2-服务器接收和反馈数据">2、服务器接收和反馈数据</h4>
-
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">RPCClient</span>(ch <span style="color:#000;font-weight:bold">chan</span> <span style="color:#458;font-weight:bold">string</span>, req <span style="color:#458;font-weight:bold">string</span>) (<span style="color:#458;font-weight:bold">string</span>, <span style="color:#458;font-weight:bold">error</span>) {
+	ch <span style="color:#000;font-weight:bold">&amp;</span>lt;<span style="color:#000;font-weight:bold">-</span> req
+	<span style="color:#000;font-weight:bold">select</span> {
+	<span style="color:#000;font-weight:bold">case</span> ack <span style="color:#000;font-weight:bold">:=</span> <span style="color:#000;font-weight:bold">&amp;</span>lt;<span style="color:#000;font-weight:bold">-</span>ch:
+		<span style="color:#000;font-weight:bold">return</span> ack, <span style="color:#000;font-weight:bold">nil</span>
+	<span style="color:#000;font-weight:bold">case</span> <span style="color:#000;font-weight:bold">&amp;</span>lt;<span style="color:#000;font-weight:bold">-</span>time.<span style="color:#900;font-weight:bold">After</span>(time.Second):
+		<span style="color:#000;font-weight:bold">return</span> <span style="color:#d14">&#34;&#34;</span>, errors.<span style="color:#900;font-weight:bold">New</span>(<span style="color:#d14">&#34;Time out&#34;</span>)
+	}
+}
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="2服务器接收和反馈数据">2、服务器接收和反馈数据</h4>
 <p>服务器接收到客户端的任意数据后，先打印再通过通道返回给客户端一个固定的字符串（hello），表示服务器已经收到请求。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">RPCServer</span>(ch <span style="color:#000;font-weight:bold">chan</span> <span style="color:#458;font-weight:bold">string</span>) {
+	<span style="color:#000;font-weight:bold">for</span> {
+		data <span style="color:#000;font-weight:bold">:=</span> <span style="color:#000;font-weight:bold">&amp;</span>lt;<span style="color:#000;font-weight:bold">-</span>ch
+		fmt.<span style="color:#900;font-weight:bold">Println</span>(<span style="color:#d14">&#34;server received:&#34;</span>, data)
+		<span style="color:#998;font-style:italic">//time.Sleep(time.Second * 2)
+</span><span style="color:#998;font-style:italic"></span>		ch <span style="color:#000;font-weight:bold">&amp;</span>lt;<span style="color:#000;font-weight:bold">-</span> <span style="color:#d14">&#34;roger&#34;</span>
+	}
 
-<!--more-->
-
-<pre class="lang:default decode:true ">func RPCServer(ch chan string) {
-    for {
-        data := &lt;-ch
-        fmt.Println("server received:", data)
-        //time.Sleep(time.Second * 2)
-        ch &lt;- "roger"
-    }
-
-}</pre>
-
-<p>注：为了模拟服务端相应超时，可以用time.Sleep()函数让goroute执行暂停2秒，这样会触发客户端“Time out”</p>
-
-<p>&nbsp;</p>
-
-<!--more-->
-
-<h4 id="3-主流程">3、主流程</h4>
-
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>注：为了模拟服务端相应超时，可以用time.Sleep()函数让goroute执行暂停2秒，这样会触发客户端“Time out”</p>
+<h4 id="3主流程">3、主流程</h4>
 <p>主流程中会创建一个无缓冲的字符串格式通道。将通道传给服务器的RPCServer()函数，这个函数会并发执行，使用RPCClient函数通过ch对服务器发出RPC请求同时接收服务器反馈数据或者等待超时。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">main</span>() {
+	ch <span style="color:#000;font-weight:bold">:=</span> <span style="color:#0086b3">make</span>(<span style="color:#000;font-weight:bold">chan</span> <span style="color:#458;font-weight:bold">string</span>)
+	<span style="color:#000;font-weight:bold">go</span> <span style="color:#900;font-weight:bold">RPCServer</span>(ch)
 
-<!--more-->
+	recv, err <span style="color:#000;font-weight:bold">:=</span> <span style="color:#900;font-weight:bold">RPCClient</span>(ch, <span style="color:#d14">&#34;hi&#34;</span>)
 
-<pre class="lang:default decode:true">func main() {
-    ch := make(chan string)
-    go RPCServer(ch)
-
-    recv, err := RPCClient(ch, "hi")
-
-    if err != nil {
-        fmt.Println(err)
-    } else {
-        fmt.Println("client received", recv)
-    }
-}</pre>
-
-<p>&nbsp;</p>
-
-<!--more-->
-
-<h4 id="4-输出结果如下">4、输出结果如下：</h4>
-
-<pre class="lang:default decode:true ">server received: hi
-client received helllo</pre>
-
-<p>&nbsp;</p>
+	<span style="color:#000;font-weight:bold">if</span> err <span style="color:#000;font-weight:bold">!=</span> <span style="color:#000;font-weight:bold">nil</span> {
+		fmt.<span style="color:#900;font-weight:bold">Println</span>(err)
+	} <span style="color:#000;font-weight:bold">else</span> {
+		fmt.<span style="color:#900;font-weight:bold">Println</span>(<span style="color:#d14">&#34;client received&#34;</span>, recv)
+	}
+}
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="4输出结果如下">4、输出结果如下：</h4>
+<pre><code class="language-console" data-lang="console">server received: hi
+client received helllo
+</code></pre>
         </div>
 
         

@@ -101,44 +101,76 @@
         
         
         <div class="post-content">
-            <h5 id="选择排序-对于给定的一组记录-经过第一轮比较之后得到最小记录-然后将该记录与第一个记录的位置进行交换-接着对对不包括第一个记录以外的其他记录进行第二轮比较-得到的最小记录与第二个记录进行位置交换-重复该过程-直到进行比较的记录只有一个为止"><strong>选择排序：对于给定的一组记录，经过第一轮比较之后得到最小记录，然后将该记录与第一个记录的位置进行交换；接着对对不包括第一个记录以外的其他记录进行第二轮比较，得到的最小记录与第二个记录进行位置交换；重复该过程，直到进行比较的记录只有一个为止。</strong></h5>
-
+            <h5 id="选择排序对于给定的一组记录经过第一轮比较之后得到最小记录然后将该记录与第一个记录的位置进行交换接着对对不包括第一个记录以外的其他记录进行第二轮比较得到的最小记录与第二个记录进行位置交换重复该过程直到进行比较的记录只有一个为止"><strong>选择排序：对于给定的一组记录，经过第一轮比较之后得到最小记录，然后将该记录与第一个记录的位置进行交换；接着对对不包括第一个记录以外的其他记录进行第二轮比较，得到的最小记录与第二个记录进行位置交换；重复该过程，直到进行比较的记录只有一个为止。</strong></h5>
 <p>具体实现如下：</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#000;font-weight:bold">package</span> main
 
-<pre class="lang:default decode:true">package main
+<span style="color:#000;font-weight:bold">import</span> <span style="color:#d14">&#34;fmt&#34;</span>
 
-import "fmt"
+<span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">SelectSort</span>(data []<span style="color:#458;font-weight:bold">int</span>) {
+	length <span style="color:#000;font-weight:bold">:=</span> <span style="color:#0086b3">len</span>(data)
+	<span style="color:#000;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">:=</span> <span style="color:#099">0</span>; i <span style="color:#000;font-weight:bold">&amp;</span>lt; length; i<span style="color:#000;font-weight:bold">++</span> {
+		tmp <span style="color:#000;font-weight:bold">:=</span> data[i]
+		flag <span style="color:#000;font-weight:bold">:=</span> i
+		<span style="color:#000;font-weight:bold">for</span> j <span style="color:#000;font-weight:bold">:=</span> i <span style="color:#000;font-weight:bold">+</span> <span style="color:#099">1</span>; j <span style="color:#000;font-weight:bold">&amp;</span>lt; length; j<span style="color:#000;font-weight:bold">++</span> {
+			<span style="color:#000;font-weight:bold">if</span> data[j] <span style="color:#000;font-weight:bold">&amp;</span>lt; tmp {
+				tmp = data[j]
+				flag = j
+			}
+		}
 
-func SelectSort(data []int) {
-    length := len(data)
-    for i := 0; i &lt; length; i++ {
-        tmp := data[i]
-        flag := i
-        for j := i + 1; j &lt; length; j++ {
-            if data[j] &lt; tmp {
-                tmp = data[j]
-                flag = j
-            }
-        }
-
-        if flag != i {
-            data[flag] = data[i]
-            data[i] = tmp
-        }
-        fmt.Println(data) //为了看具体排序的过程
-
-    }
+		<span style="color:#000;font-weight:bold">if</span> flag <span style="color:#000;font-weight:bold">!=</span> i {
+			data[flag] = data[i]
+			data[i] = tmp
+		}
+		fmt.<span style="color:#900;font-weight:bold">Println</span>(data) <span style="color:#998;font-style:italic">//为了看具体排序的过程
+</span><span style="color:#998;font-style:italic"></span>
+	}
 }
 
-func main() {
-    data := []int{44, 38, 65, 97, 76, 14, 27, 48}
-    SelectSort(data)
-    fmt.Println(data)
-}</pre>
-
-<p>输出结果如下：</p>
-
-<pre class="lang:default decode:true ">[14 38 65 97 76 44 27 48]
+<span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">main</span>() {
+	data <span style="color:#000;font-weight:bold">:=</span> []<span style="color:#458;font-weight:bold">int</span>{<span style="color:#099">44</span>, <span style="color:#099">38</span>, <span style="color:#099">65</span>, <span style="color:#099">97</span>, <span style="color:#099">76</span>, <span style="color:#099">14</span>, <span style="color:#099">27</span>, <span style="color:#099">48</span>}
+	<span style="color:#900;font-weight:bold">SelectSort</span>(data)
+	fmt.<span style="color:#900;font-weight:bold">Println</span>(data)
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>输出结果如下：</p>
+<pre><code class="language-console" data-lang="console">[14 38 65 97 76 44 27 48]
 [14 27 65 97 76 44 38 48]
 [14 27 38 97 76 44 65 48]
 [14 27 38 44 76 97 65 48]
@@ -146,9 +178,8 @@ func main() {
 [14 27 38 44 48 65 97 76]
 [14 27 38 44 48 65 76 97]
 [14 27 38 44 48 65 76 97]
-[14 27 38 44 48 65 76 97]</pre>
-
-<p>&nbsp;</p>
+[14 27 38 44 48 65 76 97]
+</code></pre>
         </div>
 
         

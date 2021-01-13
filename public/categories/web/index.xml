@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>web on Dlgde的博客</title>
@@ -6,11 +6,7 @@
     <description>Recent content in web on Dlgde的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 07 Nov 2019 03:13:45 +0000</lastBuildDate>
-    
-	<atom:link href="/categories/web/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 07 Nov 2019 03:13:45 +0000</lastBuildDate><atom:link href="/categories/web/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>WordPress搬家</title>
       <link>/archives/177/</link>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>rpc on Dlgde的博客</title>
@@ -6,24 +6,14 @@
     <description>Recent content in rpc on Dlgde的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 19 Apr 2019 14:08:51 +0000</lastBuildDate>
-    
-	<atom:link href="/tags/rpc/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 19 Apr 2019 14:08:51 +0000</lastBuildDate><atom:link href="/tags/rpc/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>goroute应用-模拟远程调用RPC</title>
       <link>/archives/150/</link>
       <pubDate>Fri, 19 Apr 2019 14:08:51 +0000</pubDate>
       
       <guid>/archives/150/</guid>
-      <description>&lt;h3 id=&#34;在本例中-使用通道代替socket实现rpc过程-客户端和服务器运行在同一个进程-服务器和客户端在两个goroute中&#34;&gt;在本例中，使用通道代替socket实现RPC过程，客户端和服务器运行在同一个进程，服务器和客户端在两个goroute中。&lt;/h3&gt;
-
-&lt;h5 id=&#34;应用知识-goroute-select-rpc过程&#34;&gt;应用知识：&lt;em&gt;&lt;strong&gt;goroute，select，RPC过程&lt;/strong&gt;&lt;/em&gt;&lt;/h5&gt;
-
-&lt;h4 id=&#34;1-客户端请求和接收封装&#34;&gt;1、客户端请求和接收封装&lt;/h4&gt;
-
-&lt;p&gt;下面的代码封装了向服务器请求数据，等待服务器返回数据，如果请求方超时，利用select，该函数还会处理超时逻辑。如下：&lt;/p&gt;</description>
+      <description>在本例中，使用通道代替socket实现RPC过程，客户端和服务器运行在同一个进程，服务器和客户端在两个goroute中。 应用知识：goroute，select，RPC过程 1、客户端请求和接收封装 下面的代码封装了向服务器请求数据，等待服务器返回数据，如果请求方超时，利用select</description>
     </item>
     
   </channel>

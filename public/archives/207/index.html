@@ -101,85 +101,143 @@
         
         
         <div class="post-content">
-            
-
-<h2 id="golang中map学习">golang中map学习</h2>
-
+            <h2 id="golang中map学习">golang中map学习</h2>
 <h3 id="哈希表">哈希表</h3>
-
 <p>哈希表是一个无序的key/value对的集合，其中所有的key都是不同的，然后通过给定的key可以在常数时间复杂度内检索、更新或删除对应的value；</p>
-
 <h3 id="golang中的map">golang中的map</h3>
-
 <p>在Go语言中，一个map就是一个哈希表的引用，map类型可以写为map[K]V，其中K和V分别对应key和value。map中所有的key都有相同的类型，所有的value也有着相同的类型，但是key和value之间可以是不同的数据类型。</p>
-
 <ol>
-<li><p>在向map中插入数据之前，必须要创建一个map,下面是两种常见的方法
-<pre><code class="language-go ">mp:=make(map[string]int)
-mp[&ldquo;liming&rdquo;]=12
-mp[&ldquo;xiaoming&rdquo;]=21
-</code></pre></p>
-
-<pre><code class="">mp:=map[string]int{
-"liming":12
-"xiaoming":21
-}
-</code></pre></li>
-
-<li><p>map中的元素并不是一个变量，对map不能进行取址；并可能随着元素的增加，会改变地址容纳更多的元素;</p></p></li>
-
-<li><p>Map的迭代顺序是不确定的，并且不同的哈希函数实现可能导致不同的遍历顺序。在实践中，遍历的顺序是随机的，每一次遍历的顺序都不相同;</p></li>
-
-<li><p>map不能直接进行相等比较，唯一例外的是和nil进行比较；判断两个map是否含有相同的key，value;可以通过一个循环来实现；</p></li>
-
-<li><p>下面这种语句要理解，在这种场景下，map的下标语法将产生两个值；第二个是一个布尔值，用于报告元素是否真的存在。布尔变量一般命名为ok，特别适合马上用于if条件判断部分；</p>
-
-<pre><code class="language-Go ">if age, ok := ages["bob"]; !ok { /* ... */ }
-</code></pre></li>
-
-<li><p>上面的3，4可用下面的代码进行验证：
-<pre><code class="language-go ">package main
-import &ldquo;fmt&rdquo;</p></li>
+<li>在向map中插入数据之前，必须要创建一个map,下面是两种常见的方法</li>
 </ol>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">  mp<span style="color:#000;font-weight:bold">:=</span><span style="color:#0086b3">make</span>(<span style="color:#000;font-weight:bold">map</span>[<span style="color:#458;font-weight:bold">string</span>]<span style="color:#458;font-weight:bold">int</span>)
+  mp[<span style="color:#d14">&#34;liming&#34;</span>]=<span style="color:#099">12</span>
+  mp[<span style="color:#d14">&#34;xiaoming&#34;</span>]=<span style="color:#099">21</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"> mp<span style="color:#000;font-weight:bold">:=</span><span style="color:#000;font-weight:bold">map</span>[<span style="color:#458;font-weight:bold">string</span>]<span style="color:#458;font-weight:bold">int</span>{
+ <span style="color:#d14">&#34;liming&#34;</span>:<span style="color:#099">12</span>
+ <span style="color:#d14">&#34;xiaoming&#34;</span>:<span style="color:#099">21</span>
+ }
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>
+<p>map中的元素并不是一个变量，对map不能进行取址；并可能随着元素的增加，会改变地址容纳更多的元素;<!-- raw HTML omitted --></p>
+</li>
+<li>
+<p>Map的迭代顺序是不确定的，并且不同的哈希函数实现可能导致不同的遍历顺序。在实践中，遍历的顺序是随机的，每一次遍历的顺序都不相同;</p>
+</li>
+<li>
+<p>map不能直接进行相等比较，唯一例外的是和nil进行比较；判断两个map是否含有相同的key，value;可以通过一个循环来实现；</p>
+</li>
+<li>
+<p>下面这种语句要理解，在这种场景下，map的下标语法将产生两个值；第二个是一个布尔值，用于报告元素是否真的存在。布尔变量一般命名为ok，特别适合马上用于if条件判断部分；<br>
+<code>if age, ok := ages[&quot;bob&quot;]; !ok { /* ... */ }</code></p>
+</li>
+<li>
+<p>上面的3，4可用下面的代码进行验证：</p>
+</li>
+</ol>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#000;font-weight:bold">package</span> main
+<span style="color:#000;font-weight:bold">import</span> <span style="color:#d14">&#34;fmt&#34;</span>
 
-<p>func listMap(a map[string]int){
-for k,v :=range a{
-    fmt.Println(k,v)
+<span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">listMap</span>(a <span style="color:#000;font-weight:bold">map</span>[<span style="color:#458;font-weight:bold">string</span>]<span style="color:#458;font-weight:bold">int</span>){
+<span style="color:#000;font-weight:bold">for</span> k,v <span style="color:#000;font-weight:bold">:=</span><span style="color:#000;font-weight:bold">range</span> a{
+    fmt.<span style="color:#900;font-weight:bold">Println</span>(k,v)
 }
-}</p>
+}
 
-<p>func equal (a,b map[string]int) bool{
-if len(a)!=len(b){
-    return false
+<span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">equal</span> (a,b <span style="color:#000;font-weight:bold">map</span>[<span style="color:#458;font-weight:bold">string</span>]<span style="color:#458;font-weight:bold">int</span>) <span style="color:#458;font-weight:bold">bool</span>{
+<span style="color:#000;font-weight:bold">if</span> <span style="color:#0086b3">len</span>(a)<span style="color:#000;font-weight:bold">!=</span><span style="color:#0086b3">len</span>(b){
+    <span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">false</span>
 }
-for k,av :=range a{
-    if bv,ok:=b[k];!ok||av!=bv{
-        return false
+<span style="color:#000;font-weight:bold">for</span> k,av <span style="color:#000;font-weight:bold">:=</span><span style="color:#000;font-weight:bold">range</span> a{
+    <span style="color:#000;font-weight:bold">if</span> bv,ok<span style="color:#000;font-weight:bold">:=</span>b[k];!ok<span style="color:#000;font-weight:bold">||</span>av<span style="color:#000;font-weight:bold">!=</span>bv{
+        <span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">false</span>
     }
 }
-return true
-}</p>
-
-<p>func main() {
-a:=map[string]int{
-    &ldquo;liming&rdquo;:12,
-    &ldquo;stanni&rdquo;:18,
-    &ldquo;monica&rdquo;:22,
-    &ldquo;zhangqiamg&rdquo;:55,
+<span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">true</span>
 }
-b:=map[string]int{
-    &ldquo;liming&rdquo;:12,
-    &ldquo;stanni&rdquo;:18,
-    &ldquo;monica&rdquo;:22,
-    &ldquo;zhangqiamg&rdquo;:55,
+
+<span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">main</span>() {
+a<span style="color:#000;font-weight:bold">:=</span><span style="color:#000;font-weight:bold">map</span>[<span style="color:#458;font-weight:bold">string</span>]<span style="color:#458;font-weight:bold">int</span>{
+    <span style="color:#d14">&#34;liming&#34;</span>:<span style="color:#099">12</span>,
+    <span style="color:#d14">&#34;stanni&#34;</span>:<span style="color:#099">18</span>,
+    <span style="color:#d14">&#34;monica&#34;</span>:<span style="color:#099">22</span>,
+    <span style="color:#d14">&#34;zhangqiamg&#34;</span>:<span style="color:#099">55</span>,
 }
-listMap(a)
-listMap(b)
-fmt.Println(equal(a,b))</p>
+b<span style="color:#000;font-weight:bold">:=</span><span style="color:#000;font-weight:bold">map</span>[<span style="color:#458;font-weight:bold">string</span>]<span style="color:#458;font-weight:bold">int</span>{
+    <span style="color:#d14">&#34;liming&#34;</span>:<span style="color:#099">12</span>,
+    <span style="color:#d14">&#34;stanni&#34;</span>:<span style="color:#099">18</span>,
+    <span style="color:#d14">&#34;monica&#34;</span>:<span style="color:#099">22</span>,
+    <span style="color:#d14">&#34;zhangqiamg&#34;</span>:<span style="color:#099">55</span>,
+}
+<span style="color:#900;font-weight:bold">listMap</span>(a)
+<span style="color:#900;font-weight:bold">listMap</span>(b)
+fmt.<span style="color:#900;font-weight:bold">Println</span>(<span style="color:#900;font-weight:bold">equal</span>(a,b))
 
-<p>}
-</code></pre></p>
-
+}
+</code></pre></td></tr></table>
+</div>
+</div>
         </div>
 
         

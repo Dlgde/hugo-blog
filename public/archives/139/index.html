@@ -101,63 +101,106 @@
         
         
         <div class="post-content">
-            <h3 id="1-go语言中goroute之间通信有两种方式">1、go语言中goroute之间通信有两种方式：</h3>
-
+            <h3 id="1go语言中goroute之间通信有两种方式">1、go语言中goroute之间通信有两种方式：</h3>
 <ul>
 <li>通过全局变量，这种方式得加锁</li>
 <li>通过channel进行通信</li>
 </ul>
-
 <p>下面是一个通过全局变量进行通信的例子：</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#000;font-weight:bold">package</span> main
 
-<pre class="lang:default decode:true">package main
-
-import (
-    "fmt"
-    "sync"
-    "time"
+<span style="color:#000;font-weight:bold">import</span> (
+	<span style="color:#d14">&#34;fmt&#34;</span>
+	<span style="color:#d14">&#34;sync&#34;</span>
+	<span style="color:#d14">&#34;time&#34;</span>
 )
 
-var (
-    m    = make(map[int]uint64)
-    lock sync.Mutex
+<span style="color:#000;font-weight:bold">var</span> (
+	m    = <span style="color:#0086b3">make</span>(<span style="color:#000;font-weight:bold">map</span>[<span style="color:#458;font-weight:bold">int</span>]<span style="color:#458;font-weight:bold">uint64</span>)
+	lock sync.Mutex
 )
 
-type task struct {
-    n int
+<span style="color:#000;font-weight:bold">type</span> task <span style="color:#000;font-weight:bold">struct</span> {
+	n <span style="color:#458;font-weight:bold">int</span>
 }
 
-func calc(t *task) {
-    var sum uint64
-    sum = 1
-    for i := 1; i &lt; t.n; i++ {
-        sum *= uint64(i)
-    }
-    lock.Lock()
-    m[t.n] = sum
-    lock.Unlock()
+<span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">calc</span>(t <span style="color:#000;font-weight:bold">*</span>task) {
+	<span style="color:#000;font-weight:bold">var</span> sum <span style="color:#458;font-weight:bold">uint64</span>
+	sum = <span style="color:#099">1</span>
+	<span style="color:#000;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">:=</span> <span style="color:#099">1</span>; i <span style="color:#000;font-weight:bold">&amp;</span>lt; t.n; i<span style="color:#000;font-weight:bold">++</span> {
+		sum <span style="color:#000;font-weight:bold">*=</span> <span style="color:#0086b3">uint64</span>(i)
+	}
+	lock.<span style="color:#900;font-weight:bold">Lock</span>()
+	m[t.n] = sum
+	lock.<span style="color:#900;font-weight:bold">Unlock</span>()
 }
 
-func main() {
-    for i := 0; i &lt; 20; i++ {
-        t := &task{n: i}
-        go calc(t)
-    }
-    time.Sleep(10 * time.Second)
+<span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">main</span>() {
+	<span style="color:#000;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">:=</span> <span style="color:#099">0</span>; i <span style="color:#000;font-weight:bold">&amp;</span>lt; <span style="color:#099">20</span>; i<span style="color:#000;font-weight:bold">++</span> {
+		t <span style="color:#000;font-weight:bold">:=</span> <span style="color:#000;font-weight:bold">&amp;</span>task{n: i}
+		<span style="color:#000;font-weight:bold">go</span> <span style="color:#900;font-weight:bold">calc</span>(t)
+	}
+	time.<span style="color:#900;font-weight:bold">Sleep</span>(<span style="color:#099">10</span> <span style="color:#000;font-weight:bold">*</span> time.Second)
 
-    lock.Lock()
-    for k, v := range m {
-        fmt.Printf("%d!=%v\n", k, v)
-    }
-    lock.Unlock()
+	lock.<span style="color:#900;font-weight:bold">Lock</span>()
+	<span style="color:#000;font-weight:bold">for</span> k, v <span style="color:#000;font-weight:bold">:=</span> <span style="color:#000;font-weight:bold">range</span> m {
+		fmt.<span style="color:#900;font-weight:bold">Printf</span>(<span style="color:#d14">&#34;%d!=%v\n&#34;</span>, k, v)
+	}
+	lock.<span style="color:#900;font-weight:bold">Unlock</span>()
 
 }
 
-</pre>
-
-<p>输出结果如下：</p>
-
-<pre class="lang:default decode:true ">0!=1
+</code></pre></td></tr></table>
+</div>
+</div><p>输出结果如下：</p>
+<pre><code class="language-console" data-lang="console">0!=1
 7!=720
 11!=3628800
 5!=24
@@ -176,62 +219,102 @@ func main() {
 8!=5040
 6!=120
 15!=87178291200
-17!=20922789888000</pre>
+17!=20922789888000&lt;/pre&gt;
+</code></pre><h4 id="heading"></h4>
+<h3 id="2理解go中的并发">2、理解go中的并发</h3>
+<h4 id="a可以看到通过关键字go运行的时候不是串行执行的使用go起了多个goroute由于map是无序的排除map的没有顺序修改如下直接打印出来看的可能更清楚一点">a、可以看到通过关键字go，运行的时候不是串行执行的，使用go，起了多个goroute。由于map是无序的，排除map的没有顺序，修改如下，直接打印出来，看的可能更清楚一点；</h4>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#000;font-weight:bold">package</span> main
 
-<!--more-->
-
-<h3 id="2-理解go中的并发">2、理解go中的并发</h3>
-
-<h4 id="a-可以看到通过关键字go-运行的时候不是串行执行的-使用go-起了多个goroute-由于map是无序的-排除map的没有顺序-修改如下-直接打印出来-看的可能更清楚一点">a、可以看到通过关键字go，运行的时候不是串行执行的，使用go，起了多个goroute。由于map是无序的，排除map的没有顺序，修改如下，直接打印出来，看的可能更清楚一点；</h4>
-
-<pre class="lang:default decode:true">package main
-
-import (
-    "fmt"
-    "sync"
+<span style="color:#000;font-weight:bold">import</span> (
+	<span style="color:#d14">&#34;fmt&#34;</span>
+	<span style="color:#d14">&#34;sync&#34;</span>
 )
 
-var (
-    m    = make(map[int]uint64)
-    lock sync.Mutex
+<span style="color:#000;font-weight:bold">var</span> (
+	m    = <span style="color:#0086b3">make</span>(<span style="color:#000;font-weight:bold">map</span>[<span style="color:#458;font-weight:bold">int</span>]<span style="color:#458;font-weight:bold">uint64</span>)
+	lock sync.Mutex
 )
 
-type task struct {
-    n int
+<span style="color:#000;font-weight:bold">type</span> task <span style="color:#000;font-weight:bold">struct</span> {
+	n <span style="color:#458;font-weight:bold">int</span>
 }
 
-func calc(t *task) {
-    var sum uint64
-    sum = 1
-    for i := 1; i &lt; t.n; i++ {
-        sum *= uint64(i)
-    }
-    fmt.Println(t.n, sum)
-    lock.Lock()
-    m[t.n] = sum
-    lock.Unlock()
+<span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">calc</span>(t <span style="color:#000;font-weight:bold">*</span>task) {
+	<span style="color:#000;font-weight:bold">var</span> sum <span style="color:#458;font-weight:bold">uint64</span>
+	sum = <span style="color:#099">1</span>
+	<span style="color:#000;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">:=</span> <span style="color:#099">1</span>; i <span style="color:#000;font-weight:bold">&amp;</span>lt; t.n; i<span style="color:#000;font-weight:bold">++</span> {
+		sum <span style="color:#000;font-weight:bold">*=</span> <span style="color:#0086b3">uint64</span>(i)
+	}
+	fmt.<span style="color:#900;font-weight:bold">Println</span>(t.n, sum)
+	lock.<span style="color:#900;font-weight:bold">Lock</span>()
+	m[t.n] = sum
+	lock.<span style="color:#900;font-weight:bold">Unlock</span>()
 }
 
-func main() {
-    for i := 0; i &lt; 20; i++ {
-        t := &task{n: i}
-        go calc(t)
-    }
-    // time.Sleep(10 * time.Second)
-
-    // lock.Lock()
-    // for k, v := range m {
-    //  fmt.Printf("%d!=%v\n", k, v)
-    // }
-    // lock.Unlock()
-
-}</pre>
-
-<!--more-->
-
-<p>输出结果如下：</p>
-
-<pre class="lang:default decode:true ">1 1
+<span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">main</span>() {
+	<span style="color:#000;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">:=</span> <span style="color:#099">0</span>; i <span style="color:#000;font-weight:bold">&amp;</span>lt; <span style="color:#099">20</span>; i<span style="color:#000;font-weight:bold">++</span> {
+		t <span style="color:#000;font-weight:bold">:=</span> <span style="color:#000;font-weight:bold">&amp;</span>task{n: i}
+		<span style="color:#000;font-weight:bold">go</span> <span style="color:#900;font-weight:bold">calc</span>(t)
+	}
+	<span style="color:#998;font-style:italic">// time.Sleep(10 * time.Second)
+</span><span style="color:#998;font-style:italic"></span>
+	<span style="color:#998;font-style:italic">// lock.Lock()
+</span><span style="color:#998;font-style:italic"></span>	<span style="color:#998;font-style:italic">// for k, v := range m {
+</span><span style="color:#998;font-style:italic"></span>	<span style="color:#998;font-style:italic">// 	fmt.Printf(&#34;%d!=%v\n&#34;, k, v)
+</span><span style="color:#998;font-style:italic"></span>	<span style="color:#998;font-style:italic">// }
+</span><span style="color:#998;font-style:italic"></span>	<span style="color:#998;font-style:italic">// lock.Unlock()
+</span><span style="color:#998;font-style:italic"></span>
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>输出结果如下：</p>
+<pre><code class="language-console" data-lang="console">1 1
 3 2
 2 1
 4 6
@@ -250,60 +333,104 @@ func main() {
 11 3628800
 17 20922789888000
 19 6402373705728000
-0 1</pre>
+0 1
+</code></pre><h4 id="b如果go没有关键字也就是没有启动多个goroute的话应该只是在main函数的那个goroute里面串行执行的去掉go">b、如果go没有关键字，也就是没有启动多个goroute的话，应该只是在main函数的那个goroute里面串行执行的，去掉go；</h4>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#000;font-weight:bold">package</span> main
 
-<h4 id="b-如果go没有关键字-也就是没有启动多个goroute的话-应该只是在main函数的那个goroute里面串行执行的-去掉go">b、如果go没有关键字，也就是没有启动多个goroute的话，应该只是在main函数的那个goroute里面串行执行的，去掉go；</h4>
-
-<pre class="lang:default decode:true">package main
-
-import (
-    "fmt"
-    "sync"
-    "time"
+<span style="color:#000;font-weight:bold">import</span> (
+	<span style="color:#d14">&#34;fmt&#34;</span>
+	<span style="color:#d14">&#34;sync&#34;</span>
+	<span style="color:#d14">&#34;time&#34;</span>
 )
 
-var (
-    m    = make(map[int]uint64)
-    lock sync.Mutex
+<span style="color:#000;font-weight:bold">var</span> (
+	m    = <span style="color:#0086b3">make</span>(<span style="color:#000;font-weight:bold">map</span>[<span style="color:#458;font-weight:bold">int</span>]<span style="color:#458;font-weight:bold">uint64</span>)
+	lock sync.Mutex
 )
 
-type task struct {
-    n int
+<span style="color:#000;font-weight:bold">type</span> task <span style="color:#000;font-weight:bold">struct</span> {
+	n <span style="color:#458;font-weight:bold">int</span>
 }
 
-func calc(t *task) {
-    var sum uint64
-    sum = 1
-    for i := 1; i &lt; t.n; i++ {
-        sum *= uint64(i)
-    }
-    fmt.Println(t.n, sum)
-    lock.Lock()
-    m[t.n] = sum
-    lock.Unlock()
+<span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">calc</span>(t <span style="color:#000;font-weight:bold">*</span>task) {
+	<span style="color:#000;font-weight:bold">var</span> sum <span style="color:#458;font-weight:bold">uint64</span>
+	sum = <span style="color:#099">1</span>
+	<span style="color:#000;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">:=</span> <span style="color:#099">1</span>; i <span style="color:#000;font-weight:bold">&amp;</span>lt; t.n; i<span style="color:#000;font-weight:bold">++</span> {
+		sum <span style="color:#000;font-weight:bold">*=</span> <span style="color:#0086b3">uint64</span>(i)
+	}
+	fmt.<span style="color:#900;font-weight:bold">Println</span>(t.n, sum)
+	lock.<span style="color:#900;font-weight:bold">Lock</span>()
+	m[t.n] = sum
+	lock.<span style="color:#900;font-weight:bold">Unlock</span>()
 }
 
-func main() {
-    for i := 0; i &lt; 20; i++ {
-        t := &task{n: i}
-        calc(t)
-    }
-    time.Sleep(10 * time.Second)
+<span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">main</span>() {
+	<span style="color:#000;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">:=</span> <span style="color:#099">0</span>; i <span style="color:#000;font-weight:bold">&amp;</span>lt; <span style="color:#099">20</span>; i<span style="color:#000;font-weight:bold">++</span> {
+		t <span style="color:#000;font-weight:bold">:=</span> <span style="color:#000;font-weight:bold">&amp;</span>task{n: i}
+		<span style="color:#900;font-weight:bold">calc</span>(t)
+	}
+	time.<span style="color:#900;font-weight:bold">Sleep</span>(<span style="color:#099">10</span> <span style="color:#000;font-weight:bold">*</span> time.Second)
 
-    // lock.Lock()
-    // for k, v := range m {
-    //  fmt.Printf("%d!=%v\n", k, v)
-    // }
-    // lock.Unlock()
-
+	<span style="color:#998;font-style:italic">// lock.Lock()
+</span><span style="color:#998;font-style:italic"></span>	<span style="color:#998;font-style:italic">// for k, v := range m {
+</span><span style="color:#998;font-style:italic"></span>	<span style="color:#998;font-style:italic">// 	fmt.Printf(&#34;%d!=%v\n&#34;, k, v)
+</span><span style="color:#998;font-style:italic"></span>	<span style="color:#998;font-style:italic">// }
+</span><span style="color:#998;font-style:italic"></span>	<span style="color:#998;font-style:italic">// lock.Unlock()
+</span><span style="color:#998;font-style:italic"></span>
 }
-</pre>
 
-<!--more-->
-
-<p>没有go关键字，执行结果如下：</p>
-
-<pre class="lang:default decode:true ">0 1
+</code></pre></td></tr></table>
+</div>
+</div><p>没有go关键字，执行结果如下：</p>
+<pre><code class="language-console" data-lang="console">0 1
 1 1
 2 1
 3 2
@@ -318,13 +445,9 @@ func main() {
 12 39916800
 13 479001600
 14 6227020800
-15 87178291200</pre>
+15 87178291200
+</code></pre><p>上面也可以看到，go的并发是通过go关键字来实现的，main函数本身会启动一个goroute，如果我们使用go关键字，是会启动新的goroute，它是和main函数的goroute并发进行的，但如果main函数的goroute结束了，整个程序就结束了，所以我们等待了10m。</p>
 
-<!--more-->
-
-<p>上面也可以看到，go的并发是通过go关键字来实现的，main函数本身会启动一个goroute，如果我们使用go关键字，是会启动新的goroute，它是和main函数的goroute并发进行的，但如果main函数的goroute结束了，整个程序就结束了，所以我们等待了10m。</p>
-
-<p>&nbsp;</p>
         </div>
 
         

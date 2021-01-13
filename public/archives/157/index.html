@@ -102,73 +102,139 @@
         
         <div class="post-content">
             <p>单链表核心代码如下：</p>
-
-<pre class="lang:default decode:true">func reverseList(node *ListNode) *ListNode {
-    cur := node
-    var pre *ListNode
-    for cur != nil {
-        cur.Next, pre, cur = pre, cur, cur.Next
-    }
-    return pre
-}</pre>
-
-<p>理解：cur指向当前节点，pre是前节点初始为nil，反转过程：</p>
-
-<pre class="lang:default decode:true ">cur.next=pre
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">reverseList</span>(node <span style="color:#000;font-weight:bold">*</span>ListNode) <span style="color:#000;font-weight:bold">*</span>ListNode {
+	cur <span style="color:#000;font-weight:bold">:=</span> node
+	<span style="color:#000;font-weight:bold">var</span> pre <span style="color:#000;font-weight:bold">*</span>ListNode
+	<span style="color:#000;font-weight:bold">for</span> cur <span style="color:#000;font-weight:bold">!=</span> <span style="color:#000;font-weight:bold">nil</span> {
+		cur.Next, pre, cur = pre, cur, cur.Next
+	}
+	<span style="color:#000;font-weight:bold">return</span> pre
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>理解：cur指向当前节点，pre是前节点初始为nil，反转过程：</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">cur.next=pre
 pre=cur
-cur=cur.next</pre>
+cur=cur.next
+</code></pre></td></tr></table>
+</div>
+</div><p>完整代码如下：</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#000;font-weight:bold">package</span> main
 
-<p>完整代码如下：</p>
+<span style="color:#000;font-weight:bold">import</span> <span style="color:#d14">&#34;fmt&#34;</span>
 
-<pre class="lang:default decode:true ">package main
-
-import "fmt"
-
-type ListNode struct {
-    data interface{}
-    Next *ListNode
+<span style="color:#000;font-weight:bold">type</span> ListNode <span style="color:#000;font-weight:bold">struct</span> {
+	data <span style="color:#000;font-weight:bold">interface</span>{}
+	Next <span style="color:#000;font-weight:bold">*</span>ListNode
 }
 
-//反转单链表
-func reverseList(head *ListNode) *ListNode {
-    cur := head
-    var pre *ListNode
-    for cur != nil {
-        cur.Next, pre, cur = pre, cur, cur.Next
-    }
-    return pre
+<span style="color:#998;font-style:italic">//反转单链表
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">reverseList</span>(head <span style="color:#000;font-weight:bold">*</span>ListNode) <span style="color:#000;font-weight:bold">*</span>ListNode {
+	cur <span style="color:#000;font-weight:bold">:=</span> head
+	<span style="color:#000;font-weight:bold">var</span> pre <span style="color:#000;font-weight:bold">*</span>ListNode
+	<span style="color:#000;font-weight:bold">for</span> cur <span style="color:#000;font-weight:bold">!=</span> <span style="color:#000;font-weight:bold">nil</span> {
+		cur.Next, pre, cur = pre, cur, cur.Next
+	}
+	<span style="color:#000;font-weight:bold">return</span> pre
 }
 
-func CreateNode(node *ListNode, max int) {
-    cur := node
-    for i := 1; i &lt; max; i++ {
-        cur.Next = &ListNode{}
-        cur.Next.data = i
-        cur = cur.Next
-    }
+<span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">CreateNode</span>(node <span style="color:#000;font-weight:bold">*</span>ListNode, max <span style="color:#458;font-weight:bold">int</span>) {
+	cur <span style="color:#000;font-weight:bold">:=</span> node
+	<span style="color:#000;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">:=</span> <span style="color:#099">1</span>; i <span style="color:#000;font-weight:bold">&amp;</span>lt; max; i<span style="color:#000;font-weight:bold">++</span> {
+		cur.Next = <span style="color:#000;font-weight:bold">&amp;</span>ListNode{}
+		cur.Next.data = i
+		cur = cur.Next
+	}
 }
 
-//打印链表的方法
-func PrintNode(info string, node *ListNode) {
-    fmt.Print(info)
-    for cur := node; cur != nil; cur = cur.Next {
-        fmt.Print(cur.data, " ")
-    }
-    fmt.Println()
+<span style="color:#998;font-style:italic">//打印链表的方法
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">PrintNode</span>(info <span style="color:#458;font-weight:bold">string</span>, node <span style="color:#000;font-weight:bold">*</span>ListNode) {
+	fmt.<span style="color:#900;font-weight:bold">Print</span>(info)
+	<span style="color:#000;font-weight:bold">for</span> cur <span style="color:#000;font-weight:bold">:=</span> node; cur <span style="color:#000;font-weight:bold">!=</span> <span style="color:#000;font-weight:bold">nil</span>; cur = cur.Next {
+		fmt.<span style="color:#900;font-weight:bold">Print</span>(cur.data, <span style="color:#d14">&#34; &#34;</span>)
+	}
+	fmt.<span style="color:#900;font-weight:bold">Println</span>()
 }
 
-func main() {
-    var head = new(ListNode)
-    CreateNode(head, 10)
-    PrintNode("前：", head)
-    yyy := reverseList(head)
-    PrintNode("后：", yyy)
+<span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">main</span>() {
+	<span style="color:#000;font-weight:bold">var</span> head = <span style="color:#0086b3">new</span>(ListNode)
+	<span style="color:#900;font-weight:bold">CreateNode</span>(head, <span style="color:#099">10</span>)
+	<span style="color:#900;font-weight:bold">PrintNode</span>(<span style="color:#d14">&#34;前：&#34;</span>, head)
+	yyy <span style="color:#000;font-weight:bold">:=</span> <span style="color:#900;font-weight:bold">reverseList</span>(head)
+	<span style="color:#900;font-weight:bold">PrintNode</span>(<span style="color:#d14">&#34;后：&#34;</span>, yyy)
 
 }
-</pre>
-
-<p>&nbsp;</p>
-
+</code></pre></td></tr></table>
+</div>
+</div>
         </div>
 
         

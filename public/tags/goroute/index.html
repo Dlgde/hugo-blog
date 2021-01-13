@@ -101,59 +101,7 @@
         </div>
         
         <div class="post-content">
-            <h3 id="1-go语言中goroute之间通信有两种方式">1、go语言中goroute之间通信有两种方式：</h3>
-
-<ul>
-<li>通过全局变量，这种方式得加锁</li>
-<li>通过channel进行通信</li>
-</ul>
-
-<p>下面是一个通过全局变量进行通信的例子：</p>
-
-<pre class="lang:default decode:true">package main
-
-import (
-    "fmt"
-    "sync"
-    "time"
-)
-
-var (
-    m    = make(map[int]uint64)
-    lock sync.Mutex
-)
-
-type task struct {
-    n int
-}
-
-func calc(t *task) {
-    var sum uint64
-    sum = 1
-    for i := 1; i &lt; t.n; i++ {
-        sum *= uint64(i)
-    }
-    lock.Lock()
-    m[t.n] = sum
-    lock.Unlock()
-}
-
-func main() {
-    for i := 0; i &lt; 20; i++ {
-        t := &task{n: i}
-        go calc(t)
-    }
-    time.Sleep(10 * time.Second)
-
-    lock.Lock()
-    for k, v := range m {
-        fmt.Printf("%d!=%v\n", k, v)
-    }
-    lock.Unlock()
-
-}
-
-</pre>……
+            1、go语言中goroute之间通信有两种方式： 通过全局变量，这种方式得加锁 通过channel进行通信 下面是一个通过全局变量进行通信的例子： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 package main import ( &#34;fmt&#34; &#34;sync&#34; &#34;time&#34; ) var ( m = make(map[int]uint64) lock sync.Mutex ) type task struct { n int } func calc(t *task) {……
             <p class="readmore"><a href="/archives/139/">阅读全文</a></p>
         </div>
     </article>
