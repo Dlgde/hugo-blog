@@ -42,9 +42,9 @@ summaryLength = 140
 ## 友情链接，可以多个
 
 [[params.links]]
-  title = "飞雪无情的博客"
-  name = "飞雪无情的博客"
-  url = "https://www.flysnow.org/"
+  # title = "飞雪无情的博客"
+  # name = "飞雪无情的博客"
+  # url = "https://www.flysnow.org/"
 
 ## 配置 utteranc评论,教程参考 https://utteranc.es/
 [params.utteranc]
