@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>Nginx日志统计 | Dlgde的博客</title>
+    <meta property="og:title" content="Nginx日志统计 - Dlgde的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2021-04-08T15:16:44&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2021-04-08T15:16:44&#43;08:00'>
+        
+    <meta name="Keywords" content="golang,go语言,go语言笔记,飞雪无情,java,android,博客,项目管理,python,软件架构,公众号,小程序">
+    <meta name="description" content="Nginx日志统计">
+        
+    <meta name="author" content="Dlgde">
+    <meta property="og:url" content="/post/nginx%E6%97%A5%E5%BF%97%E7%BB%9F%E8%AE%A1/">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+        <link rel="stylesheet" href='/css/douban.css'>
+    
+        <link rel="stylesheet" href='/css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="/">
+                        Dlgde的博客
+                    </a>
+                
+                <p class="description">记录个人学习空间</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="/">首页</a>
+                    
+                    <a  href="/read/" title="读书">读书</a>
+                    
+                    <a  href="/archives/" title="归档">归档</a>
+                    
+                    <a  href="/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">Nginx日志统计</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年4月8日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/shell'>shell</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="post-content">
+            <p>是一个比较简单的脚本用来nginx的access日志简单处理，主要实现以下三个功能：</p>
+<ul>
+<li>统计几分钟之内，请求最多的前几个ip（默认是3分钟，前10个ip）</li>
+<li>统计几分钟之内，请求最多的接口(默认是3分钟，前10个接口)</li>
+<li>统计前几ip，分别请求的前几个接口</li>
+</ul>
+<p>具体脚本下：</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">56
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">57
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#998;font-style:italic">#输出日志访问量排名前top_num条数据，可自定义</span>
+<span style="color:#008080">top_num</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">10</span>
+<span style="color:#008080">time</span><span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">$(</span>date<span style="color:#000;font-weight:bold">)</span>
+<span style="color:#008080">analyze_dir</span><span style="color:#000;font-weight:bold">=</span>/home/ap/nginx
+<span style="color:#008080">access_log</span><span style="color:#000;font-weight:bold">=</span>/usr/local/openresty/nginx/logs/access.log
+<span style="color:#008080">top_ip_file</span><span style="color:#000;font-weight:bold">=</span><span style="color:#008080">$analyze_dir</span>/ngx_log_top_ip.txt
+<span style="color:#008080">top_dest_url_file</span><span style="color:#000;font-weight:bold">=</span><span style="color:#008080">$analyze_dir</span>/ngx_log_top_dest_url.txt
+<span style="color:#008080">log_file</span><span style="color:#000;font-weight:bold">=</span><span style="color:#008080">$analyze_dir</span>/minago_ngx_log.txt
+
+mkdir -p <span style="color:#008080">$analyze_dir</span>
+<span style="color:#998;font-style:italic">#截取最近3分钟的日志文件，时间可修改</span>
+tac <span style="color:#008080">$access_log</span>| awk <span style="color:#d14">&#39;BEGIN{ &#34;date -d \&#34;-3 minute\&#34; +\&#34;%H:%M:%S\&#34;&#34; | getline min3ago } { if (substr($4, 14) &gt; min3ago) print $0;else exit }&#39;</span> | tac &gt;<span style="color:#008080">$log_file</span>
+
+<span style="color:#998;font-style:italic">#获取最活跃IP</span>
+cat <span style="color:#008080">$log_file</span> | awk <span style="color:#d14">&#39;{print $1}&#39;</span> | sort | uniq -c | sort -rn | head -<span style="color:#d14">${</span><span style="color:#008080">top_num</span><span style="color:#d14">}</span> &gt; <span style="color:#008080">$top_ip_file</span>
+
+<span style="color:#998;font-style:italic">#获取请求最多的url</span>
+cat <span style="color:#008080">$log_file</span> | awk <span style="color:#d14">&#39;{print $7}&#39;</span> | sort | uniq -c | sort -rn | head -<span style="color:#d14">${</span><span style="color:#008080">top_num</span><span style="color:#d14">}</span> &gt; <span style="color:#008080">$top_dest_url_file</span>
+
+simple<span style="color:#000;font-weight:bold">(){</span>
+
+<span style="color:#0086b3">echo</span> <span style="color:#d14">&#34;+-+-+-+-+-+- 下面是</span><span style="color:#d14">${</span><span style="color:#008080">time</span><span style="color:#d14">}</span><span style="color:#d14">的日志分析内容 +-+-+-+-+-+-&#34;</span>
+
+<span style="color:#998;font-style:italic">#获取最活跃IP</span>
+<span style="color:#0086b3">printf</span> <span style="color:#d14">&#34;最活跃的前</span><span style="color:#d14">${</span><span style="color:#008080">top_num</span><span style="color:#d14">}</span><span style="color:#d14">个访问IP: \n&#34;</span>
+
+cat <span style="color:#008080">$top_ip_file</span>
+
+<span style="color:#0086b3">echo</span> <span style="color:#d14">&#34;&#34;</span>
+
+<span style="color:#998;font-style:italic">#获取请求最多的url</span>
+<span style="color:#0086b3">printf</span> <span style="color:#d14">&#34;请求最多的前</span><span style="color:#d14">${</span><span style="color:#008080">top_num</span><span style="color:#d14">}</span><span style="color:#d14">个url: \n&#34;</span>
+
+cat <span style="color:#008080">$top_dest_url_file</span>
+
+<span style="color:#0086b3">echo</span> <span style="color:#d14">&#34;&#34;</span>
+
+
+<span style="color:#0086b3">echo</span> <span style="color:#d14">&#39;-----------------------------------------------&#39;</span>
+
+cat /home/ap/nginx/ngx_log_top_ip.txt | <span style="color:#000;font-weight:bold">while</span> <span style="color:#0086b3">read</span> line
+
+<span style="color:#000;font-weight:bold">do</span>
+
+<span style="color:#008080">ip</span><span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">$(</span><span style="color:#0086b3">echo</span> <span style="color:#008080">$line</span> | cut -d <span style="color:#d14">&#39; &#39;</span> -f2<span style="color:#000;font-weight:bold">)</span>
+<span style="color:#008080">count</span><span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">$(</span><span style="color:#0086b3">echo</span> <span style="color:#008080">$line</span> | cut -d <span style="color:#d14">&#39; &#39;</span> -f1<span style="color:#000;font-weight:bold">)</span>
+<span style="color:#0086b3">printf</span> <span style="color:#d14">&#34;</span><span style="color:#d14">${</span><span style="color:#008080">ip</span><span style="color:#d14">}</span><span style="color:#d14">请求最多的10个接口如下：\n&#34;</span>
+
+grep <span style="color:#008080">$ip</span> <span style="color:#008080">$log_file</span> |awk <span style="color:#d14">&#39;{print $7}&#39;</span>|grep -v <span style="color:#d14">&#39;images\|js\|css\|png\|fonts\|html\|jpg&#39;</span>|sort |uniq -c |sort -rn |head -n <span style="color:#099">10</span> 
+
+<span style="color:#0086b3">echo</span> <span style="color:#d14">&#39;-----------------------------------------------&#39;</span>
+
+<span style="color:#000;font-weight:bold">done</span>
+<span style="color:#000;font-weight:bold">}</span>
+simple
+<span style="color:#0086b3">exit</span> <span style="color:#099">0</span>
+
+</code></pre></td></tr></table>
+</div>
+</div>
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/post/fibonacci/">Fibonacci</a></li>
+        
+        <li><a href="/2021/01/22/">2021应该开个好头</a></li>
+        
+        <li><a href="/2021/01/08/">Mytest</a></li>
+        
+        <li><a href="/archives/221/">再来学习一下tcp</a></li>
+        
+        <li><a href="/archives/213/">HTTP状态码</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='/tags/nginx'>nginx</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "Dlgde/blog-issues"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2021 <a href="/">Dlgde的博客 By Dlgde</a>
+        
+        | <a rel="nofollow" target="_blank" href="https://beian.miit.gov.cn/">京ICP备18060775号-1</a>
+        
+    </div>
+    <br />
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='/js/douban.js'></script>
+
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="/post/nginx%E6%97%A5%E5%BF%97%E7%BB%9F%E8%AE%A1/" title="Nginx日志统计">Nginx日志统计</a>
+    </li>
+    
+    <li>
+        <a href="/post/fibonacci/" title="Fibonacci">Fibonacci</a>
+    </li>
+    
+    <li>
+        <a href="/2021/01/22/" title="2021应该开个好头">2021应该开个好头</a>
+    </li>
+    
+    <li>
+        <a href="/2021/01/08/" title="Mytest">Mytest</a>
+    </li>
+    
+    <li>
+        <a href="/archives/221/" title="再来学习一下tcp">再来学习一下tcp</a>
+    </li>
+    
+    <li>
+        <a href="/archives/213/" title="HTTP状态码">HTTP状态码</a>
+    </li>
+    
+    <li>
+        <a href="/archives/210/" title="linux系统进程状态有哪些？">linux系统进程状态有哪些？</a>
+    </li>
+    
+    <li>
+        <a href="/archives/209/" title="理解平均负载和CPU使用率">理解平均负载和CPU使用率</a>
+    </li>
+    
+    <li>
+        <a href="/archives/208/" title="理解Linux中的buffer和cache">理解Linux中的buffer和cache</a>
+    </li>
+    
+    <li>
+        <a href="/archives/207/" title="golang中的map">golang中的map</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+    <li><a href="/categories/Git/">Git (2)</a></li>
+    
+    <li><a href="/categories/Tcp/">Tcp (1)</a></li>
+    
+    <li><a href="/categories/excel/">excel (1)</a></li>
+    
+    <li><a href="/categories/golang/">golang (13)</a></li>
+    
+    <li><a href="/categories/http/">http (1)</a></li>
+    
+    <li><a href="/categories/linux/">linux (3)</a></li>
+    
+    <li><a href="/categories/shell/">shell (1)</a></li>
+    
+    <li><a href="/categories/web/">web (1)</a></li>
+    
+    <li><a href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类 (1)</a></li>
+    
+    <li><a href="/categories/%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F/">生活感悟 (1)</a></li>
+    
+    <li><a href="/categories/%E7%AE%97%E6%B3%95/">算法 (1)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="/tags/LeetCode/">LeetCode</a>
+    
+    <a href="/tags/buffer%E5%92%8Ccash/">buffer和cash</a>
+    
+    <a href="/tags/goroute/">goroute</a>
+    
+    <a href="/tags/go%E5%AE%9E%E7%8E%B0socket%E7%BC%96%E7%A8%8B/">go实现socket编程</a>
+    
+    <a href="/tags/go%E5%BC%82%E5%B8%B8/">go异常</a>
+    
+    <a href="/tags/nginx/">nginx</a>
+    
+    <a href="/tags/rpc/">rpc</a>
+    
+    <a href="/tags/tcp/">tcp</a>
+    
+    <a href="/tags/%E5%8D%95%E9%93%BE%E8%A1%A8%E5%8F%8D%E8%BD%AC/">单链表反转</a>
+    
+    <a href="/tags/%E5%A4%9A%E5%BC%A0exce%E8%A1%A8%E8%8E%B7%E5%8F%96%E8%A1%A8%E5%A4%B4/">多张exce表获取表头</a>
+    
+    <a href="/tags/%E7%94%9F%E6%B4%BB/">生活</a>
+    
+    <a href="/tags/%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F/">生活感悟</a>
+    
+    <a href="/tags/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/">选择排序</a>
+    
+</div>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="" title=""></a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
