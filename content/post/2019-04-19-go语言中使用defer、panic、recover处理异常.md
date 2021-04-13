@@ -18,8 +18,8 @@ tags:
 
 1、首先，panic 是用来表示非常严重的不可恢复的错误的。在Go语言中这是一个内置函数，如果在程序中遇到异常，或者调用panic函数，程序会立即退出（除非recover）。如下代码：
 
-<div class="cnblogs_Highlighter">
-  <pre class="lang:default decode:true ">package main
+```go
+package main
 
 import "fmt"
 
@@ -29,33 +29,25 @@ func main() {
 	c := a / b
 
 	fmt.Println(c)
-}</pre>
+}
+```
   
-  <p>
-    程序的输出如下：
-  </p>
+
+程序的输出如下：
   
-  <pre class="lang:default decode:true "> demo06 go run main.go
+ ```bash
+demo06 go run main.go
 panic: runtime error: integer divide by zero
 
 goroutine 1 [running]:
 main.main()
         /Users/qstudy/myfiles/project/src/go_dev/day11/demo06/main.go:8 +0x11
-exit status 2</pre>
-  
-  <p>
-    &nbsp;
-  </p>
-  
-  <p>
-    2、defer能保证在函数结束最后执行该方法（有问题的或者引发panic的函数),但是有个条件：必须在错误出错之前进行拦截，在错误出现后进行错误捕获，如果在定义的方法中defer定义的方法如果在panic后面，defer定义的方法就无法执行到。如下代码：
-  </p>
-  
-  <p>
-    <em>recover()获取panic的错误信息</em>
-  </p>
-  
-  <pre class="lang:default decode:true ">package main
+exit status 2
+```
+2、defer能保证在函数结束最后执行该方法（有问题的或者引发panic的函数),但是有个条件：必须在错误出错之前进行拦截，在错误出现后进行错误捕获，如果在定义的方法中defer定义的方法如果在panic后面，defer定义的方法就无法执行到。如下代码：
+
+```go
+package main
 
 import "fmt"
 
@@ -77,27 +69,19 @@ func main() {
 	i := 10
 	test(i)
 	fmt.Println("hello world")
-}</pre>
+}
+```
   
-  <p>
-    执行后输出如下：
-  </p>
+执行后输出如下：
   
-  <pre class="lang:default decode:true ">runtime error: index out of range
+```bash
+runtime error: index out of range
 hello world</pre>
-</div>
+```
 
 从以上结果可以看出，如果panic被recover捕获接收到，panic后的方法还是能继续执行的。
-
-&nbsp;
 
 来自一本书书上面的总结：
 
 “当在一个函数执行过程中调用panic()函数时，正常的函数执行流程将立即终止，但函数中  
-之前使用defer <span id="2_nwp">关键字延迟执行的语句将正常展开执行，之后该函数将返回到调用函数，并导致<br /> 逐层向上执行panic流程，直至所属的goroutine 中所有正在执行的函数被终止。错误信息将被报<br /> 告，包括在调用panic()函数时传入的参数，这个过程称为错误处理流程。”</span>
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
+之前使用**defer**关键字延迟执行的语句将正常展开执行，之后该函数将返回到调用函数，并导致逐层向上执行panic流程，直至所属的goroutine 中所有正在执行的函数被终止。错误信息将被报告，包括在调用panic()函数时传入的参数，这个过程称为错误处理流程。”
