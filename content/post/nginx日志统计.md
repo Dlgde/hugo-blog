@@ -1,6 +1,7 @@
 ---
 title: "Nginx日志统计"
 date: 2021-04-08T15:16:44+08:00
+url: /2021/04/08/
 draft: 
 categories:
   - shell
