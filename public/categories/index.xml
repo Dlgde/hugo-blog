@@ -35,20 +35,11 @@
     </item>
     
     <item>
-      <title>Tcp</title>
-      <link>/categories/Tcp/</link>
+      <title>Network</title>
+      <link>/categories/Network/</link>
       <pubDate>Sat, 02 May 2020 10:48:57 +0000</pubDate>
       
-      <guid>/categories/Tcp/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>http</title>
-      <link>/categories/http/</link>
-      <pubDate>Sat, 21 Dec 2019 03:10:58 +0000</pubDate>
-      
-      <guid>/categories/http/</guid>
+      <guid>/categories/Network/</guid>
       <description></description>
     </item>
     
