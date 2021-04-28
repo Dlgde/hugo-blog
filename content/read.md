@@ -8,9 +8,8 @@ type: "read"
 
 #### 技术类
 
-  1.《网络是怎么连接的》  
-  2.《Go语言从入门到实践》   
-  3.《数据结构与算法》   
+  1.[《网络是怎么连接的》](https://book.douban.com/subject/26941639/)  
+  3.[《Google运维解密》](https://book.douban.com/subject/26875239/)  
   4.[《The way to go》](https://github.com/Dlgde/the-way-to-go_ZH_CN/blob/master/eBook/directory.md)  
   5.[《go语言圣经》](https://books.studygolang.com/gopl-zh/index.html)  
 
