@@ -86,3 +86,36 @@ fmt.Println(equal(a,b))
 
 }
 ```
+### golang中对map进行排序
+golang的map是无序的，不管是按照 key 还是value 默认都不排序, 如果要为 map 排序，需要将 key 拷贝到一个切片，对切片排序，然后使用切片的 for-range 方法打印出map中所有的 key 和 value。例如:
+```go
+package main
+
+import "fmt"
+
+// func listmap(mp map[string]int) {
+// 	for k, v := range mp {
+// 		fmt.Println(k, v)
+// 	}
+// }
+
+func main() {
+	mp := map[string]int{
+		"lq": 9,
+		"xw": 10,
+		"mm": 8,
+	}
+	// listmap(mp)
+
+	s := []string{}
+	for k := range mp {
+		s = append(s, k)
+	}
+
+	for _, n := range s {
+		fmt.Println(n, mp[n])
+	}
+
+}
+
+```
