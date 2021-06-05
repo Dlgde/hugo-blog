@@ -77,6 +77,29 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="/archives/207/" title="golang中的map">golang中的map</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年11月16日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/golang'>golang</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            golang中map学习 哈希表 哈希表是一个无序的key/value对的集合，其中所有的key都是不同的，然后通过给定的key可以在常数时间复杂度内检索、更新或删除对应的value； golang中的map 在Go语言中，一个map就是一个哈希表的引用，map类型可以写为map[K]V……
+        </div>
+        <p class="readmore"><a href="/archives/207/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="/archives/177/" title="WordPress搬家">WordPress搬家</a>
             </h1>
         </header>
@@ -282,29 +305,6 @@
         <p class="readmore"><a href="/archives/150/">阅读全文</a></p>
     </article>
     
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="/archives/139/" title="goroute之间通信-共享全局变量(理解go的多并发)">goroute之间通信-共享全局变量(理解go的多并发)</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2019年4月5日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='/categories/golang'>golang</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            1、go语言中goroute之间通信有两种方式： 通过全局变量，这种方式得加锁 通过channel进行通信 下面是一个通过全局变量进行通信的例子： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 package main import ( &#34;fmt&#34; &#34;sync&#34; &#34;time&#34; ) var ( m = make(map[int]uint64) lock sync.Mutex ) type task struct { n int } func calc(t *task) {……
-        </div>
-        <p class="readmore"><a href="/archives/139/">阅读全文</a></p>
-    </article>
-    
     
 
 
@@ -383,6 +383,10 @@
 <ul class="widget-list">
     
     <li>
+        <a href="/2021/06/05/" title="移除链表元素">移除链表元素</a>
+    </li>
+    
+    <li>
         <a href="/2021/04/08/" title="Nginx日志统计">Nginx日志统计</a>
     </li>
     
@@ -418,10 +422,6 @@
         <a href="/archives/208/" title="理解Linux中的buffer和cache">理解Linux中的buffer和cache</a>
     </li>
     
-    <li>
-        <a href="/archives/207/" title="golang中的map">golang中的map</a>
-    </li>
-    
 </ul>
     </section>
 
@@ -447,7 +447,7 @@
     
     <li><a href="/categories/%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F/">生活感悟 (1)</a></li>
     
-    <li><a href="/categories/%E7%AE%97%E6%B3%95/">算法 (1)</a></li>
+    <li><a href="/categories/%E7%AE%97%E6%B3%95/">算法 (2)</a></li>
     
 </ul>
     </section>

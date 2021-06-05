@@ -6,7 +6,16 @@
     <description>Recent content in Posts on Dlgde的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 08 Apr 2021 15:16:44 +0800</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 05 Jun 2021 23:29:36 +0800</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>移除链表元素</title>
+      <link>/2021/06/05/</link>
+      <pubDate>Sat, 05 Jun 2021 23:29:36 +0800</pubDate>
+      
+      <guid>/2021/06/05/</guid>
+      <description>题目: 给你一个链表的头节点 head 和一个整数 val ，请你删除链表中所有满足 Node.val == val 的节点，并返回 新的头节点，具体见链接 LeetCode-203 相关代码如下： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 package main import &amp;#34;fmt&amp;#34; type ListNode struct { Val int Next *ListNode } //crete linklist func CreateNode(node *ListNode, max int) { cur := node for i := 1; i &amp;lt; max; i++ {</description>
+    </item>
+    
     <item>
       <title>Nginx日志统计</title>
       <link>/2021/04/08/</link>
