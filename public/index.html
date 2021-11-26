@@ -77,6 +77,29 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="/2021/11/26/" title="First_beego">First_beego</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年11月26日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/golang'>golang</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            使用beego创建api项目，实现增删改查，简单记录 1.mac安装beego和bee工具 1 2 go get -u github.com/beego/beego/v2 go get -u github.com/beego/bee/v2 如果需要bee设置为全局变量，添加zshrc全局alias，在~/.zshrc中编辑添加alias bee=xxx/bee beego官方文档 2.使用bee工具创建项目 1 bee api app_delivery -conn=&#34;root:root****@tcp(127.0.0.1:3306)/test-beego 创建后orm.Re……
+        </div>
+        <p class="readmore"><a href="/2021/11/26/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="/2021/10/10/" title="关于择偶">关于择偶</a>
             </h1>
         </header>
@@ -274,29 +297,6 @@
         <p class="readmore"><a href="/archives/210/">阅读全文</a></p>
     </article>
     
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="/archives/209/" title="理解平均负载和CPU使用率">理解平均负载和CPU使用率</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2019年11月17日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='/categories/linux'>linux</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            平均负载 平均负载是指单位时间内，系统处于可运行状态和不可中断状态的平均进程数，也就是平均活跃进程数，它和 CPU 使用率并没有直接关系。 使用uptime命令，依次是过去 1 分钟、5 分钟、15 分钟的平均负载（Load Average; 理解平均负载， 比如当平均负载为 2 时，意味着什么呢？ 在只有 2 个 CPU 的系统上，意……
-        </div>
-        <p class="readmore"><a href="/archives/209/">阅读全文</a></p>
-    </article>
-    
     
 
 
@@ -371,6 +371,10 @@
 <ul class="widget-list">
     
     <li>
+        <a href="/2021/11/26/" title="First_beego">First_beego</a>
+    </li>
+    
+    <li>
         <a href="/2021/10/10/" title="关于择偶">关于择偶</a>
     </li>
     
@@ -406,10 +410,6 @@
         <a href="/archives/210/" title="linux系统进程状态有哪些？">linux系统进程状态有哪些？</a>
     </li>
     
-    <li>
-        <a href="/archives/209/" title="理解平均负载和CPU使用率">理解平均负载和CPU使用率</a>
-    </li>
-    
 </ul>
     </section>
 
@@ -423,7 +423,7 @@
     
     <li><a href="/categories/Network/">Network (2)</a></li>
     
-    <li><a href="/categories/golang/">golang (13)</a></li>
+    <li><a href="/categories/golang/">golang (14)</a></li>
     
     <li><a href="/categories/linux/">linux (3)</a></li>
     
@@ -445,6 +445,8 @@
 <div class="tagcloud">
     
     <a href="/tags/LeetCode/">LeetCode</a>
+    
+    <a href="/tags/beego/">beego</a>
     
     <a href="/tags/buffer%E5%92%8Ccash/">buffer和cash</a>
     

@@ -6,7 +6,16 @@
     <description>Recent content in Categories on Dlgde的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 10 Oct 2021 10:52:04 +0800</lastBuildDate><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 26 Nov 2021 23:27:26 +0800</lastBuildDate><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>golang</title>
+      <link>/categories/golang/</link>
+      <pubDate>Fri, 26 Nov 2021 23:27:26 +0800</pubDate>
+      
+      <guid>/categories/golang/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>生活感悟</title>
       <link>/categories/%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F/</link>
@@ -49,15 +58,6 @@
       <pubDate>Mon, 18 Nov 2019 15:47:07 +0000</pubDate>
       
       <guid>/categories/linux/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>golang</title>
-      <link>/categories/golang/</link>
-      <pubDate>Sat, 16 Nov 2019 06:09:14 +0000</pubDate>
-      
-      <guid>/categories/golang/</guid>
       <description></description>
     </item>
     
