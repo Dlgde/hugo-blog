@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>单链表反转 on Dlgde的博客</title>
-    <link>/tags/%E5%8D%95%E9%93%BE%E8%A1%A8%E5%8F%8D%E8%BD%AC/</link>
-    <description>Recent content in 单链表反转 on Dlgde的博客</description>
+    <title>leetcode on Dlgde的博客</title>
+    <link>/categories/leetcode/</link>
+    <description>Recent content in leetcode on Dlgde的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 24 Apr 2019 14:54:59 +0000</lastBuildDate><atom:link href="/tags/%E5%8D%95%E9%93%BE%E8%A1%A8%E5%8F%8D%E8%BD%AC/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 24 Apr 2019 14:54:59 +0000</lastBuildDate><atom:link href="/categories/leetcode/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>go实现单链表反转</title>
       <link>/archives/157/</link>

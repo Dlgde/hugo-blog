@@ -9,21 +9,21 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
     
 
-    <title>rpc | Dlgde的博客</title>
-    <meta property="og:title" content="rpc - Dlgde的博客">
+    <title>leetcode | Dlgde的博客</title>
+    <meta property="og:title" content="leetcode - Dlgde的博客">
     <meta property="og:type" content="article">
         
         
     <meta name="Keywords" content="golang,go语言,go语言笔记,linux,网站架构,算法，分布式，运维，docker，kubernetes，k8s，nginx等">
-    <meta name="description" content="rpc">
+    <meta name="description" content="leetcode">
         
     <meta name="author" content="Dlgde">
-    <meta property="og:url" content="/tags/rpc/">
+    <meta property="og:url" content="/categories/leetcode/">
     <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
 
     <link rel="stylesheet" href='/css/normalize.css'>
     <link rel="stylesheet" href='/css/style.css'>
-    <link rel="alternate" type="application/rss+xml+xml" href="/tags/rpc/index.xml" title="Dlgde的博客" />
+    <link rel="alternate" type="application/rss+xml+xml" href="/categories/leetcode/index.xml" title="Dlgde的博客" />
     <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     
@@ -76,9 +76,9 @@
 <div class="res-cons">
     
     <h3 class="archive-title">
-        包含标签
-        <span class="keyword">rpc</span>
-        的文章
+        分类
+        <span class="keyword">leetcode</span>
+        中的文章
     </h3>
     
 
@@ -86,11 +86,11 @@
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="/archives/150/">goroute应用-模拟远程调用RPC</a>
+                <a href="/archives/157/">go实现单链表反转</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
-            2019年4月19日
+            2019年4月24日
         </date>
         
         <div class="post-meta meta-category">
@@ -98,11 +98,13 @@
             
             <a href='/categories/golang'>golang</a>
             
+            <a href='/categories/leetcode'>leetcode</a>
+            
         </div>
         
         <div class="post-content">
-            在本例中，使用通道代替socket实现RPC过程，客户端和服务器运行在同一个进程，服务器和客户端在两个goroute中。 应用知识：goroute，select，RPC过程 1、客户端请求和接收封装 下面的代码封装了向服务器请求数据，等待服务器返回数据，如果请求方超时，利用select……
-            <p class="readmore"><a href="/archives/150/">阅读全文</a></p>
+            单链表核心代码如下： 1.迭代方法： 1 2 3 4 5 6 7 8 func reverseList(node *ListNode) *ListNode { cur := node var pre *ListNode for cur != nil { cur.Next, pre, cur = pre, cur, cur.Next } return pre } 理解：cur指向当前节点，pre是前节点初始为nil，反转过程： 1 2 3 4 next := cur.next //新建一个临时节点用于保存cur.next，不然会丢失 cur.next = pre pre = cur cur = next 2.递归方式 1 2 3 4 5 6……
+            <p class="readmore"><a href="/archives/157/">阅读全文</a></p>
         </div>
     </article>
     
