@@ -19,18 +19,18 @@ func fib(n int) int {
 	if n < 2 {
 		return n
 	}
-	nums := make([]int, n+1)
+	nums := make([]int, n)
 	nums[0], nums[1] = 1, 1
 	for i := 2; i < n; i++ {
 		// nums[i] = (nums[i-1] + nums[i-2]) % 1000000007
 		nums[i] = nums[i-1] + nums[i-2]
 	}
-	return nums[n]
+	return nums[n-1]
 }
 //递归
 func fib01(n int) int {
 	if n < 2 {
-		return 2
+		return n
 	}
 	return fib01(n-1) + fib(n-2)
 }

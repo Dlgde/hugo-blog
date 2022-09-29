@@ -149,18 +149,18 @@
 	<span style="color:#000;font-weight:bold">if</span> n &lt; <span style="color:#099">2</span> {
 		<span style="color:#000;font-weight:bold">return</span> n
 	}
-	nums <span style="color:#000;font-weight:bold">:=</span> <span style="color:#0086b3">make</span>([]<span style="color:#458;font-weight:bold">int</span>, n<span style="color:#000;font-weight:bold">+</span><span style="color:#099">1</span>)
+	nums <span style="color:#000;font-weight:bold">:=</span> <span style="color:#0086b3">make</span>([]<span style="color:#458;font-weight:bold">int</span>, n)
 	nums[<span style="color:#099">0</span>], nums[<span style="color:#099">1</span>] = <span style="color:#099">1</span>, <span style="color:#099">1</span>
 	<span style="color:#000;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">:=</span> <span style="color:#099">2</span>; i &lt; n; i<span style="color:#000;font-weight:bold">++</span> {
 		<span style="color:#998;font-style:italic">// nums[i] = (nums[i-1] + nums[i-2]) % 1000000007
 </span><span style="color:#998;font-style:italic"></span>		nums[i] = nums[i<span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span>] <span style="color:#000;font-weight:bold">+</span> nums[i<span style="color:#000;font-weight:bold">-</span><span style="color:#099">2</span>]
 	}
-	<span style="color:#000;font-weight:bold">return</span> nums[n]
+	<span style="color:#000;font-weight:bold">return</span> nums[n<span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span>]
 }
 <span style="color:#998;font-style:italic">//递归
 </span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">fib01</span>(n <span style="color:#458;font-weight:bold">int</span>) <span style="color:#458;font-weight:bold">int</span> {
 	<span style="color:#000;font-weight:bold">if</span> n &lt; <span style="color:#099">2</span> {
-		<span style="color:#000;font-weight:bold">return</span> <span style="color:#099">2</span>
+		<span style="color:#000;font-weight:bold">return</span> n
 	}
 	<span style="color:#000;font-weight:bold">return</span> <span style="color:#900;font-weight:bold">fib01</span>(n<span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span>) <span style="color:#000;font-weight:bold">+</span> <span style="color:#900;font-weight:bold">fib</span>(n<span style="color:#000;font-weight:bold">-</span><span style="color:#099">2</span>)
 }
