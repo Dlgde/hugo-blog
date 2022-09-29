@@ -194,7 +194,11 @@
         </div>
         
         <div class="post-content">
+<<<<<<< HEAD
             斐波那契数 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 package main import &#34;fmt&#34; //动态规划 func fib(n int) int { if n &lt; 2 { return n } nums := make([]int, n) nums[0], nums[1] = 1, 1 for i := 2; i &lt; n; i++ { // nums[i] = (nums[i-1] + nums[i-2]) % 1000000007 nums[i] = nums[i-1] + nums[i-2] } return nums[n-1] } //递归 func fib01(n int) int { if n &lt; 2 { return n } return fib01(n-1) + fib01(n-2) } func main() { var n int fmt.Scanln(&amp;n) fmt.Println(fib(n)) fmt.Println(&#34;the fib01 is &#34;, fib01(n)) }……
+=======
+            斐波那契数 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 package main import &#34;fmt&#34; //动态规划 func fib(n int) int { if n &lt; 2 { return n } nums := make([]int, n) nums[0], nums[1] = 1, 1 for i := 2; i &lt; n; i++ { // nums[i] = (nums[i-1] + nums[i-2]) % 1000000007 nums[i] = nums[i-1] + nums[i-2] } return nums[n-1] } //递归 func fib01(n int) int { if n &lt; 2 { return n } return fib01(n-1) + fib(n-2) } func main() { var n int fmt.Scanln(&amp;n) fmt.Println(fib(n)) fmt.Println(&#34;the fib01 is &#34;, fib01(n)) }……
+>>>>>>> 4aca8eeaca2f83871a35d8d246f5abefc3f6f07c
         </div>
         <p class="readmore"><a href="/post/fibonacci/">阅读全文</a></p>
     </article>
