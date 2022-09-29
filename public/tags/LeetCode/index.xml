@@ -22,7 +22,7 @@
       <pubDate>Sun, 04 Apr 2021 23:28:44 +0800</pubDate>
       
       <guid>/post/fibonacci/</guid>
-      <description>斐波那契数 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 package main import &amp;#34;fmt&amp;#34; //动态规划 func fib(n int) int { if n &amp;lt; 2 { return n } nums := make([]int, n+1) nums[0], nums[1] = 1, 1 for i := 2; i &amp;lt; n; i++ { // nums[i] = (nums[i-1] + nums[i-2]) % 1000000007 nums[i] = nums[i-1] + nums[i-2] } return nums[n] } //递归 func fib01(n int) int { if n &amp;lt; 2 { return 2 } return fib01(n-1) + fib(n-2) } func main() { var n int fmt.Scanln(&amp;amp;n) fmt.Println(fib(n)) fmt.Println(&amp;#34;the fib01 is &amp;#34;, fib01(n)) }</description>
+      <description>斐波那契数 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 package main import &amp;#34;fmt&amp;#34; //动态规划 func fib(n int) int { if n &amp;lt; 2 { return n } nums := make([]int, n) nums[0], nums[1] = 1, 1 for i := 2; i &amp;lt; n; i++ { // nums[i] = (nums[i-1] + nums[i-2]) % 1000000007 nums[i] = nums[i-1] + nums[i-2] } return nums[n-1] } //递归 func fib01(n int) int { if n &amp;lt; 2 { return n } return fib01(n-1) + fib01(n-2) } func main() { var n int fmt.Scanln(&amp;amp;n) fmt.Println(fib(n)) fmt.Println(&amp;#34;the fib01 is &amp;#34;, fib01(n)) }</description>
     </item>
     
   </channel>
