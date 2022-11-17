@@ -1,1 +1,1 @@
-rsync -rLtDvpv --delete  -u --exclude ".git" --exclude ".DS_Store" /Users/qstudy/hugo-blog/public/ study:/data/blog/
+rsync -rLtDvpv --delete  -u --exclude ".git" --exclude ".DS_Store" /Users/qstudy/hugo-blog/public/ hw:/data/blog/
