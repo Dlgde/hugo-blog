@@ -1,6 +1,6 @@
-baseURL = "https://www.dlgde.cn"
+baseURL = "http://qstudy.tech"
 languageCode = "zh-CN"
-title = "Dlgde的博客"
+title = "Qstudy的博客"
 theme = "maupassant"
 googleAnalytics = ""  # UA-XXXXXXXX-X
 

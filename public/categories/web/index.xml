@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>web on Dlgde的博客</title>
-    <link>/categories/web/</link>
+    <link>https://www.dlgde.cn/categories/web/</link>
     <description>Recent content in web on Dlgde的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 07 Nov 2019 03:13:45 +0000</lastBuildDate><atom:link href="/categories/web/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 07 Nov 2019 03:13:45 +0000</lastBuildDate><atom:link href="https://www.dlgde.cn/categories/web/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>WordPress搬家</title>
-      <link>/archives/177/</link>
+      <link>https://www.dlgde.cn/archives/177/</link>
       <pubDate>Thu, 07 Nov 2019 03:13:45 +0000</pubDate>
       
-      <guid>/archives/177/</guid>
+      <guid>https://www.dlgde.cn/archives/177/</guid>
       <description>WordPress搬家 主要采坑过程如下： 复制之前的php目录到目标新机器 在新机器上面安装openresty(nginx), apt install php7.2-fpm php7.2-mysql php7.2-curl php7.2-json php7.2-mbstring php7.2-xml php7.2-intl,安装php服务 apt-get install mysql-server 安装数据库 查看php服务，service php7.2-fpm status 目录下/etc/php/7.2/fpm/pool.d，</description>
     </item>
     

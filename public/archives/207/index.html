@@ -6,41 +6,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <meta name="referrer" content="no-referrer-when-downgrade">
-    
 
-    <title>golang中的map | Dlgde的博客</title>
-    <meta property="og:title" content="golang中的map - Dlgde的博客">
+    <title> | </title>
+    <meta property="og:title" content=" - ">
     <meta property="og:type" content="article">
-        
-    <meta property="article:published_time" content='2019-11-16T06:09:14&#43;08:00'>
-        
-        
-    <meta property="article:modified_time" content='2019-11-16T06:09:14&#43;08:00'>
-        
-    <meta name="Keywords" content="golang,go语言,go语言笔记,linux,网站架构,算法，分布式，运维，docker，kubernetes，k8s，nginx等">
-    <meta name="description" content="golang中的map">
-        <meta name="author" content="qstudy">
-        
-    <meta property="og:url" content="/archives/207/">
-    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
+    
+    
+    <meta name="Keywords" content="">
+    <meta name="description" content="">
+    
+    <meta name="author" content="">
+    <meta property="og:url" content="">
+    <link rel="shortcut icon" href='/favicon.ico' type="image/x-icon">
 
     <link rel="stylesheet" href='/css/normalize.css'>
     <link rel="stylesheet" href='/css/style.css'>
     <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     
+
     
+
     
-    
-    
-    
-        <link rel="stylesheet" href='/css/douban.css'>
-    
-        <link rel="stylesheet" href='/css/other.css'>
     
 </head>
-
 
 <body>
     <header id="header" class="clearfix">
@@ -48,7 +37,7 @@
         <div class="col-group">
             <div class="site-name ">
                 
-                    <a id="logo" href="/">
+                    <a id="logo" href="https://www.dlgde.cn">
                         Dlgde的博客
                     </a>
                 
@@ -56,13 +45,13 @@
             </div>
             <div>
                 <nav id="nav-menu" class="clearfix">
-                    <a class="current" href="/">首页</a>
+                    <a class="current" href="https://www.dlgde.cn">首页</a>
                     
-                    <a  href="/read/" title="读书">读书</a>
+                    <a  href="https://www.dlgde.cn/read/" title="读书">读书</a>
                     
-                    <a  href="/archives/" title="归档">归档</a>
+                    <a  href="https://www.dlgde.cn/archives/" title="归档">归档</a>
                     
-                    <a  href="/about/" title="关于">关于</a>
+                    <a  href="https://www.dlgde.cn/about/" title="关于">关于</a>
                     
                 </nav>
             </div>
@@ -109,31 +98,31 @@
 <ol>
 <li>在向map中插入数据之前，必须要创建一个map,下面是两种常见的方法</li>
 </ol>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">  mp<span style="color:#000;font-weight:bold">:=</span><span style="color:#0086b3">make</span>(<span style="color:#000;font-weight:bold">map</span>[<span style="color:#458;font-weight:bold">string</span>]<span style="color:#458;font-weight:bold">int</span>)
-  mp[<span style="color:#d14">&#34;liming&#34;</span>]=<span style="color:#099">12</span>
-  mp[<span style="color:#d14">&#34;xiaoming&#34;</span>]=<span style="color:#099">21</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>  mp<span style="color:#000;font-weight:bold">:=</span><span style="color:#0086b3">make</span>(<span style="color:#000;font-weight:bold">map</span>[<span style="color:#458;font-weight:bold">string</span>]<span style="color:#458;font-weight:bold">int</span>)
+</span></span><span style="display:flex;"><span>  mp[<span style="color:#d14">&#34;liming&#34;</span>]=<span style="color:#099">12</span>
+</span></span><span style="display:flex;"><span>  mp[<span style="color:#d14">&#34;xiaoming&#34;</span>]=<span style="color:#099">21</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"> mp<span style="color:#000;font-weight:bold">:=</span><span style="color:#000;font-weight:bold">map</span>[<span style="color:#458;font-weight:bold">string</span>]<span style="color:#458;font-weight:bold">int</span>{
- <span style="color:#d14">&#34;liming&#34;</span>:<span style="color:#099">12</span>
- <span style="color:#d14">&#34;xiaoming&#34;</span>:<span style="color:#099">21</span>
- }
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span> mp<span style="color:#000;font-weight:bold">:=</span><span style="color:#000;font-weight:bold">map</span>[<span style="color:#458;font-weight:bold">string</span>]<span style="color:#458;font-weight:bold">int</span>{
+</span></span><span style="display:flex;"><span> <span style="color:#d14">&#34;liming&#34;</span>:<span style="color:#099">12</span>
+</span></span><span style="display:flex;"><span> <span style="color:#d14">&#34;xiaoming&#34;</span>:<span style="color:#099">21</span>
+</span></span><span style="display:flex;"><span> }
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="2">
 <li>
@@ -153,155 +142,153 @@
 <p>上面的3，4可用下面的代码进行验证：</p>
 </li>
 </ol>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#000;font-weight:bold">package</span> main
-<span style="color:#000;font-weight:bold">import</span> <span style="color:#d14">&#34;fmt&#34;</span>
-
-<span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">listMap</span>(a <span style="color:#000;font-weight:bold">map</span>[<span style="color:#458;font-weight:bold">string</span>]<span style="color:#458;font-weight:bold">int</span>){
-<span style="color:#000;font-weight:bold">for</span> k,v <span style="color:#000;font-weight:bold">:=</span><span style="color:#000;font-weight:bold">range</span> a{
-    fmt.<span style="color:#900;font-weight:bold">Println</span>(k,v)
-}
-}
-
-<span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">equal</span> (a,b <span style="color:#000;font-weight:bold">map</span>[<span style="color:#458;font-weight:bold">string</span>]<span style="color:#458;font-weight:bold">int</span>) <span style="color:#458;font-weight:bold">bool</span>{
-<span style="color:#000;font-weight:bold">if</span> <span style="color:#0086b3">len</span>(a)<span style="color:#000;font-weight:bold">!=</span><span style="color:#0086b3">len</span>(b){
-    <span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">false</span>
-}
-<span style="color:#000;font-weight:bold">for</span> k,av <span style="color:#000;font-weight:bold">:=</span><span style="color:#000;font-weight:bold">range</span> a{
-    <span style="color:#000;font-weight:bold">if</span> bv,ok<span style="color:#000;font-weight:bold">:=</span>b[k];!ok<span style="color:#000;font-weight:bold">||</span>av<span style="color:#000;font-weight:bold">!=</span>bv{
-        <span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">false</span>
-    }
-}
-<span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">true</span>
-}
-
-<span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">main</span>() {
-a<span style="color:#000;font-weight:bold">:=</span><span style="color:#000;font-weight:bold">map</span>[<span style="color:#458;font-weight:bold">string</span>]<span style="color:#458;font-weight:bold">int</span>{
-    <span style="color:#d14">&#34;liming&#34;</span>:<span style="color:#099">12</span>,
-    <span style="color:#d14">&#34;stanni&#34;</span>:<span style="color:#099">18</span>,
-    <span style="color:#d14">&#34;monica&#34;</span>:<span style="color:#099">22</span>,
-    <span style="color:#d14">&#34;zhangqiamg&#34;</span>:<span style="color:#099">55</span>,
-}
-b<span style="color:#000;font-weight:bold">:=</span><span style="color:#000;font-weight:bold">map</span>[<span style="color:#458;font-weight:bold">string</span>]<span style="color:#458;font-weight:bold">int</span>{
-    <span style="color:#d14">&#34;liming&#34;</span>:<span style="color:#099">12</span>,
-    <span style="color:#d14">&#34;stanni&#34;</span>:<span style="color:#099">18</span>,
-    <span style="color:#d14">&#34;monica&#34;</span>:<span style="color:#099">22</span>,
-    <span style="color:#d14">&#34;zhangqiamg&#34;</span>:<span style="color:#099">55</span>,
-}
-<span style="color:#900;font-weight:bold">listMap</span>(a)
-<span style="color:#900;font-weight:bold">listMap</span>(b)
-fmt.<span style="color:#900;font-weight:bold">Println</span>(<span style="color:#900;font-weight:bold">equal</span>(a,b))
-
-}
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">package</span> main
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#d14">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">listMap</span>(a <span style="color:#000;font-weight:bold">map</span>[<span style="color:#458;font-weight:bold">string</span>]<span style="color:#458;font-weight:bold">int</span>){
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">for</span> k,v <span style="color:#000;font-weight:bold">:=</span><span style="color:#000;font-weight:bold">range</span> a{
+</span></span><span style="display:flex;"><span>    fmt.<span style="color:#900;font-weight:bold">Println</span>(k,v)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">equal</span> (a,b <span style="color:#000;font-weight:bold">map</span>[<span style="color:#458;font-weight:bold">string</span>]<span style="color:#458;font-weight:bold">int</span>) <span style="color:#458;font-weight:bold">bool</span>{
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">if</span> <span style="color:#0086b3">len</span>(a)<span style="color:#000;font-weight:bold">!=</span><span style="color:#0086b3">len</span>(b){
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">false</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">for</span> k,av <span style="color:#000;font-weight:bold">:=</span><span style="color:#000;font-weight:bold">range</span> a{
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">if</span> bv,ok<span style="color:#000;font-weight:bold">:=</span>b[k];!ok<span style="color:#000;font-weight:bold">||</span>av<span style="color:#000;font-weight:bold">!=</span>bv{
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">false</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">true</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">main</span>() {
+</span></span><span style="display:flex;"><span>a<span style="color:#000;font-weight:bold">:=</span><span style="color:#000;font-weight:bold">map</span>[<span style="color:#458;font-weight:bold">string</span>]<span style="color:#458;font-weight:bold">int</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#d14">&#34;liming&#34;</span>:<span style="color:#099">12</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#d14">&#34;stanni&#34;</span>:<span style="color:#099">18</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#d14">&#34;monica&#34;</span>:<span style="color:#099">22</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#d14">&#34;zhangqiamg&#34;</span>:<span style="color:#099">55</span>,
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>b<span style="color:#000;font-weight:bold">:=</span><span style="color:#000;font-weight:bold">map</span>[<span style="color:#458;font-weight:bold">string</span>]<span style="color:#458;font-weight:bold">int</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#d14">&#34;liming&#34;</span>:<span style="color:#099">12</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#d14">&#34;stanni&#34;</span>:<span style="color:#099">18</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#d14">&#34;monica&#34;</span>:<span style="color:#099">22</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#d14">&#34;zhangqiamg&#34;</span>:<span style="color:#099">55</span>,
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#900;font-weight:bold">listMap</span>(a)
+</span></span><span style="display:flex;"><span><span style="color:#900;font-weight:bold">listMap</span>(b)
+</span></span><span style="display:flex;"><span>fmt.<span style="color:#900;font-weight:bold">Println</span>(<span style="color:#900;font-weight:bold">equal</span>(a,b))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="golang中对map进行排序">golang中对map进行排序</h3>
 <p>golang的map是无序的，不管是按照 key 还是value 默认都不排序, 如果要为 map 排序，需要将 key 拷贝到一个切片，对切片排序，然后使用切片的 for-range 方法打印出map中所有的 key 和 value。例如:</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#000;font-weight:bold">package</span> main
-
-<span style="color:#000;font-weight:bold">import</span> <span style="color:#d14">&#34;fmt&#34;</span>
-
-<span style="color:#998;font-style:italic">// func listmap(mp map[string]int) {
-</span><span style="color:#998;font-style:italic">// 	for k, v := range mp {
-</span><span style="color:#998;font-style:italic">// 		fmt.Println(k, v)
-</span><span style="color:#998;font-style:italic">// 	}
-</span><span style="color:#998;font-style:italic">// }
-</span><span style="color:#998;font-style:italic"></span>
-<span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">main</span>() {
-	mp <span style="color:#000;font-weight:bold">:=</span> <span style="color:#000;font-weight:bold">map</span>[<span style="color:#458;font-weight:bold">string</span>]<span style="color:#458;font-weight:bold">int</span>{
-		<span style="color:#d14">&#34;lq&#34;</span>: <span style="color:#099">9</span>,
-		<span style="color:#d14">&#34;xw&#34;</span>: <span style="color:#099">10</span>,
-		<span style="color:#d14">&#34;mm&#34;</span>: <span style="color:#099">8</span>,
-	}
-	<span style="color:#998;font-style:italic">// listmap(mp)
-</span><span style="color:#998;font-style:italic"></span>
-	s <span style="color:#000;font-weight:bold">:=</span> []<span style="color:#458;font-weight:bold">string</span>{}
-	<span style="color:#000;font-weight:bold">for</span> k <span style="color:#000;font-weight:bold">:=</span> <span style="color:#000;font-weight:bold">range</span> mp {
-		s = <span style="color:#0086b3">append</span>(s, k)
-	}
-
-	<span style="color:#000;font-weight:bold">for</span> _, n <span style="color:#000;font-weight:bold">:=</span> <span style="color:#000;font-weight:bold">range</span> s {
-		fmt.<span style="color:#900;font-weight:bold">Println</span>(n, mp[n])
-	}
-
-}
-
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">package</span> main
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#d14">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">// func listmap(mp map[string]int) {
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">// 	for k, v := range mp {
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">// 		fmt.Println(k, v)
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">// 	}
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">// }
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">main</span>() {
+</span></span><span style="display:flex;"><span>	mp <span style="color:#000;font-weight:bold">:=</span> <span style="color:#000;font-weight:bold">map</span>[<span style="color:#458;font-weight:bold">string</span>]<span style="color:#458;font-weight:bold">int</span>{
+</span></span><span style="display:flex;"><span>		<span style="color:#d14">&#34;lq&#34;</span>: <span style="color:#099">9</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#d14">&#34;xw&#34;</span>: <span style="color:#099">10</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#d14">&#34;mm&#34;</span>: <span style="color:#099">8</span>,
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#998;font-style:italic">// listmap(mp)
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>
+</span></span><span style="display:flex;"><span>	s <span style="color:#000;font-weight:bold">:=</span> []<span style="color:#458;font-weight:bold">string</span>{}
+</span></span><span style="display:flex;"><span>	<span style="color:#000;font-weight:bold">for</span> k <span style="color:#000;font-weight:bold">:=</span> <span style="color:#000;font-weight:bold">range</span> mp {
+</span></span><span style="display:flex;"><span>		s = <span style="color:#0086b3">append</span>(s, k)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#000;font-weight:bold">for</span> _, n <span style="color:#000;font-weight:bold">:=</span> <span style="color:#000;font-weight:bold">range</span> s {
+</span></span><span style="display:flex;"><span>		fmt.<span style="color:#900;font-weight:bold">Println</span>(n, mp[n])
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -354,7 +341,7 @@ fmt.<span style="color:#900;font-weight:bold">Println</span>(<span style="color:
 
                     <footer id="footer">
     <div>
-        &copy; 2022 <a href="/">Dlgde的博客 By Dlgde</a>
+        &copy; 2024 <a href="https://www.dlgde.cn">Dlgde的博客 By Dlgde</a>
         
         | <a rel="nofollow" target="_blank" href="https://beian.miit.gov.cn/">京ICP备18060775号-1</a>
         
@@ -391,10 +378,10 @@ fmt.<span style="color:#900;font-weight:bold">Println</span>(<span style="color:
 
                 <div id="secondary">
     <section class="widget">
-        <form id="search" action='/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+        <form id="search" action='https://www.dlgde.cn/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
       
       <input type="text" name="q" maxlength="20" placeholder="Search">
-      <input type="hidden" name="sitesearch" value="/">
+      <input type="hidden" name="sitesearch" value="https://www.dlgde.cn">
       <button type="submit" class="submit icon-search"></button>
 </form>
     </section>
@@ -404,43 +391,43 @@ fmt.<span style="color:#900;font-weight:bold">Println</span>(<span style="color:
 <ul class="widget-list">
     
     <li>
-        <a href="/2021/11/26/" title="First_beego">First_beego</a>
+        <a href="https://www.dlgde.cn/2021/11/26/" title="First_beego">First_beego</a>
     </li>
     
     <li>
-        <a href="/2021/10/10/" title="关于择偶">关于择偶</a>
+        <a href="https://www.dlgde.cn/2021/10/10/" title="关于择偶">关于择偶</a>
     </li>
     
     <li>
-        <a href="/2021/06/05/" title="移除链表元素">移除链表元素</a>
+        <a href="https://www.dlgde.cn/2021/06/05/" title="移除链表元素">移除链表元素</a>
     </li>
     
     <li>
-        <a href="/2021/04/08/" title="Nginx日志统计">Nginx日志统计</a>
+        <a href="https://www.dlgde.cn/2021/04/08/" title="Nginx日志统计">Nginx日志统计</a>
     </li>
     
     <li>
-        <a href="/post/fibonacci/" title="Fibonacci">Fibonacci</a>
+        <a href="https://www.dlgde.cn/post/fibonacci/" title="Fibonacci">Fibonacci</a>
     </li>
     
     <li>
-        <a href="/2021/01/22/" title="2021应该开个好头">2021应该开个好头</a>
+        <a href="https://www.dlgde.cn/2021/01/22/" title="2021应该开个好头">2021应该开个好头</a>
     </li>
     
     <li>
-        <a href="/2021/01/08/" title="Mytest">Mytest</a>
+        <a href="https://www.dlgde.cn/2021/01/08/" title="Mytest">Mytest</a>
     </li>
     
     <li>
-        <a href="/archives/221/" title="再来学习一下tcp">再来学习一下tcp</a>
+        <a href="https://www.dlgde.cn/archives/221/" title="再来学习一下tcp">再来学习一下tcp</a>
     </li>
     
     <li>
-        <a href="/archives/213/" title="HTTP状态码">HTTP状态码</a>
+        <a href="https://www.dlgde.cn/archives/213/" title="HTTP状态码">HTTP状态码</a>
     </li>
     
     <li>
-        <a href="/archives/210/" title="linux系统进程状态有哪些？">linux系统进程状态有哪些？</a>
+        <a href="https://www.dlgde.cn/archives/210/" title="linux系统进程状态有哪些？">linux系统进程状态有哪些？</a>
     </li>
     
 </ul>
@@ -452,25 +439,25 @@ fmt.<span style="color:#900;font-weight:bold">Println</span>(<span style="color:
         <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
 <ul class="widget-list">
     
-    <li><a href="/categories/Git/">Git (2)</a></li>
+    <li><a href="https://www.dlgde.cn/categories/Git/">Git (2)</a></li>
     
-    <li><a href="/categories/Network/">Network (2)</a></li>
+    <li><a href="https://www.dlgde.cn/categories/Network/">Network (2)</a></li>
     
-    <li><a href="/categories/golang/">golang (14)</a></li>
+    <li><a href="https://www.dlgde.cn/categories/golang/">golang (14)</a></li>
     
-    <li><a href="/categories/leetcode/">leetcode (1)</a></li>
+    <li><a href="https://www.dlgde.cn/categories/leetcode/">leetcode (1)</a></li>
     
-    <li><a href="/categories/linux/">linux (3)</a></li>
+    <li><a href="https://www.dlgde.cn/categories/linux/">linux (3)</a></li>
     
-    <li><a href="/categories/shell/">shell (1)</a></li>
+    <li><a href="https://www.dlgde.cn/categories/shell/">shell (1)</a></li>
     
-    <li><a href="/categories/web/">web (1)</a></li>
+    <li><a href="https://www.dlgde.cn/categories/web/">web (1)</a></li>
     
-    <li><a href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类 (1)</a></li>
+    <li><a href="https://www.dlgde.cn/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类 (1)</a></li>
     
-    <li><a href="/categories/%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F/">生活感悟 (2)</a></li>
+    <li><a href="https://www.dlgde.cn/categories/%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F/">生活感悟 (2)</a></li>
     
-    <li><a href="/categories/%E7%AE%97%E6%B3%95/">算法 (2)</a></li>
+    <li><a href="https://www.dlgde.cn/categories/%E7%AE%97%E6%B3%95/">算法 (2)</a></li>
     
 </ul>
     </section>
@@ -479,35 +466,35 @@ fmt.<span style="color:#900;font-weight:bold">Println</span>(<span style="color:
         <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
 <div class="tagcloud">
     
-    <a href="/tags/LeetCode/">LeetCode</a>
+    <a href="https://www.dlgde.cn/tags/LeetCode/">LeetCode</a>
     
-    <a href="/tags/beego/">beego</a>
+    <a href="https://www.dlgde.cn/tags/beego/">beego</a>
     
-    <a href="/tags/buffer%E5%92%8Ccash/">buffer和cash</a>
+    <a href="https://www.dlgde.cn/tags/buffer%E5%92%8Ccash/">buffer和cash</a>
     
-    <a href="/tags/goroute/">goroute</a>
+    <a href="https://www.dlgde.cn/tags/goroute/">goroute</a>
     
-    <a href="/tags/go%E5%AE%9E%E7%8E%B0socket%E7%BC%96%E7%A8%8B/">go实现socket编程</a>
+    <a href="https://www.dlgde.cn/tags/go%E5%AE%9E%E7%8E%B0socket%E7%BC%96%E7%A8%8B/">go实现socket编程</a>
     
-    <a href="/tags/go%E5%BC%82%E5%B8%B8/">go异常</a>
+    <a href="https://www.dlgde.cn/tags/go%E5%BC%82%E5%B8%B8/">go异常</a>
     
-    <a href="/tags/http/">http</a>
+    <a href="https://www.dlgde.cn/tags/http/">http</a>
     
-    <a href="/tags/nginx/">nginx</a>
+    <a href="https://www.dlgde.cn/tags/nginx/">nginx</a>
     
-    <a href="/tags/rpc/">rpc</a>
+    <a href="https://www.dlgde.cn/tags/rpc/">rpc</a>
     
-    <a href="/tags/tcp/">tcp</a>
+    <a href="https://www.dlgde.cn/tags/tcp/">tcp</a>
     
-    <a href="/tags/%E5%8D%95%E9%93%BE%E8%A1%A8%E5%8F%8D%E8%BD%AC/">单链表反转</a>
+    <a href="https://www.dlgde.cn/tags/%E5%8D%95%E9%93%BE%E8%A1%A8%E5%8F%8D%E8%BD%AC/">单链表反转</a>
     
-    <a href="/tags/%E6%89%BE%E5%AF%B9%E8%B1%A1/">找对象</a>
+    <a href="https://www.dlgde.cn/tags/%E6%89%BE%E5%AF%B9%E8%B1%A1/">找对象</a>
     
-    <a href="/tags/%E7%94%9F%E6%B4%BB/">生活</a>
+    <a href="https://www.dlgde.cn/tags/%E7%94%9F%E6%B4%BB/">生活</a>
     
-    <a href="/tags/%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F/">生活感悟</a>
+    <a href="https://www.dlgde.cn/tags/%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F/">生活感悟</a>
     
-    <a href="/tags/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/">选择排序</a>
+    <a href="https://www.dlgde.cn/tags/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/">选择排序</a>
     
 </div>
     </section>
@@ -528,7 +515,7 @@ fmt.<span style="color:#900;font-weight:bold">Println</span>(<span style="color:
     <section class="widget">
         <h3 class="widget-title">其它</h3>
         <ul class="widget-list">
-            <li><a href="/index.xml">文章 RSS</a></li>
+            <li><a href="https://www.dlgde.cn/index.xml">文章 RSS</a></li>
         </ul>
     </section>
 </div>

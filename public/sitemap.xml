@@ -1,311 +1,187 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
-    <loc>/tags/beego/</loc>
+    <loc>https://www.dlgde.cn/tags/beego/</loc>
     <lastmod>2021-11-26T23:27:26+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/categories/</loc>
     <lastmod>2021-11-26T23:27:26+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/</loc>
     <lastmod>2021-11-26T23:27:26+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/2021/11/26/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/2021/11/26/</loc>
     <lastmod>2021-11-26T23:27:26+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/golang/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/categories/golang/</loc>
     <lastmod>2021-11-26T23:27:26+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/post/</loc>
     <lastmod>2021-11-26T23:27:26+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/tags/</loc>
     <lastmod>2021-11-26T23:27:26+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/2021/10/10/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/2021/10/10/</loc>
     <lastmod>2021-10-10T10:52:04+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/%E6%89%BE%E5%AF%B9%E8%B1%A1/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/tags/%E6%89%BE%E5%AF%B9%E8%B1%A1/</loc>
     <lastmod>2021-10-10T10:52:04+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/categories/%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F/</loc>
     <lastmod>2021-10-10T10:52:04+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/LeetCode/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/tags/LeetCode/</loc>
     <lastmod>2021-06-05T23:29:36+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/2021/06/05/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/2021/06/05/</loc>
     <lastmod>2021-06-05T23:29:36+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/%E7%AE%97%E6%B3%95/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/categories/%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2021-06-05T23:29:36+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/nginx/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/tags/nginx/</loc>
     <lastmod>2021-04-08T15:16:44+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/2021/04/08/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/2021/04/08/</loc>
     <lastmod>2021-04-08T15:16:44+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/shell/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/categories/shell/</loc>
     <lastmod>2021-04-08T15:16:44+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/fibonacci/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/post/fibonacci/</loc>
     <lastmod>2021-04-04T23:28:44+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/2021/01/22/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/2021/01/22/</loc>
     <lastmod>2021-01-22T21:39:03+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/%E7%94%9F%E6%B4%BB/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/tags/%E7%94%9F%E6%B4%BB/</loc>
     <lastmod>2021-01-22T21:39:03+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/2021/01/08/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/2021/01/08/</loc>
     <lastmod>2021-01-08T01:08:22+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/Network/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/categories/Network/</loc>
     <lastmod>2020-05-02T10:48:57+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/tcp/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/tags/tcp/</loc>
     <lastmod>2020-05-02T10:48:57+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/archives/221/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/archives/221/</loc>
     <lastmod>2020-05-02T10:48:57+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/http/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/tags/http/</loc>
     <lastmod>2019-12-21T03:10:58+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/archives/213/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/archives/213/</loc>
     <lastmod>2019-12-21T03:10:58+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/linux/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/categories/linux/</loc>
     <lastmod>2019-11-18T15:47:07+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/archives/210/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/archives/210/</loc>
     <lastmod>2019-11-18T15:47:07+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/archives/209/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/archives/209/</loc>
     <lastmod>2019-11-17T03:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/buffer%E5%92%8Ccash/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/tags/buffer%E5%92%8Ccash/</loc>
     <lastmod>2019-11-16T11:12:14+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/archives/208/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/archives/208/</loc>
     <lastmod>2019-11-16T11:12:14+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/archives/207/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/archives/207/</loc>
     <lastmod>2019-11-16T06:09:14+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/web/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/categories/web/</loc>
     <lastmod>2019-11-07T03:13:45+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/archives/177/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/archives/177/</loc>
     <lastmod>2019-11-07T03:13:45+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/archives/168/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/archives/168/</loc>
     <lastmod>2019-08-04T02:32:44+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/Git/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/categories/Git/</loc>
     <lastmod>2019-05-08T15:43:50+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/archives/162/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/archives/162/</loc>
     <lastmod>2019-05-08T15:43:50+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/archives/161/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/archives/161/</loc>
     <lastmod>2019-05-08T15:40:02+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/archives/157/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/archives/157/</loc>
     <lastmod>2019-04-24T14:54:59+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/leetcode/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/categories/leetcode/</loc>
     <lastmod>2019-04-24T14:54:59+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/%E5%8D%95%E9%93%BE%E8%A1%A8%E5%8F%8D%E8%BD%AC/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/tags/%E5%8D%95%E9%93%BE%E8%A1%A8%E5%8F%8D%E8%BD%AC/</loc>
     <lastmod>2019-04-24T14:54:59+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/archives/155/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/archives/155/</loc>
     <lastmod>2019-04-22T15:33:23+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/tags/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/</loc>
     <lastmod>2019-04-22T15:33:23+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/go%E5%AE%9E%E7%8E%B0socket%E7%BC%96%E7%A8%8B/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/tags/go%E5%AE%9E%E7%8E%B0socket%E7%BC%96%E7%A8%8B/</loc>
     <lastmod>2019-04-20T07:14:09+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/archives/154/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/archives/154/</loc>
     <lastmod>2019-04-20T07:14:09+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/go%E5%BC%82%E5%B8%B8/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/tags/go%E5%BC%82%E5%B8%B8/</loc>
     <lastmod>2019-04-19T14:59:56+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/archives/152/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/archives/152/</loc>
     <lastmod>2019-04-19T14:59:56+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/archives/150/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/archives/150/</loc>
     <lastmod>2019-04-19T14:08:51+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/rpc/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/tags/rpc/</loc>
     <lastmod>2019-04-19T14:08:51+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/goroute/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/tags/goroute/</loc>
     <lastmod>2019-04-05T02:20:30+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/archives/139/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/archives/139/</loc>
     <lastmod>2019-04-05T02:20:30+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/archives/85/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/archives/85/</loc>
     <lastmod>2019-03-26T08:06:56+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/archives/83/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/archives/83/</loc>
     <lastmod>2019-03-25T15:40:56+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/archives/81/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/archives/81/</loc>
     <lastmod>2019-03-24T18:43:15+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/archives/58/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/archives/58/</loc>
     <lastmod>2019-03-23T15:25:09+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/archives/38/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/archives/38/</loc>
     <lastmod>2019-03-21T14:22:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/</loc>
     <lastmod>2019-03-21T14:00:02+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/archives/33/</loc>
     <lastmod>2019-03-21T14:00:02+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/archives/33/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/tags/%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F/</loc>
     <lastmod>2019-03-21T14:00:02+00:00</lastmod>
+  </url><url>
+    <loc>https://www.dlgde.cn/about/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/archives/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/search/</loc>
+  </url><url>
+    <loc>https://www.dlgde.cn/read/</loc>
   </url>
-  
-  <url>
-    <loc>/about/</loc>
-  </url>
-  
-  <url>
-    <loc>/archives/</loc>
-  </url>
-  
-  <url>
-    <loc>/search/</loc>
-  </url>
-  
-  <url>
-    <loc>/read/</loc>
-  </url>
-  
 </urlset>
