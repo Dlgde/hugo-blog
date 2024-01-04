@@ -25,7 +25,7 @@ summaryLength = 140
   busuanzi = true #启用不算子网页统计
   googleAd = ""  #ca-pub-xxxxxxxxxxxxxx
   localSearch = true # 启用本地搜索
-  beian = "京ICP备18060775号-1"
+  beian = ""
 # srelativeurls = true
 
   # 这里我存放在了主题的static文件夹里，根目录的似乎也可以
