@@ -15,10 +15,10 @@ summaryLength = 140
 # disqusShortname = "yourdiscussshortname"  ## 是否开启disqus评论，不要和utteranc同时开启
 
 [author]
-  name = "Dlgde"
+  name = "Qstudy"
 
 [params]
-  author = "Dlgde"
+  author = "Qstudy"
   subtitle = "记录个人学习空间"
   keywords = "golang,go语言,go语言笔记,linux,网站架构,算法，分布式，运维，docker，kubernetes，k8s，nginx等"
   description = "golang,go语言,go语言笔记,linux,网站架构,算法，分布式，运维，docker，kubernetes，k8s，nginx等"
