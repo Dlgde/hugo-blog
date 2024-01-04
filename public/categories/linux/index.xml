@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>linux on Dlgde的博客</title>
-    <link>https://www.dlgde.cn/categories/linux/</link>
-    <description>Recent content in linux on Dlgde的博客</description>
+    <title>linux on Qstudy的博客</title>
+    <link>http://qstudy.tech/categories/linux/</link>
+    <description>Recent content in linux on Qstudy的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 18 Nov 2019 15:47:07 +0000</lastBuildDate><atom:link href="https://www.dlgde.cn/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 18 Nov 2019 15:47:07 +0000</lastBuildDate><atom:link href="http://qstudy.tech/categories/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>linux系统进程状态有哪些？</title>
-      <link>https://www.dlgde.cn/archives/210/</link>
+      <link>http://qstudy.tech/archives/210/</link>
       <pubDate>Mon, 18 Nov 2019 15:47:07 +0000</pubDate>
       
-      <guid>https://www.dlgde.cn/archives/210/</guid>
+      <guid>http://qstudy.tech/archives/210/</guid>
       <description>进程状态有哪些？ 在学校的操作系统原理中，我们系统中的进程有多种状态，那对应到常用的linux系统，有哪些进程状态呢？通过top可看到有以下的状态： R 是 Running 或 Runnable 的缩写，表示进程在 CPU 的就绪队列中，正在运行或者正在等待运行。 D 是 Disk Sleep 的缩写，也就是不可中断状态睡眠（Uninterrupti</description>
     </item>
     
     <item>
       <title>理解平均负载和CPU使用率</title>
-      <link>https://www.dlgde.cn/archives/209/</link>
+      <link>http://qstudy.tech/archives/209/</link>
       <pubDate>Sun, 17 Nov 2019 03:00:00 +0000</pubDate>
       
-      <guid>https://www.dlgde.cn/archives/209/</guid>
+      <guid>http://qstudy.tech/archives/209/</guid>
       <description>平均负载 平均负载是指单位时间内，系统处于可运行状态和不可中断状态的平均进程数，也就是平均活跃进程数，它和 CPU 使用率并没有直接关系。 使用uptime命令，依次是过去 1 分钟、5 分钟、15 分钟的平均负载（Load Average; 理解平均负载， 比如当平均负载为 2 时，意味着什么呢？ 在只有 2 个 CPU 的系统上，意</description>
     </item>
     
     <item>
       <title>理解Linux中的buffer和cache</title>
-      <link>https://www.dlgde.cn/archives/208/</link>
+      <link>http://qstudy.tech/archives/208/</link>
       <pubDate>Sat, 16 Nov 2019 11:12:14 +0000</pubDate>
       
-      <guid>https://www.dlgde.cn/archives/208/</guid>
+      <guid>http://qstudy.tech/archives/208/</guid>
       <description>磁盘和文件的区别： 关于磁盘和文件的区别，本来以为大家都懂了，所以没有细讲。磁盘是一个块设备，可以划分为不同的分区；在分区之上再创建文件系统，挂载到某个目录，之后才可以在这个目录中读写文件。 其实 Linux 中“一切皆文件”，而文章中提到的“文件”是普通文件，磁盘是块设备文件，这些大家可以执行</description>
     </item>
     

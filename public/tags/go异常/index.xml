@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>go异常 on Dlgde的博客</title>
-    <link>https://www.dlgde.cn/tags/go%E5%BC%82%E5%B8%B8/</link>
-    <description>Recent content in go异常 on Dlgde的博客</description>
+    <title>go异常 on Qstudy的博客</title>
+    <link>http://qstudy.tech/tags/go%E5%BC%82%E5%B8%B8/</link>
+    <description>Recent content in go异常 on Qstudy的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 19 Apr 2019 14:59:56 +0000</lastBuildDate><atom:link href="https://www.dlgde.cn/tags/go%E5%BC%82%E5%B8%B8/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 19 Apr 2019 14:59:56 +0000</lastBuildDate><atom:link href="http://qstudy.tech/tags/go%E5%BC%82%E5%B8%B8/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>go语言中使用defer、panic、recover处理异常</title>
-      <link>https://www.dlgde.cn/archives/152/</link>
+      <link>http://qstudy.tech/archives/152/</link>
       <pubDate>Fri, 19 Apr 2019 14:59:56 +0000</pubDate>
       
-      <guid>https://www.dlgde.cn/archives/152/</guid>
+      <guid>http://qstudy.tech/archives/152/</guid>
       <description>go语言中的异常处理，没有try&amp;hellip;catch等，而是使用defer、panic、recover来处理异常。 知识点：defer、panic、recover，异常处理 1、首先，panic 是用来表示非常严重的不可恢复的错误的。在Go语言中这是一个内置函数，如果在程序中遇到</description>
     </item>
     
