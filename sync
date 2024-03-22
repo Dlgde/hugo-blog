@@ -1,1 +1,1 @@
-rsync -rLtDvpv --delete  -u --exclude ".git" --exclude ".DS_Store" ./public/ aws:/data/blog/
+rsync -rLtDvpv --delete  -u --exclude ".git" --exclude ".DS_Store" ../Dlgde.github.io/ aws:/data/blog/

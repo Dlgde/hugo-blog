@@ -1,4 +1,4 @@
-baseURL = "http://qstudy.tech"
+baseURL = "http://dlgde.github.io"
 languageCode = "zh-CN"
 title = "Qstudy的博客"
 theme = "maupassant"
@@ -64,7 +64,7 @@ summaryLength = 140
   [markup.highlight]
     lineNos = true
     style = "github"
-    
+
 
 ## 配置网站菜单
 

@@ -1,1 +1,2 @@
-hugo
+hugo -d ../Dlgde.github.io
+cd ../Dlgde.github.io && git add . && git commit -m "biu~" && git push
