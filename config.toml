@@ -23,7 +23,6 @@ summaryLength = 140
   keywords = "golang,go语言,go语言笔记,linux,网站架构,算法，分布式，运维，docker，kubernetes，k8s，nginx等"
   description = "golang,go语言,go语言笔记,linux,网站架构,算法，分布式，运维，docker，kubernetes，k8s，nginx等"
   busuanzi = true #启用不算子网页统计
-  googleAd = ""  #ca-pub-xxxxxxxxxxxxxx
   localSearch = true # 启用本地搜索
   beian = ""
 # srelativeurls = true
@@ -45,6 +44,12 @@ summaryLength = 140
   # title = "飞雪无情的博客"
   # name = "飞雪无情的博客"
   # url = "https://www.flysnow.org/"
+
+# 侧边栏广告位-有用
+#[[params.ads]]
+#  title = "【渠道专享低折扣】11月特惠 限时2折"
+#  url = "https://www.aliyun.com/acts/limit-buy?userCode=jdg9oj97"
+#  img = "https://img.alicdn.com/tfs/TB1hblJl7Y2gK0jSZFgXXc5OFXa-750-400.jpg"
 
 ## 配置 utteranc评论,教程参考 https://utteranc.es/
 [params.utteranc]
