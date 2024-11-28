@@ -24,7 +24,7 @@ summaryLength = 140
   description = "golang,go语言,go语言笔记,linux,网站架构,算法，分布式，运维，docker，kubernetes，k8s，nginx等"
   busuanzi = true #启用不算子网页统计
   localSearch = true # 启用本地搜索
-  beian = ""
+  beian = ""     #备案号
 # srelativeurls = true
 
   # 这里我存放在了主题的static文件夹里，根目录的似乎也可以
