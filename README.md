@@ -1,18 +1,33 @@
 # hugo-blog
-include theme about hugo and make it run and it work well
 
-# hugo 指定路径构建
-hugo -d ../Dlgde.github.io
+使用 Hugo 搭建的静态博客，支持自动部署到 GitHub Pages。
 
-steps:
-1. 安装hugo版本，执行hugo server即可调试
-2. 执行hugo new post/xxx.md可创建新的md
-3. 执行hugo，可编译到public下 (执行 sh build)
-4. 可以将public目录，放到如nginx的即可（执行sh sync）
-5. 使用github进行版本管理，同步blog信息至github
+## 快速开始
 
-# 地址
-git地址：https://github.com/Dlgde/Dlgde.github.io.git
-md地址： https://github.com/Dlgde/hugo-blog.git
-访问地址：http://dlgde.github.io
-        http://qstudy.tech
+```bash
+# 本地预览
+hugo server
+
+# 新建文章
+hugo new post/xxx.md
+```
+
+## 部署
+
+推送到 main 分支后，GitHub Actions 会自动构建并部署到 https://dlgde.github.io
+
+## 文章写作
+
+1. 创建新文章：`hugo new post/标题.md`
+2. 本地预览：`hugo server -D`
+3. 提交发布：
+```bash
+git add .
+git commit -m "feat: 新增文章标题"
+git push origin main
+```
+
+## 访问
+
+- 博客：https://dlgde.github.io
+- 源码：https://github.com/Dlgde/hugo-blog
