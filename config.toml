@@ -18,6 +18,7 @@ summaryLength = 140
   name = "Qstudy"
 
 [params]
+  Author = "Qstudy"
   author = "Qstudy"
   subtitle = "记录个人学习空间"
   keywords = "golang,go语言,go语言笔记,linux,网站架构,算法，分布式，运维，docker，kubernetes，k8s，nginx等"
@@ -91,3 +92,9 @@ summaryLength = 140
     url = "/about/"
     weight = 4
 
+# 忽略警告，让控制台干干净净
+ignoreLogs = ['warning-goldmark-raw-html', 'deprecated-Site-Author']
+
+# 允许 Markdown 里写 HTML
+[markup.goldmark.renderer]
+unsafe = true
