@@ -1,11 +1,6 @@
 ---
 title: linux系统进程状态有哪些？
-author: qstudy
-type: post
 date: 2019-11-18T15:47:07+00:00
-url: /archives/210
-views:
-  - 398
 categories:
   - linux
 

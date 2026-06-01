@@ -1,11 +1,6 @@
 ---
 title: 理解平均负载和CPU使用率
-author: qstudy
-type: post
 date: 2019-11-17T03:00:00+00:00
-url: /archives/209
-views:
-  - 338
 categories:
   - linux
 

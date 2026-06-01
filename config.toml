@@ -1,6 +1,6 @@
 baseURL = "http://dlgde.github.io"
-languageCode = "zh-CN"
 title = "Qstudy的博客"
+locale = "zh-CN"
 theme = "maupassant"
 googleAnalytics = ""  # UA-XXXXXXXX-X
 
@@ -8,9 +8,6 @@ googleAnalytics = ""  # UA-XXXXXXXX-X
 preserveTaxonomyNames = true
 ## 是否禁止URL Path转小写
 disablePathToLower = true
-
-hasCJKLanguage = true
-summaryLength = 140
 
 # disqusShortname = "yourdiscussshortname"  ## 是否开启disqus评论，不要和utteranc同时开启
 
@@ -68,7 +65,7 @@ summaryLength = 140
 ## 配置代码高亮
 [markup]
   [markup.highlight]
-    lineNos = true
+    lineNos = false
     style = "github"
 
 

@@ -1,11 +1,7 @@
 ---
 title: WordPress搬家
 author: dlgde
-type: post
 date: 2019-11-07T03:13:45+00:00
-url: /archives/177
-views:
-  - 381
 categories:
   - web
 

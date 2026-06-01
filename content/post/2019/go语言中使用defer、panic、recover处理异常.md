@@ -1,11 +1,6 @@
 ---
 title: go语言中使用defer、panic、recover处理异常
-author: qstudy
-type: post
 date: 2019-04-19T14:59:56+00:00
-url: /archives/152
-views:
-  - 417
 categories:
   - golang
 tags:

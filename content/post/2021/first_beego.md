@@ -2,7 +2,6 @@
 title: "First_beego"
 date: 2021-11-26T23:27:26+08:00
 draft: 
-url: /2021/11/26/
 categories:
   - golang
 tags:

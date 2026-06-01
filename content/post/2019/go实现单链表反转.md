@@ -1,0 +1,97 @@
+---
+title: go实现单链表反转
+date: 2019-04-24T14:54:59+00:00
+categories:
+  - golang
+  - leetcode
+tags:
+  - 单链表反转
+
+---
+### 单链表核心代码如下：
+**1.迭代方法：**
+
+```go
+func reverseList(node *ListNode) *ListNode {
+	cur := node
+	var pre *ListNode
+	for cur != nil {
+		cur.Next, pre, cur = pre, cur, cur.Next
+	}
+	return pre
+}
+```
+
+理解：cur指向当前节点，pre是前节点初始为nil，反转过程：
+
+```go
+next := cur.next //新建一个临时节点用于保存cur.next，不然会丢失
+cur.next = pre
+pre = cur
+cur = next
+```
+
+**2.递归方式**
+```go
+func reverseList(head *ListNode) *ListNode {
+    if head == nil || head.Next ==nil{
+        return head
+    }
+    newHead := reverseList(head.Next)
+    head.Next.Next = head
+    head.Next = nil
+    return newHead
+}
+//递归的关键是结束条件，以及注意head.Next要置为空
+```
+
+**3.如需在本地调试，完整代码如下：**
+```go
+package main
+
+import "fmt"
+
+type ListNode struct {
+	data interface{}
+	Next *ListNode
+}
+
+//迭代反转单链表
+func reverseList(head *ListNode) *ListNode {
+	cur := head
+	var pre *ListNode
+	for cur != nil {
+		cur.Next, pre, cur = pre, cur, cur.Next
+	}
+	return pre
+}
+//
+
+func CreateNode(node *ListNode, max int) {
+	cur := node
+	for i := 1; i &lt; max; i++ {
+		cur.Next = &ListNode{}
+		cur.Next.data = i
+		cur = cur.Next
+	}
+}
+
+//打印链表的方法
+func PrintNode(info string, node *ListNode) {
+	fmt.Print(info)
+	for cur := node; cur != nil; cur = cur.Next {
+		fmt.Print(cur.data, " ")
+	}
+	fmt.Println()
+}
+
+func main() {
+	var head = new(ListNode)
+	CreateNode(head, 10)
+	PrintNode("前：", head)
+	yyy := reverseList(head)
+	PrintNode("后：", yyy)
+
+}
+```
+

@@ -1115,6 +1115,20 @@ table tr th, table tr td {
   background-color: #555 !important; 
 }
 .github-badge .bg-lightgrey,.github-badge .bg-lightgray {
-  background-color: #9f9f9f !important; 
+  background-color: #9f9f9f !important;
+}
+
+/* 代码块样式 */
+.post-content .highlight {
+    border-radius: 6px;
+    overflow: hidden;
+}
+.post-content .highlight pre {
+    border: none;
+    margin: 0;
+}
+.post-content pre {
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
 }
   

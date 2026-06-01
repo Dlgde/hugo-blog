@@ -1,11 +1,6 @@
 ---
 title: git常用操作
-author: qstudy
-type: post
 date: 2019-05-08T15:43:50+00:00
-url: /archives/162
-views:
-  - 476
 love:
   - 1
 categories:

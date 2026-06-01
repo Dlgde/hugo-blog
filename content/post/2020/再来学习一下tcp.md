@@ -1,11 +1,6 @@
 ---
 title: 再来学习一下tcp
-author: qstudy
-type: post
 date: 2020-05-02T10:48:57+00:00
-url: /archives/221
-views:
-  - 299
 love:
   - 4
 categories:

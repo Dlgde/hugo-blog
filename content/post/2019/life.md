@@ -1,11 +1,6 @@
 ---
 title: 生活，如此多娇
-author: qstudy
-type: post
 date: 2019-03-21T14:00:02+00:00
-url: /archives/33
-views:
-  - 367
 categories:
   - 未分类
 tags:

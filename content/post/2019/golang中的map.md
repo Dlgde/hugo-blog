@@ -1,11 +1,6 @@
 ---
 title: golang中的map
-author: qstudy
-type: post
 date: 2019-11-16T06:09:14+00:00
-url: /archives/207
-views:
-  - 348
 love:
   - 1
 categories:

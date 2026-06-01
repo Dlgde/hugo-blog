@@ -1,11 +1,6 @@
 ---
 title: go语言变量逃逸(Escape Analysis)
-author: qstudy
-type: post
 date: 2019-03-26T08:06:56+00:00
-url: /archives/85
-views:
-  - 477
 categories:
   - golang
 

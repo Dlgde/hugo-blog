@@ -1,2 +1,3 @@
+# 本地构建 + 部署到 Dlgde.github.io 仓库
 hugo -d ../Dlgde.github.io
 cd ../Dlgde.github.io && git add . && git commit -m "biu~" && git push

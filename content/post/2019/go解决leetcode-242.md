@@ -1,0 +1,91 @@
+---
+title: go解决leetcode-242
+date: 2019-08-04T02:32:44+00:00
+categories:
+  - golang
+
+---
+#### 解决思路：使用map来解决问题；
+
+```go
+package main
+
+import (
+	"fmt"
+	"reflect"
+)
+
+func isAnagram(s string, t string) bool {
+	// var m1 map[string]int
+	// var m2 map[string]int
+	//map申明后默认是nil，得用make进行实例化
+	m1 := make(map[string]int)
+	m2 := make(map[string]int)
+
+	for _, i := range s {
+		m1[string(i)]++
+	}
+	for _, j := range t {
+		m2[string(j)]++
+	}
+	return reflect.DeepEqual(m1, m2)
+	//map不能直接用“==”进行比较
+
+}
+
+func main() {
+	s := "hello"
+	t := "lelho"
+	// isAnagram(s, t)
+	fmt.Println(isAnagram(s, t))
+
+}
+```
+
+自己实现map比较函数equal，如下：
+
+```go
+package main
+
+import (
+	"fmt"
+)
+
+func equal(x, y map[string]int) bool {
+	if len(x) != len(y) {
+		return false
+	}
+	for k, xv := range x {
+		if yv, ok := y[k]; !ok || yv != xv {
+			return false
+		}
+	}
+	return true
+}
+
+func isAnagram(s string, t string) bool {
+	m1 := make(map[string]int)
+	m2 := make(map[string]int)
+
+	for _, i := range s {
+		m1[string(i)]++
+	}
+	for _, j := range t {
+		m2[string(j)]++
+	}
+
+	return equal(m1, m2)
+
+	// return reflect.DeepEqual(m1, m2)
+
+}
+
+func main() {
+	s := "hello"
+	t := "lelho"
+	// isAnagram(s, t)
+	fmt.Println(isAnagram(s, t))
+
+}
+```
+

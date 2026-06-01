@@ -1,11 +1,6 @@
 ---
 title: go实现简单的客户端-服务器应用
-author: qstudy
-type: post
 date: 2019-04-20T07:14:09+00:00
-url: /archives/154
-views:
-  - 521
 categories:
   - golang
 tags:

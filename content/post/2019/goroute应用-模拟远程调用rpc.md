@@ -1,11 +1,6 @@
 ---
 title: goroute应用-模拟远程调用RPC
-author: qstudy
-type: post
 date: 2019-04-19T14:08:51+00:00
-url: /archives/150
-views:
-  - 530
 categories:
   - golang
 tags:

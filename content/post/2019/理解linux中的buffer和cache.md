@@ -1,11 +1,6 @@
 ---
 title: 理解Linux中的buffer和cache
-author: qstudy
-type: post
 date: 2019-11-16T11:12:14+00:00
-url: /archives/208
-views:
-  - 480
 categories:
   - linux
 tags:
