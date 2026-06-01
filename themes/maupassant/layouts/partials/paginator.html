@@ -5,7 +5,7 @@
 <ol class="page-navigator">
     {{ if .HasPrev }}
     <li class="prev">
-        <a href="{{ .Prev.URL | absLangURL }}">上一页</a>
+        <a href="{{ .Prev.URL | relLangURL }}">上一页</a>
     </li>
     {{ end }}
 
@@ -40,7 +40,7 @@
         {{ else }}
         {{ $pager:=index $.Paginator.Pagers (sub . 1) }}
         <li {{ if eq . $.Paginator.PageNumber }} class="current"{{ end }}>
-            <a href="{{ $pager.URL | absLangURL }}">{{ $pager.PageNumber }}</a>
+            <a href="{{ $pager.URL | relLangURL }}">{{ $pager.PageNumber }}</a>
         </li>
         {{ end }}
     {{ end }}
@@ -49,7 +49,7 @@
     
 
     <li class="next">
-        <a href="{{ .Next.URL | absLangURL }}">下一页</a>
+        <a href="{{ .Next.URL | relLangURL }}">下一页</a>
     </li>
     {{ end }}
 </ol>
@@ -58,19 +58,19 @@
 <ol class="page-navigator">
     {{ if .HasPrev }}
     <li class="prev">
-        <a href="{{ .Prev.URL | absLangURL }}">上一页</a>
+        <a href="{{ .Prev.URL | relLangURL }}">上一页</a>
     </li>
     {{ end }}
 
     {{ range .Pagers }}
     <li {{ if eq .PageNumber $.Paginator.PageNumber }} class="current"{{ end }}>
-        <a href="{{ .URL | absLangURL }}">{{ .PageNumber }}</a>
+        <a href="{{ .URL | relLangURL }}">{{ .PageNumber }}</a>
     </li>
     {{ end }}
 
     {{ if .HasNext }}
     <li class="next">
-        <a href="{{ .Next.URL | absLangURL }}">下一页</a>
+        <a href="{{ .Next.URL | relLangURL }}">下一页</a>
     </li>
     {{ end }}
 </ol>

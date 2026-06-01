@@ -77,20 +77,12 @@ disablePathToLower = true
     name = "读书"
     url = "/read/"
     weight = 2
-  [[menu.main]]
-    identifier = "archives"
-    name = "归档"
-    url = "/archives/"
-    weight = 3
 
   [[menu.main]]
     identifier = "about"
     name = "关于"
     url = "/about/"
     weight = 4
-
-# 忽略警告，让控制台干干净净
-ignoreLogs = ['warning-goldmark-raw-html', 'deprecated-Site-Author']
 
 # 允许 Markdown 里写 HTML
 [markup.goldmark.renderer]

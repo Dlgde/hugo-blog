@@ -45,7 +45,7 @@
         $("span.keyword").text(q);
         $("article.post").remove();
         $.ajax({
-            url: '{{"index.xml"|absURL}}',
+            url: '{{"index.xml"|relURL}}',
             dataType: "xml",
             success: function (data) {
                 $(data).find("item").each(function () {
