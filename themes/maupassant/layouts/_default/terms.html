@@ -1,12 +1,10 @@
 {{ define "content"}}
-<header>
-    {{ if eq .Data.Singular "category" }}
-        <h1>共有{{ len .Data.Terms }}个分类</h1>
-    {{ else if eq .Data.Singular "tag" }}
-        <h1>共有{{ len .Data.Terms }}个标签</h1>
-    {{ end }}
-</header>
 <div class="post-archive">
+    {{ if eq .Data.Singular "category" }}
+        <p class="archive-title">共 {{ len .Data.Terms }} 个分类</p>
+    {{ else if eq .Data.Singular "tag" }}
+        <p class="archive-title">共 {{ len .Data.Terms }} 个标签</p>
+    {{ end }}
     {{ range .Data.Terms.ByCount }}
     <h2><a href="{{ path.Join $.Data.Plural .Term | urlize | relLangURL }}">{{ .Term }}</a> ({{ .Count }})</h2>
     <ul class="listing">

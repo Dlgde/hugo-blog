@@ -47,7 +47,12 @@ hugo new post/2026/文章标题.md
 
 - `index.html` — 首页改为按年份分组的归档列表（日期 + 标题，无摘要）
 - `_default/baseof.html` — `<html lang>` 改用 `.Site.Language.Locale`
-- `partials/sidebar.html` — 移除了 ads 和 links 区域
+- `_default/taxonomy.html` — 分类/标签页与首页风格统一，按年分组简约列表
+- `_default/terms.html` — 分类/标签汇总页，去掉 h1 大标题
+- `partials/header.html` — 导航链接用 relURL 替代 absURL
+- `partials/sidebar.html` — 移除 ads、links 区域
+
+**URL 约定**：所有模板链接统一使用 `.RelPermalink` / `relURL` / `relLangURL`（非绝对 URL），避免本地预览时跳转到线上域名。仅 `head.html` 的 `og:url` 和 RSS feed 保留绝对 URL。
 
 ### 配置
 
