@@ -1,6 +1,6 @@
 {{ define "content"}}
 <div class="post-archive">
-    {{- $paginator := .Paginate (where .Site.RegularPages "Type" "in" (slice "post" "posts")) }}
+    {{- $paginator := .Paginate (where .Site.RegularPages "Type" "in" (slice "post" "posts")) 30 }}
     {{ range $paginator.Pages.GroupByDate "2006" }}
     <h2>{{ .Key }}</h2>
     <ul class="listing">

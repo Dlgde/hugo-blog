@@ -2,6 +2,10 @@ baseURL = "http://dlgde.github.io"
 title = "Qstudy的博客"
 locale = "zh-CN"
 theme = "maupassant"
+paginate = 20
+
+[pagination]
+paginate = 30
 googleAnalytics = ""  # UA-XXXXXXXX-X
 
 ## 保持分类的原始名字（false会做转小写处理）
