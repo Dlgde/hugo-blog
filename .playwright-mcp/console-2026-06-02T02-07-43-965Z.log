@@ -1,0 +1,12 @@
+[    6183ms] [ERROR] Refused to apply style from 'http://localhost:1313/css/douban.css' because its MIME type ('text/plain') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://localhost:1313/:0
+[    6185ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:1313/js/douban.js:0
+[    8155ms] [ERROR] Refused to execute script from 'http://localhost:1313/js/douban.js' because its MIME type ('text/plain') is not executable, and strict MIME type checking is enabled. @ http://localhost:1313/:0
+[    8156ms] [ERROR] Refused to apply style from 'http://localhost:1313/css/douban.css' because its MIME type ('text/plain') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://localhost:1313/:0
+[    8507ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:1313/favicon.ico:0
+[   12412ms] [ERROR] WebSocket connection to 'ws://localhost:1313/livereload' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:1313/livereload.js?mindelay=10&v=2&port=1313&path=livereload:1
+[   12434ms] [ERROR] WebSocket connection to 'ws://localhost:1313/livereload' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:1313/livereload.js?mindelay=10&v=2&port=1313&path=livereload:1
+[   12476ms] [ERROR] WebSocket connection to 'ws://localhost:1313/livereload' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:1313/livereload.js?mindelay=10&v=2&port=1313&path=livereload:1
+[   12558ms] [ERROR] WebSocket connection to 'ws://localhost:1313/livereload' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:1313/livereload.js?mindelay=10&v=2&port=1313&path=livereload:1
+[   12720ms] [ERROR] WebSocket connection to 'ws://localhost:1313/livereload' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:1313/livereload.js?mindelay=10&v=2&port=1313&path=livereload:1
+[   13042ms] [ERROR] WebSocket connection to 'ws://localhost:1313/livereload' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:1313/livereload.js?mindelay=10&v=2&port=1313&path=livereload:1
+[   13685ms] [ERROR] WebSocket connection to 'ws://localhost:1313/livereload' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:1313/livereload.js?mindelay=10&v=2&port=1313&path=livereload:1
