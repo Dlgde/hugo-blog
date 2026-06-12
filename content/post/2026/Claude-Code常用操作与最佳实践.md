@@ -28,6 +28,7 @@ Claude Code 提供了一系列内置命令，输入 `/` 即可查看完整列表
 | `/init` | 为项目生成 CLAUDE.md 文件 |
 | `/doctor` | 诊断 Claude Code 安装和环境问题 |
 | `/config` | 查看和修改设置 |
+| `/resume` | 打开会话选择器，恢复历史对话 |
 | `/status` | 显示当前项目和会话状态 |
 | `/pr-comments` | 查看当前 PR 的评论 |
 | `/review-pr` | 审查一个 PR |
@@ -82,15 +83,95 @@ cat error.log | claude -p "分析这个错误日志，找出根本原因"
 claude -p "列出所有导出了函数的文件" --output-format json
 ```
 
-### 3. 继续对话用 `-c`
+### 3. Session 管理 —— 会话的保存与恢复
+
+Claude Code 会自动将每次对话保存为 Session，存储在 `~/.claude/projects/<项目路径>/<session-id>.jsonl`。这意味着：
+- 关闭终端后，对话不会丢失
+- 可以随时恢复到之前的某个对话
+- 可以查看历史对话内容
+
+#### 基本命令
 
 ```bash
-# 继续上次的对话
+# 继续最近一次对话（最常用）
 claude -c
+claude --continue
 
-# 恢复到指定会话
+# 打开交互式会话选择器（用方向键选，输入关键词搜索）
+claude -r
+claude --resume
+
+# 恢复到指定会话（适合切换不同任务线）
+claude -r <session-id>
 claude --resume <session-id>
+
+# 从之前的会话分叉新分支（不影响原会话）
+claude -r <session-id> --fork-session
+
+# 用自定义名称标记会话（显示在选择器、终端标题中）
+claude -n "修复登录 Bug"
+
+# 不保存会话（仅 --print 模式，临时任务不留下记录）
+claude -p "查个东西" --no-session-persistence
 ```
+
+#### 如何查找 Session ID
+
+**方法一（推荐）：用内置的 `/resume` 或 `-r` 交互选择器**
+
+```bash
+# 打开交互式会话选择器，支持方向键浏览和关键词搜索
+claude -r
+
+# 带搜索关键词直接筛选
+claude -r "修复"
+```
+
+在 Claude Code 交互界面内也可以输入 `/resume` 打开同样的选择器。
+
+**方法二：用 `-n` 给会话命名**
+
+```bash
+# 开始新会话时指定一个名字
+claude -n "重构数据库层"
+
+# 之后在选择器中就能看到这个名字，不用猜 UUID
+```
+
+**方法三：直接浏览文件系统**
+
+```bash
+# 列出当前项目的所有会话（按时间排序）
+ls -lt ~/.claude/projects/*/
+
+# 查看最近的会话文件
+ls -lt ~/.claude/projects/*/ | head -20
+```
+
+**方法四：用第三方工具**
+社区有很多好用的 session 管理工具：
+
+| 工具 | 特点 |
+|------|------|
+| [cc-sessions](https://github.com/chronologos/cc-sessions) | Go 写的 TUI 浏览器，支持全文搜索、跨机器同步 |
+| [cc-session](https://github.com/cc-deck/cc-session) | Rust 写的极速 TUI，<500ms 加载 2000+ 会话 |
+| [claude-resume](https://pypi.org/project/claude-resume/) | Python 写的轻量 picker，按项目/内容搜索 |
+| [claude-recent](https://github.com/rmdes/claude-recent) | Shell 脚本 + fzf，适合多机器/WSL 场景 |
+| [@i-am-nio/cc-sessions](https://www.npmjs.com/package/@i-am-nio/cc-sessions) | 支持书签命名，`/bookmark <name>` 标记重要会话 |
+
+```bash
+# 以 cc-sessions 为例
+cc-sessions              # 打开交互式会话浏览器
+cc-sessions --list       # 纯文本列表
+cc-sessions --project myapp  # 筛选特定项目
+```
+
+#### 实用场景
+
+- **多任务并行**：用 `--fork-session` 从同一个起点分叉，一条线做 feature A，另一条做 feature B
+- **回溯检查**：用 `--resume <id>` 回到之前讨论方案的会话，确认当初的决策
+- **会话复用**：如果是同一个项目的持续工作，直接用 `-c` 继续，Claude 记得所有上下文
+- **会话清理**：`~/.claude/projects/` 下的 `.jsonl` 文件可以直接删除来清理旧会话
 
 ### 4. `/compact` —— 长对话的救命功能
 
@@ -145,12 +226,13 @@ claude --version
 
 ## 我的工作流
 
-1. **启动项目时**：`claude` 进入交互模式，Claude 自动读取 `CLAUDE.md`
-2. **写代码时**：描述需求，Claude 生成代码，我审查并确认
-3. **审查代码时**：`/review-pr <PR 编号>` 或 `claude -p "审查这次改动"`
-4. **遇到 Bug**：把错误信息贴进去，Claude 定位问题并修复
-5. **长对话后**：`/compact` 保持上下文清爽
-6. **收尾**：先 `/cost` 看花费，再 `/clear`
+1. **启动项目时**：`claude` 进入交互模式（或用 `claude -c` 继续上次），Claude 自动读取 `CLAUDE.md`
+2. **切换任务时**：`claude -r` 打开会话选择器，切到另一条任务线的对话
+3. **写代码时**：描述需求，Claude 生成代码，我审查并确认
+4. **审查代码时**：`/review-pr <PR 编号>` 或 `claude -p "审查这次改动"`
+5. **遇到 Bug**：把错误信息贴进去，Claude 定位问题并修复
+6. **长对话后**：`/compact` 保持上下文清爽
+7. **收尾**：先 `/cost` 看花费，再 `/clear`
 
 ---
 
@@ -175,6 +257,7 @@ claude --version
 Claude Code 的核心优势在于**理解整个代码库上下文**，而不只是单个文件。用好了，它能从"代码补全工具"升级为"真正的编程搭档"。几个最重要的习惯：
 
 1. **写好 CLAUDE.md** —— 这是投入产出比最高的操作
-2. **适时 `/compact`** —— 避免上下文膨胀
-3. **选对模型** —— 别让 Haiku 干 Opus 的活，也别用 Opus 做简单搜索
-4. **配置权限** —— 可信任的仓库减少确认提示，专注干活
+2. **善用 Session** —— `-c` 继续、`-r` 切换、`-n` 命名，把对话当成持久的工作资产
+3. **适时 `/compact`** —— 避免上下文膨胀
+4. **选对模型** —— 别让 Haiku 干 Opus 的活，也别用 Opus 做简单搜索
+5. **配置权限** —— 可信任的仓库减少确认提示，专注干活
